@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal CBT Practice Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+  :root {
+    --paper: #f5f2ec;
+    --ink: #1c1a18;
+    --ink-light: #4a4540;
+    --rule: #c8c0b4;
+    --rule-light: #e2ddd6;
+    --accent: #8b3a2a;
+    --accent-bg: #f5ede8;
+    --flag: #5a3e1b;
+    --flag-bg: #f7f0e4;
+    --stop: #b8000a;
+    --stop-bg: #fdf0f0;
+    --go: #1f5c2e;
+    --go-bg: #edf5ee;
+    --blue: #1e3d6e;
+    --blue-bg: #eef2f8;
+    --section-num: #c8c0b4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem 6rem;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  h2 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.8rem 0 0.8rem;
+    line-height: 1.3;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-light);
+    margin: 2rem 0 0.6rem;
+  }
+  h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.4rem 0 0.4rem;
+  }
+  p { margin-bottom: 0.9rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  /* ── COVER ── */
+  .cover {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+  }
+  .cover-meta {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-light);
+    margin-bottom: 1.2rem;
+  }
+  .cover-subtitle {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+    margin-bottom: 1.6rem;
+  }
+  .cover-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--rule);
+    color: var(--ink-light);
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 1.6rem 2rem;
+    margin: 2rem 0 3rem;
+  }
+  .toc-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+  }
+  .toc ol {
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    line-height: 2;
+  }
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .toc a:hover { border-color: var(--accent); color: var(--accent); }
+  .toc-sub {
+    padding-left: 1.4rem;
+    color: var(--ink-light);
+    font-size: 0.84rem;
+    line-height: 1.9;
+    list-style: none;
+  }
+  .toc-sub li::before { content: "— "; }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    margin: 3.5rem 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .section-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--section-num);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .box {
+    border-left: 3px solid var(--rule);
+    padding: 1rem 1.4rem;
+    margin: 1.4rem 0;
+    font-size: 0.93rem;
+  }
+  .box-rule {
+    border-left-color: var(--stop);
+    background: var(--stop-bg);
+  }
+  .box-go {
+    border-left-color: var(--go);
+    background: var(--go-bg);
+  }
+  .box-flag {
+    border-left-color: var(--flag);
+    background: var(--flag-bg);
+  }
+  .box-blue {
+    border-left-color: var(--blue);
+    background: var(--blue-bg);
+  }
+  .box-neutral {
+    border-left-color: var(--rule);
+    background: white;
+  }
+  .box-accent {
+    border-left-color: var(--accent);
+    background: var(--accent-bg);
+  }
+  .box-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.5rem;
+  }
+  .box-rule .box-label { color: var(--stop); }
+  .box-go .box-label { color: var(--go); }
+  .box-flag .box-label { color: var(--flag); }
+  .box-blue .box-label { color: var(--blue); }
+  .box-accent .box-label { color: var(--accent); }
+  .box-neutral .box-label { color: var(--ink-light); }
+
+  /* ── CORE RULE ── */
+  .core-rule {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.8rem 2.2rem;
+    margin: 2rem 0;
+  }
+  .core-rule .rule-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #a09080;
+    margin-bottom: 0.6rem;
+  }
+  .core-rule p {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #f0ede7;
+  }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin: 1.4rem 0;
+  }
+  th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    border-bottom: 2px solid var(--rule);
+    padding: 0.6rem 0.8rem 0.6rem 0;
+  }
+  td {
+    padding: 0.65rem 0.8rem 0.65rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--ink); font-weight: 400; }
+
+  /* ── NUMBERED PROTOCOL ── */
+  .protocol ol {
+    list-style: none;
+    counter-reset: protocol-counter;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+  .protocol ol li {
+    counter-increment: protocol-counter;
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    font-size: 0.92rem;
+    align-items: baseline;
+  }
+  .protocol ol li:last-child { border-bottom: none; }
+  .protocol ol li::before {
+    content: counter(protocol-counter);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink-light);
+    flex-shrink: 0;
+    min-width: 1.4rem;
+    padding-top: 0.1rem;
+  }
+
+  /* ── URGE SEQUENCE ── */
+  .urge-seq {
+    font-size: 0.9rem;
+  }
+  .urge-step {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0.6rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    align-items: baseline;
+  }
+  .urge-step:last-child { border-bottom: none; }
+  .urge-time {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    padding-top: 0.1rem;
+  }
+
+  /* ── EXPOSURE HIERARCHY ── */
+  .exp-level {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr 1fr;
+    gap: 0.5rem 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    font-size: 0.87rem;
+    align-items: baseline;
+  }
+  .exp-level:last-child { border-bottom: none; }
+  .exp-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    font-weight: 500;
+  }
+  .exp-blocked {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  /* ── LOG TEMPLATE ── */
+  .log-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── EXPOSURE HIERARCHY HEADER ── */
+  .exp-header {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr 1fr;
+    gap: 0.4rem 1rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--rule);
+  }
+  .loop {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 2;
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 1.2rem 1.6rem;
+    margin: 1.2rem 0;
+    color: var(--ink-light);
+  }
+  .loop .step { color: var(--ink); font-weight: 500; }
+  .loop .arrow { color: var(--rule); }
+
+  /* ── TWO-COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 1.2rem 0;
+  }
+  .two-col .col {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 1rem 1.2rem;
+    font-size: 0.88rem;
+  }
+  .two-col .col-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.6rem;
+  }
+  .col-stop .col-label { color: var(--stop); }
+  .col-go .col-label { color: var(--go); }
+  .two-col ul { padding-left: 1rem; }
+  .two-col li { margin-bottom: 0.3rem; line-height: 1.5; }
+
+  /* ── SCENARIO BLOCK ── */
+  .scenario {
+    background: white;
+    border: 1px solid var(--rule);
+    margin: 1.4rem 0;
+    overflow: hidden;
+  }
+  .scenario-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.7rem 1.2rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .scenario-body { padding: 1.2rem 1.4rem; font-size: 0.9rem; }
+  .scenario-body p { margin-bottom: 0.6rem; }
+  .scenario-body ol { padding-left: 1.3rem; }
+  .scenario-body ol li { margin-bottom: 0.3rem; }
+
+  /* ── PARKING LOT ── */
+  .parking-lot {
+    border: 1.5px dashed var(--rule);
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0;
+    font-size: 0.87rem;
+  }
+  .parking-lot h4 { margin-top: 0; }
+  .parking-lot .field {
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.4rem 0;
+    color: var(--ink-light);
+    font-size: 0.85rem;
+    min-height: 1.6rem;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── DAILY BLOCK ── */
+  .day-block {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0 1.2rem;
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.9rem 0;
+    align-items: start;
+  }
+  .day-block:last-child { border-bottom: none; }
+  .day-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    padding-top: 0.05rem;
+  }
+  .day-content { font-size: 0.91rem; }
+  .day-content strong { display: block; margin-bottom: 0.2rem; }
+  .day-content ul { padding-left: 1rem; font-size: 0.87rem; color: var(--ink-light); }
+
+  /* ── MISC ── */
+  ul.plain { list-style: none; padding: 0; }
+  ul.plain li { padding: 0.25rem 0; border-bottom: 1px solid var(--rule-light); font-size: 0.9rem; }
+  ul.plain li:last-child { border-bottom: none; }
+
+  ul.check { list-style: none; padding: 0; }
+  ul.check li { padding: 0.3rem 0; font-size: 0.9rem; }
+  ul.check li::before { content: "□ "; font-family: 'IBM Plex Mono', monospace; color: var(--ink-light); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+
+  .compulsion-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid currentColor;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+  }
+  .primary { color: var(--accent); }
+  .secondary { color: var(--blue); }
+
+  .note {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 1.5rem 1.2rem 4rem; }
+    .two-col { grid-template-columns: 1fr; }
+    .exp-level { grid-template-columns: 2rem 1fr; }
+    .exp-blocked { display: none; }
+    .day-block { grid-template-columns: 5.5rem 1fr; }
+  }
+
+  @media print {
+    body { max-width: 100%; padding: 1cm 1.5cm; }
+    .section { page-break-inside: avoid; }
+    a { color: var(--ink); text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-meta">Personal CBT Practice Plan · Self-Directed</div>
+  <h1>Eight Compulsions.<br>One Rule.</h1>
+  <div class="cover-subtitle">A behavioral contract — not reading material.</div>
+  <p>You have eight compulsions. They share one mechanism: discomfort appears, you perform a behavior that removes it temporarily, your brain learns the behavior works, the threshold drops, and the behaviors expand. The content looks responsible — checking, researching, optimizing, planning, building, prompting AI. That is exactly why they have lasted this long. They feel like work.</p>
+  <p>This plan treats all eight as the same operant problem. You expose yourself to the discomfort, you do not perform the compulsion, you watch the discomfort peak and pass without the behavior, your brain learns the discomfort is survivable. You repeat until the threshold rises and the behaviors shrink.</p>
+  <p>The ADHD-adjacent layer means you are fighting two things at once: avoiding discomfort and seeking the reward these behaviors deliver. That means you will need to follow the rules more strictly, not less — because motivation will be more variable and the pull will be stronger.</p>
+  <div class="cover-tags">
+    <span class="tag">CBT</span>
+    <span class="tag">ERP</span>
+    <span class="tag">ACT</span>
+    <span class="tag">MCT</span>
+    <span class="tag">Self-directed</span>
+    <span class="tag">Daily practice</span>
+  </div>
+</div>
+
+<!-- ══ TOC ══ -->
+<div class="toc">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li><a href="#s0">§0 — The One Rule</a></li>
+    <li><a href="#s1">§1 — Daily Structure</a></li>
+    <li><a href="#s2">§2 — Compulsion 1: Compulsive Checking</a></li>
+    <li><a href="#s3">§3 — Compulsion 2: Compulsive Optimizing</a></li>
+    <li><a href="#s4">§4 — Compulsion 3: Compulsive Researching</a></li>
+    <li><a href="#s5">§5 — Compulsion 4: Compulsive Productivity</a></li>
+    <li><a href="#s6">§6 — Compulsion 5: Compulsive Problem-Solving</a></li>
+    <li><a href="#s7">§7 — Compulsion 6: Compulsive Availability</a></li>
+    <li><a href="#s8">§8 — Compulsion 7: AI / Tool Loop Dependence</a></li>
+    <li><a href="#s9">§9 — Compulsion 8: Compulsive Tool-Building</a></li>
+    <li><a href="#s10">§10 — Exposure Hierarchy</a></li>
+    <li><a href="#s11">§11 — Daily Log</a></li>
+    <li><a href="#s12">§12 — Weekly Review</a></li>
+    <li><a href="#s13">§13 — Emergency Protocol</a></li>
+    <li><a href="#s14">§14 — Clinical Resources</a></li>
+  </ol>
+</div>
+
+
+<!-- ══ §0 THE ONE RULE ══ -->
+<div class="section" id="s0">
+  <div class="section-id">§0 — Non-Negotiable</div>
+  <h2>The One Rule</h2>
+
+  <div class="core-rule">
+    <div class="rule-label">Core Rule — Governs All Eight Compulsions</div>
+    <p>If it does not produce a deliverable, it is avoidance.</p>
+  </div>
+
+  <p>Checking is not producing. Researching is not producing. Optimizing is not producing. Planning, organizing, prompting AI, building tools — none of it is producing. You may do these things — in their designated time slots, not before producing.</p>
+
+  <div class="box box-flag">
+    <div class="box-label">Before every session — write this answer</div>
+    <p><strong>"What will I have produced when this session ends, and in what form?"</strong></p>
+    <p>If you cannot answer it in one sentence, you do not start the session. You sit with the blankness until you can. The CBT question is not whether the behavior is work-related. It is whether it is producing output, or reducing anxiety.</p>
+  </div>
+
+  <h3>The Practical CBT Shape</h3>
+  <p>Every intervention follows the same structure regardless of which compulsion fires:</p>
+
+  <div class="protocol">
+    <ol>
+      <li>Notice the trigger — what discomfort or urge appeared.</li>
+      <li>Write the prediction — what you believe will go wrong if you don't perform the compulsion.</li>
+      <li>Block or delay the compulsion — follow that section's hard rules.</li>
+      <li>Do the smallest direct-output action available.</li>
+      <li>Measure what actually happened — compare to the prediction.</li>
+      <li>Repeat until the threat prediction weakens.</li>
+    </ol>
+  </div>
+
+  <p class="note">Self-talk is useful only if it helps you do the behavior while the urge is still present. The goal is not to make the discomfort disappear before acting. The goal is to act while it is present.</p>
+</div>
+
+
+<!-- ══ §1 DAILY STRUCTURE ══ -->
+<div class="section" id="s1">
+  <div class="section-id">§1 — Stimulus Control</div>
+  <h2>Daily Structure</h2>
+  <p>This structure is a stimulus-control intervention. Its purpose is to make avoidance physically harder by removing ambient permission for it. It is not flexible until you have followed it for <strong>21 consecutive days</strong>.</p>
+
+  <div class="day-block">
+    <div class="day-label">Morning<br>≤ 5 min</div>
+    <div class="day-content">
+      <strong>Intention statement</strong>
+      Write one sentence: <em>"Today I will produce [specific output] by [time]."</em> No other planning. No checking messages first. This is the first thing you do.
+    </div>
+  </div>
+  <div class="day-block">
+    <div class="day-label">Block 1<br>50 min</div>
+    <div class="day-content">
+      <strong>Mode-locked production</strong>
+      One window open: the work document. Allowed: existing notes. Forbidden: AI, browser, email, tools, restructuring. Output in whatever condition it emerges.
+    </div>
+  </div>
+  <div class="day-block">
+    <div class="day-label">Break<br>10 min</div>
+    <div class="day-content">
+      <strong>Physical break only</strong>
+      No screens. No phone. No "quick checks." Walk, water, stretch. If you check anything during this break, the block resets.
+    </div>
+  </div>
+  <div class="day-block">
+    <div class="day-label">Block 2<br>50 min</div>
+    <div class="day-content">
+      <strong>Mode-locked production</strong>
+      Same rules as Block 1. If research is genuinely necessary, park the specific question on paper with a bracket [CHECK LATER] and keep producing.
+    </div>
+  </div>
+  <div class="day-block">
+    <div class="day-label">Midday<br>30 min max</div>
+    <div class="day-content">
+      <strong>AI + Research window</strong>
+      The only permitted slot for AI use and research. Hard stop at 30 minutes by timer. If you exceed it, the window closes for the rest of the day. Governed by §8 rules.
+    </div>
+  </div>
+  <div class="day-block">
+    <div class="day-label">Block 3<br>50 min</div>
+    <div class="day-content">
+      <strong>Mode-locked production</strong>
+      Same rules as Blocks 1–2. The output from this block is the measurable deliverable against your morning intention.
+    </div>
+  </div>
+  <div class="day-block">
+    <div class="day-label">End of day<br>10 min</div>
+    <div class="day-content">
+      <strong>Shutdown ritual + daily log</strong>
+      Brain dump of open loops onto paper (not into AI). Write tomorrow's one-sentence intention. Close laptop. Phone away. Walk or shower without content. Work is done.
+    </div>
+  </div>
+
+  <div class="box box-rule" style="margin-top:1.6rem">
+    <div class="box-label">Hard Limits — No Exceptions</div>
+    <ul class="check">
+      <li>Do not check messages or notifications before completing your morning intention statement.</li>
+      <li>Do not begin any research or AI use before completing at least one production block.</li>
+      <li>Do not carry the AI / research window beyond 30 minutes. If you do, it closes for the day.</li>
+      <li>Do not work after your declared end-of-day time. The shutdown ritual is non-negotiable even when the work feels unfinished.</li>
+      <li>Do not skip the end-of-day log. Without it, the behavioral-experiment data does not accumulate and the plan has no learning mechanism.</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ══ §2 CHECKING ══ -->
+<div class="section" id="s2">
+  <div class="section-id">§2 — Compulsion 1 · ERP + Theory A/B</div>
+  <h2>Compulsive Checking <span class="compulsion-badge primary">Primary</span></h2>
+
+  <h3>Theory A vs Theory B</h3>
+  <p><strong>Theory A</strong> (the anxiety belief): "The problem is that something bad might happen if I don't check." This belief makes checking feel necessary and protective.</p>
+  <p><strong>Theory B</strong> (the CBT reframe): "The problem is that I believe something bad will happen — and I keep checking to manage that belief, which strengthens it." Under Theory B, the check is never solving the real problem; it is maintaining it. The intervention is to act as if Theory B is true — meaning the check is optional, the discomfort is survivable, and the evidence accumulates that nothing required checking after all.</p>
+
+  <h3>What this is</h3> Research by van den Hout &amp; Kindt shows that repeated checking actually degrades memory confidence — meaning every check you perform makes the next urge more likely, not less. You are not solving a problem. You are feeding a cycle.</p>
+  <p>You check because something feels unresolved, wrong, or uncertain. The check provides 60–90 seconds of relief. Then the doubt returns — usually stronger. The behavior that promises certainty is the behavior that destroys it.</p>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li><strong>One-look rule:</strong> everything — every document, every sent message, every locked door — gets one look. You look, you move on.</li>
+      <li>Do not re-read sent messages. After sending, the window closes.</li>
+      <li>Do not re-check completed work before starting a new block. Completed means completed.</li>
+      <li>Do not seek social reassurance as a substitute — asking a colleague "does this look right?" compulsively is the same behavior in social form.</li>
+    </ul>
+  </div>
+
+  <h3>⚡ When the urge hits — ERP sequence</h3>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">Step 1</span><span>Name it out loud or in writing: <em>"Checking urge. This is a compulsion, not a need."</em></span></div>
+    <div class="urge-step"><span class="urge-time">Step 2</span><span>Set a 10-minute timer. Do not perform the check during this window.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 3</span><span>Rate anxiety 0–10 now. Rate again at 5 min. Watch it move without acting on it.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 4</span><span>When the timer ends: if the urge has not resolved, extend by 10 minutes. Most urges resolve without the check. That is the data.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 5</span><span>Log: urge fired / resisted Y/N / peak anxiety rating / actual outcome.</span></div>
+  </div>
+
+  <h3>Weekly behavioral experiment</h3>
+  <div class="parking-lot">
+    <div class="field">Behavior I will not check this week: ___________________________________________</div>
+    <div class="field">Predicted catastrophe severity (0–10): ___________________________________________</div>
+    <div class="field">Actual outcome after 7 days: ___________________________________________</div>
+  </div>
+</div>
+
+
+<!-- ══ §3 OPTIMIZING ══ -->
+<div class="section" id="s3">
+  <div class="section-id">§3 — Compulsion 2 · Clinical Perfectionism CBT</div>
+  <h2>Compulsive Optimizing <span class="compulsion-badge primary">Primary · High cost</span></h2>
+
+  <h3>What this is</h3>
+  <p>Compulsive optimizing is the repeated urge to improve the conditions, structure, wording, system, tool, process, or plan before acting. It often looks intelligent and responsible. That is why it is sticky. Core definition: compulsive optimizing is not "liking things to be good." It is the pattern where improving the setup repeatedly delays, displaces, or dilutes the actual output.</p>
+
+  <div class="two-col">
+    <div class="col col-go">
+      <div class="col-label">Healthy optimization</div>
+      <ul>
+        <li>Solves a specific bottleneck</li>
+        <li>Has a clear stopping point</li>
+        <li>Leads directly to an output</li>
+        <li>Proportionate to the task</li>
+        <li>Can be postponed without panic</li>
+      </ul>
+    </div>
+    <div class="col col-stop">
+      <div class="col-label">Compulsive optimization</div>
+      <ul>
+        <li>Expands as you work on it</li>
+        <li>Feels urgent even when unnecessary</li>
+        <li>Delays the real task</li>
+        <li>Creates temporary relief</li>
+        <li>Returns quickly: "just one more improvement"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Common forms — what it looks like across contexts</h3>
+  <table>
+    <thead>
+      <tr><th>Context</th><th>Compulsive optimizing looks like</th><th>Output being avoided</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Writing / academic</td><td>Reworking theme names, chapter structure, note categories, literature maps.</td><td>Writing rough prose and making provisional claims.</td></tr>
+      <tr><td>Work project</td><td>Rebuilding the plan, slide structure, project board, documentation format.</td><td>Sending the draft, making the decision, shipping the deliverable.</td></tr>
+      <tr><td>Software / coding</td><td>Refactoring architecture, improving naming, changing frameworks, adding abstractions.</td><td>Implementing the feature, testing the bug fix, releasing the version.</td></tr>
+      <tr><td>Personal productivity</td><td>Switching apps, redesigning tags, building dashboards, changing routines.</td><td>Doing the unpleasant task already on the list.</td></tr>
+      <tr><td>Health / habits</td><td>Creating the perfect workout plan, tracker, diet protocol, supplement stack.</td><td>Doing today's workout or cooking the next meal.</td></tr>
+      <tr><td>Creative work</td><td>Choosing tools, templates, palettes, structure, references, aesthetic direction.</td><td>Making the draft, sketch, scene, page, or prototype.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>CBT formulation</h3>
+  <p>Compulsive optimizing functions as a combination of perfectionistic safety behavior, avoidance, and short-term anxiety regulation. It is maintained because it gives relief now while preventing you from learning that imperfect action is survivable.</p>
+  <div class="loop">
+    <div><span class="step">Trigger</span> — "This is not good enough / not clear enough / not ready."</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Threat prediction</span> — "If I act now, the result will be bad, judged, inefficient, wrong, embarrassing, or wasteful."</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Safety behavior</span> — optimize the structure, tool, wording, plan, system, or workflow.</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Short-term effect</span> — relief, control, stimulation, feeling of progress.</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Long-term effect</span> — less tolerance for imperfect action, more dependence on optimizing, less output.</div>
+  </div>
+  <p class="note">CBT target: not to stop improving things forever. The target is to stop using optimization as the gatekeeper before action.</p>
+
+  <h3>Operational rules — choose one or two to start</h3>
+  <div class="protocol">
+    <ol>
+      <li><strong>Output before optimization.</strong> Produce a rough output before improving the system around it. Write the paragraph before renaming the theme. Ship the draft before redesigning the template.</li>
+      <li><strong>Optimization must have a ticket.</strong> You may optimize only if you can write a specific problem ticket: "This exact bottleneck prevented this exact output." Vague tickets like "make the system better" are not permitted.</li>
+      <li><strong>Time-box, then act.</strong> Give optimization a short window: 5, 10, or 15 minutes. When the timer ends, act with the current version. No emotional readiness required.</li>
+      <li><strong>No mid-flight redesign.</strong> Once a production block starts, no changing the structure, tool, framework, theme name, template, or plan. Capture ideas in brackets or on paper. Keep producing.</li>
+      <li><strong>Revise from output.</strong> You are allowed to improve the structure after a draft exists. The draft becomes evidence. Before the draft, most optimization is speculation.</li>
+      <li><strong>Use behavioral "good enough" criteria.</strong> Define "good enough" before starting. Do not use feelings as the finish line. If it meets the behavioral criteria, it is done.</li>
+    </ol>
+  </div>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li>Structure gets 5 minutes at session start. When the timer ends, the structure is locked. Write through it as-is.</li>
+      <li>Do not rename, reorder, or restructure anything during a production block. Bracketed notes (<em>[restructure later?]</em>) are permitted; acting on them is not.</li>
+      <li>No restructuring until a draft of the section exists. Draft comes first. Every time.</li>
+      <li>No mid-flight tool, theme, or template changes during an output block.</li>
+      <li>Systemic optimization (rebuild workflow, redesign folders, switch apps, create new dashboard) is never allowed before output.</li>
+    </ul>
+  </div>
+
+  <h3>Good-enough criteria — fill this before each session</h3>
+  <table>
+    <thead>
+      <tr><th>Task</th><th>Bad criterion</th><th>Behavioral criterion</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Writing (section/paragraph)</td><td>"It feels clear and right."</td><td>One claim, one explanation, one piece of evidence or placeholder, one next-step note.</td></tr>
+      <tr><td>Work deliverable</td><td>"The whole system feels organized."</td><td>Owner, next action, deadline, and first deliverable are specified.</td></tr>
+      <tr><td>Code feature</td><td>"The architecture feels clean."</td><td>Feature works for the main case, has one test, and known cleanup is listed.</td></tr>
+      <tr><td>Email / message</td><td>"It sounds exactly right."</td><td>Recipient, request, context, deadline, and one clear next step are included.</td></tr>
+      <tr><td>Workout / habit</td><td>"This is the optimal program."</td><td>Today's task is chosen and completed at 70% adequacy.</td></tr>
+      <tr><td>Note system</td><td>"Everything is categorized elegantly."</td><td>The note helps complete one current output today.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Good-enough criteria should feel slightly uncomfortable. If they feel fully satisfying, they may still be perfectionistic criteria in disguise.</p>
+
+  <h3>Optimization stopping rules</h3>
+  <table>
+    <thead>
+      <tr><th>Situation</th><th>Stopping rule</th><th>What to do instead</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Renaming / headings / labels</td><td>Pick one name in 5 minutes. Lock for 48 hours.</td><td>Write under it.</td></tr>
+      <tr><td>Outline / structure</td><td>Maximum 10 minutes before drafting.</td><td>Draft one subsection before any further changes.</td></tr>
+      <tr><td>Tool or app choice</td><td>Use current tool for 7 days unless it truly blocks output.</td><td>Produce with current setup.</td></tr>
+      <tr><td>Prompt engineering / AI workflow</td><td>One prompt only after your own draft exists.</td><td>Apply one useful suggestion or close AI.</td></tr>
+      <tr><td>Design / format / aesthetics</td><td>One 10-minute formatting pass after content exists.</td><td>Return to substance or stop.</td></tr>
+      <tr><td>Refactoring / code cleanup</td><td>Only after the core function works.</td><td>Make a TODO and complete the feature.</td></tr>
+      <tr><td>Planning</td><td>Planning must end with one next action.</td><td>Do that action immediately.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>⚡ 10-minute anti-optimization sequence</h3>
+  <p>Use this when you are already inside the urge. It does not ask you to convince yourself — it gives your body something specific to do.</p>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">Step 1</span><span><strong>Freeze the optimization.</strong> Hands off the outline, template, tool, theme name, plan, code structure, or system.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 2</span><span><strong>Write the urge as a ticket.</strong> One sentence only: <em>"I want to optimize ___ because I fear ___."</em></span></div>
+    <div class="urge-step"><span class="urge-time">Step 3</span><span><strong>Defer it visibly.</strong> Put it in the Optimization Parking Lot below.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 4</span><span><strong>Choose the smallest output action:</strong> one sentence, one line of code, one paragraph stub, one email draft, one messy slide.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 5</span><span><strong>Work 10 minutes with optimization blocked.</strong> Timer on. No structural changes.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 6</span><span><strong>Re-rate the urge</strong> 0–10 before and after.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 7</span><span><strong>Decide from evidence.</strong> After output exists, ask whether the optimization is still necessary.</span></div>
+  </div>
+
+  <h3>Handling the physical urge</h3>
+  <p>The urge to optimize often arrives as bodily discomfort: tension, pressure, agitation, dread, heat, restlessness, or a sharp sense that something is "wrong." Do not wait for it to disappear. If you wait to feel settled before acting, the urge has already become the gatekeeper.</p>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">1</span><span>Pause hands. Stop touching the thing you want to optimize.</span></div>
+    <div class="urge-step"><span class="urge-time">2</span><span>Name the body sensation: "tight chest," "buzzing," "heat," "pressure," "restlessness."</span></div>
+    <div class="urge-step"><span class="urge-time">3</span><span>Rate intensity 0–10.</span></div>
+    <div class="urge-step"><span class="urge-time">4</span><span>Make room physically: unclench jaw, lower shoulders, exhale longer than inhale for three breaths.</span></div>
+    <div class="urge-step"><span class="urge-time">5</span><span>Do not negotiate with the urge. No debating whether optimization is justified for the next 10 minutes.</span></div>
+    <div class="urge-step"><span class="urge-time">6</span><span>Perform one output action: type the next sentence, line, claim, test, or email sentence.</span></div>
+    <div class="urge-step"><span class="urge-time">7</span><span>Re-rate after 10 minutes. The goal is not zero. The goal is movement without compulsion.</span></div>
+  </div>
+  <div class="box box-flag">
+    <div class="box-label">Intensity guidance</div>
+    <p><strong>7/10 or lower:</strong> continue the exposure.<br>
+    <strong>8–9/10:</strong> shrink the task, not the rule. One sentence instead of one paragraph.<br>
+    <strong>Feels unsafe or overwhelming:</strong> stop the exposure, use grounding, and discuss pacing with a therapist. Do not use this guide as a substitute for clinical care.</p>
+  </div>
+
+  <h3>Optimization parking lot</h3>
+  <div class="parking-lot">
+    <div class="field">I want to optimize: ___________________________________________</div>
+    <div class="field">Fear if I don't: ___________________________________________</div>
+    <div class="field">Deferred until (after output exists / Friday review): ___________________________________________</div>
+    <div class="field">Still necessary after output exists? Yes / No / Smaller version</div>
+  </div>
+
+  <h3>Exposure levels — named practice exercises</h3>
+  <p>These work by letting you experience the discomfort of not optimizing and discovering that action remains possible. Start where discomfort is present but manageable.</p>
+
+  <div style="margin:1.2rem 0">
+    <div class="exp-header"><span>Lvl</span><span>Practice</span><span>Response prevention</span></div>
+    <div class="exp-level"><span class="exp-num">1</span><span><strong>Write under the imperfect label.</strong> Keep the current name/heading/folder for 25 minutes. Produce output under it.</span><span class="exp-blocked">No renaming, reordering, or taxonomy redesign.</span></div>
+    <div class="exp-level"><span class="exp-num">2</span><span><strong>Use the current tool badly.</strong> Use the current imperfect tool for one full output block. Write anyway.</span><span class="exp-blocked">No new template, integration, cleanup, or automation.</span></div>
+    <div class="exp-level"><span class="exp-num">3</span><span><strong>Ship the 70% version.</strong> Send/share/save/submit a functional but imperfect version to a low-risk audience.</span><span class="exp-blocked">No final polish pass beyond one timed 10-minute cleanup.</span></div>
+    <div class="exp-level"><span class="exp-num">4</span><span><strong>Leave the visible imperfection.</strong> Leave one non-dangerous imperfection (clunky heading, rough filename, code TODO) until the next scheduled review.</span><span class="exp-blocked">No immediate cleanup unless it blocks the actual output.</span></div>
+    <div class="exp-level"><span class="exp-num">5</span><span><strong>Decide without comparing all options.</strong> Compare only two options. Choose one. Use it for 48 hours.</span><span class="exp-blocked">No third option search. No "just checking alternatives." No asking AI for more possibilities.</span></div>
+  </div>
+
+  <h3>Worked examples</h3>
+
+  <div class="scenario">
+    <div class="scenario-header">Example A — Wanting to rename a theme or heading</div>
+    <div class="scenario-body">
+      <p><strong>Old behavior:</strong> spend 45 minutes generating alternatives, asking AI, reorganizing subthemes, then feel too drained to write.</p>
+      <p><strong>New behavior:</strong></p>
+      <ol>
+        <li>Write: "I want to rename this because I fear the current name misrepresents the content."</li>
+        <li>Add bracket: [Possible rename later]</li>
+        <li>Lock current name for 25 minutes.</li>
+        <li>Write 250 words under the current name.</li>
+        <li>After writing, ask: did the name actually block the paragraph?</li>
+        <li>If still needed, schedule a 10-minute naming review after prose exists.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Example B — Wanting to redesign notes, dashboard, or system</div>
+    <div class="scenario-body">
+      <p><strong>Old behavior:</strong> open Notion/Obsidian/Sheets, restructure databases, add tags, create views, then call it progress.</p>
+      <p><strong>New behavior:</strong></p>
+      <ol>
+        <li>Write a tool ticket: "I want to redesign the dashboard because I fear I cannot see what to do next."</li>
+        <li>Test the belief: can I define the next action without redesigning?</li>
+        <li>Choose one output: "Write 200 words explaining X."</li>
+        <li>Work 25 minutes using current notes as-is.</li>
+        <li>Only if the messy notes directly prevented output, define a tiny fix — not "rebuild the whole system."</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Example C — Wanting to refactor code before completing the feature</div>
+    <div class="scenario-body">
+      <p><strong>Old behavior:</strong> reorganize architecture, rename modules, improve abstractions, then never test the actual feature.</p>
+      <p><strong>New behavior:</strong></p>
+      <ol>
+        <li>Define output: "Main user path works once."</li>
+        <li>Lock architecture for 45 minutes.</li>
+        <li>Add TODOs instead of refactoring: <code>// TODO: rename this after feature works</code></li>
+        <li>Complete the feature path.</li>
+        <li>Refactor only after: feature runs, one test exists, specific pain point is demonstrated.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Example D — Repeatedly rewriting a message because the tone is not perfect</div>
+    <div class="scenario-body">
+      <p><strong>Old behavior:</strong> edit for 30 minutes, ask AI for alternate versions, compare phrasing, delay sending.</p>
+      <p><strong>New behavior:</strong></p>
+      <ol>
+        <li>Good-enough criteria: clear recipient, clear ask, necessary context, deadline, polite enough.</li>
+        <li>One draft. One 3-minute edit. Send.</li>
+        <li>Exposure: send a polite but imperfect message and record whether the feared outcome happened.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Behavioral experiment templates</h3>
+
+  <div class="parking-lot">
+    <h4 style="margin-bottom:0.8rem">Template 1 — Without optimizing</h4>
+    <div class="field">Optimization urge: I want to improve/change/restructure: ___________________________________________</div>
+    <div class="field">Feared outcome if I don't: ___________________________________________</div>
+    <div class="field">Prediction rating — likelihood 0–100%: ___ / severity 0–10: ___</div>
+    <div class="field">Experiment: I will work for ___ minutes without optimizing.</div>
+    <div class="field">Response prevention: I will not: ___________________________________________</div>
+    <div class="field">Output produced: ___________________________________________</div>
+    <div class="field">Actual outcome: ___________________________________________</div>
+    <div class="field">Was the optimization still necessary afterward? No / Yes, but smaller / Yes, same size</div>
+  </div>
+
+  <div class="parking-lot">
+    <h4 style="margin-bottom:0.8rem">Template 2 — The 70% version</h4>
+    <div class="field">What would a 100% version require?: ___________________________________________</div>
+    <div class="field">What is the 70% version?: ___________________________________________</div>
+    <div class="field">Feared consequence of sharing the 70% version: ___________________________________________</div>
+    <div class="field">Actual consequence after 24–48 hours: ___________________________________________</div>
+    <div class="field">What did I learn about my standards?: ___________________________________________</div>
+  </div>
+
+  <div class="parking-lot">
+    <h4 style="margin-bottom:0.8rem">Template 3 — Defer optimization</h4>
+    <div class="field">Optimization idea: ___________________________________________</div>
+    <div class="field">Why it feels urgent: ___________________________________________</div>
+    <div class="field">Deferred until: ___________________________________________</div>
+    <div class="field">Output I will produce first: ___________________________________________</div>
+    <div class="field">After producing output — still needed? No / Yes, only this small part / Yes, schedule it for: ___</div>
+  </div>
+
+  <h3>Permissions that produce behavior</h3>
+  <p>These are not affirmations. Each permission is paired with an immediate action.</p>
+  <table>
+    <thead>
+      <tr><th>Permission</th><th>Immediate action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>I am allowed to use an imperfect structure.</td><td>Write 150 words under the current heading.</td></tr>
+      <tr><td>I am allowed to leave a clunky label unchanged.</td><td>Add [rename later] and continue the paragraph.</td></tr>
+      <tr><td>I am allowed to work with a messy tool.</td><td>Use the current note system for one 25-minute block.</td></tr>
+      <tr><td>I am allowed to decide with incomplete comparison.</td><td>Compare two options only, choose one, use for 48 hours.</td></tr>
+      <tr><td>I am allowed to make a reversible mistake.</td><td>Save/share/send the low-risk 70% version.</td></tr>
+      <tr><td>I am allowed to optimize later.</td><td>Put the idea in the parking lot and produce first.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Red flags — when optimization may actually be justified</h3>
+  <div class="box box-neutral">
+    <div class="box-label">Use this checklist before acting on an optimization urge</div>
+    <ul class="check">
+      <li>The current setup creates a real safety, legal, ethical, or privacy risk.</li>
+      <li>The output cannot proceed at all without the fix — not just more comfortably, but at all.</li>
+      <li>The same specific bottleneck has blocked output more than once.</li>
+      <li>The fix can be done in under 15 minutes and leads immediately back to output.</li>
+      <li>The optimization is scheduled, bounded, and not performed during an urge spike.</li>
+    </ul>
+    <p style="margin-top:0.8rem">If only one item is true, be cautious. If the main reason is "I'll feel better once this is cleaner," it is the compulsion, not the task.</p>
+  </div>
+
+  <h3>Shortest usable version — when you cannot think clearly</h3>
+  <div class="box box-blue">
+    <div class="box-label">Crisis protocol — 6 steps</div>
+    <div class="protocol">
+      <ol>
+        <li>Stop optimizing.</li>
+        <li>Write the fear: "If I do not optimize ___, then ___."</li>
+        <li>Put the optimization idea in the parking lot.</li>
+        <li>Set 10 minutes.</li>
+        <li>Produce one imperfect piece of output.</li>
+        <li>Re-check whether optimization is still necessary after output exists.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ §4 RESEARCHING ══ -->
+<div class="section" id="s4">
+  <div class="section-id">§4 — Compulsion 3 · CBT-IU (Dugas / Robichaud)</div>
+  <h2>Compulsive Researching <span class="compulsion-badge primary">Primary · Very high cost</span></h2>
+
+  <h3>What this is</h3>
+  <p>"One more source" is not a research need. It is an anxiety-reduction behavior. CBT for intolerance of uncertainty treats information-seeking as a safety behavior that lowers distress short-term and reinforces the catastrophic belief: "I cannot act until I am certain." More research does not produce certainty. It produces more research.</p>
+  <p>Reading makes you feel competent without requiring you to produce. The CBT move is not to stop researching permanently — it is to break the belief that certainty must precede action, by acting without it and recording what actually happens.</p>
+
+  <h3>Research through AI — a specific form</h3>
+  <p>AI-assisted research is especially powerful because it feels targeted and efficient while actually expanding uncertainty. Recognize these surface-question / actual-function pairs:</p>
+  <table>
+    <thead>
+      <tr><th>Surface question</th><th>Actual function</th><th>Replacement practice</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"Is this paragraph okay?"</td><td>Reassurance</td><td>Send to one bounded checklist: claim, evidence, transition.</td></tr>
+      <tr><td>"Did I miss anything?"</td><td>Certainty seeking</td><td>Name one specific risk; check once after output exists.</td></tr>
+      <tr><td>"Can you verify this again?"</td><td>Recursive checking</td><td>Stop after one verification pass.</td></tr>
+      <tr><td>"Compare my answer to best practice."</td><td>Perfectionistic benchmarking</td><td>Use minimum viable standard.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Open-ended vs bounded research</h3>
+  <div class="two-col">
+    <div class="col col-stop">
+      <div class="col-label">Open-ended — not allowed before output</div>
+      <ul>
+        <li>"I need to understand this better."</li>
+        <li>"What are all the approaches?"</li>
+        <li>"What am I missing?"</li>
+        <li>"Find the best sources."</li>
+        <li>"How do people think about X generally?"</li>
+      </ul>
+    </div>
+    <div class="col col-go">
+      <div class="col-label">Bounded — allowed after output gap appears</div>
+      <ul>
+        <li>"I need one source for this specific claim."</li>
+        <li>"I need the definition of this term."</li>
+        <li>"Check whether this claim is contradicted by Y."</li>
+        <li>"I need the deadline for this form."</li>
+        <li>"Find one example of Z."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li><strong>Before any research:</strong> write the specific question in one sentence. If you cannot write it in one sentence, you are anxious — not ready to research.</li>
+      <li><strong>Source cap:</strong> maximum 3 sources per sub-claim. When the cap is reached, research is done.</li>
+      <li><strong>25-minute hard timebox</strong> per research session. Timer set before opening any browser or document.</li>
+      <li>When the timer ends, write with what you have. Brackets for gaps are permitted — [CITE] is fine. Missing a source is not a crisis.</li>
+      <li><strong>Research parking lot:</strong> any "one more source" urge during a production block goes onto a paper list. Not acted on during the block.</li>
+    </ul>
+  </div>
+
+  <h3>Structured research stopping rule</h3>
+  <div class="protocol">
+    <ol>
+      <li><strong>Before research:</strong> write the output gap in one sentence. If you cannot name it, the urge is anxiety, not a gap.</li>
+      <li><strong>During research:</strong> maximum 25 minutes, maximum 3 sources or 3 pages. No new branches unless they block the current output.</li>
+      <li><strong>After research:</strong> return immediately to the output. Write one sentence or make one change before any further research.</li>
+    </ol>
+  </div>
+
+  <h3>Triage: real problem or hypothetical worry?</h3>
+  <div class="two-col">
+    <div class="col col-go">
+      <div class="col-label">Structured research — allowed</div>
+      <p>Current, real, actionable gap in a specific claim → 25-minute timebox with source cap → write immediately after.</p>
+    </div>
+    <div class="col col-stop">
+      <div class="col-label">Hypothetical worry — park it</div>
+      <p>"I might be missing something / what if there's a better framing" → research will not help. Park it. Continue producing. Return in weekly review.</p>
+    </div>
+  </div>
+
+  <h3>Behavioral experiment — one-source repair</h3>
+  <div class="box box-neutral">
+    <p><strong>Prediction:</strong> "If I do not research broadly, I will miss something important."</p>
+    <p><strong>Experiment:</strong> Use only one targeted source to repair one existing, named gap. Then return to output immediately.</p>
+    <p><strong>Measure:</strong> Was broad research actually needed? Did one targeted repair move the task forward? Did broad curiosity try to take over?</p>
+  </div>
+
+  <h3>This week's behavioral experiment</h3>
+  <div class="parking-lot">
+    <div class="field">Section / task to complete with current knowledge only (no new research): ___________________________________________</div>
+    <div class="field">Belief being tested — write the fear explicitly: ___________________________________________</div>
+    <div class="field">Predicted outcome severity (0–10): ___________________________________________</div>
+    <div class="field">Actual outcome after writing: ___________________________________________</div>
+  </div>
+</div>
+
+
+<!-- ══ §5 PRODUCTIVITY ══ -->
+<div class="section" id="s5">
+  <div class="section-id">§5 — Compulsion 4 · Behavioral Activation + Procrastination CBT</div>
+  <h2>Compulsive Productivity <span class="compulsion-badge primary">Primary · Disguised as work</span></h2>
+
+  <h3>What this is</h3>
+  <p>Planning, organizing, tracking, filing, formatting — these feel like work and produce nothing. Pychyl's research frames procrastination as short-term mood repair: you substitute the difficult task with a lower-priority one, get relief, and the brain records the substitution as successful. Doing lower-priority tasks instead of the priority task is procrastination, regardless of how productive it looks.</p>
+  <p>Productivity activities create the feeling of progress without exposing you to the discomfort of actual production. They are particularly sticky because the ADHD-adjacent reward-seeking mechanism makes task-switching genuinely pleasurable. You are not being lazy. You are being very effective at avoidance.</p>
+
+  <h3>Trap signatures — recognize it fast</h3>
+  <table>
+    <thead>
+      <tr><th>Signature</th><th>What it sounds like</th><th>What is happening</th></tr>
+    </thead>
+    <tbody>
+          <tr><td>Task-list grooming</td><td>"Let me clarify the tasks first."</td><td>Planning is replacing starting.</td></tr>
+    <tr><td>Calendar reshuffling</td><td>"I need a better schedule."</td><td>Control-seeking is replacing exposure to the task.</td></tr>
+    <tr><td>Inbox clearing</td><td>"I'll clear email so I can focus."</td><td>Small completions are replacing hard progress.</td></tr>
+    <tr><td>Workspace cleaning</td><td>"I can't work in this mess."</td><td>Physical order is being used to avoid emotional disorder.</td></tr>
+    <tr><td>Tool / method research</td><td>"There must be a better system."</td><td>System improvement is replacing output.</td></tr>
+    <tr><td>Easy-task stacking</td><td>"I'll do these quick things first."</td><td>Completion dopamine is replacing meaningful work.</td></tr>
+    <tr><td>Meta-work</td><td>"I need to rethink how I work."</td><td>The work system has become the work.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Fast detection rule: if the behavior makes you feel more prepared but does not produce the target output, treat it as suspect during work-starting time.</p>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li>When you notice yourself planning, organizing, filing, or formatting during production time: stop. Name it out loud: "This is avoidance, not work."</li>
+      <li>Inbox zero, notifications, filing, task-list maintenance — none during production blocks. After all production blocks are complete, if at all.</li>
+      <li>The smallest next physical action: when resistance hits, ask only "what is the next word / line / sentence?" Never "what does this section need?"</li>
+    </ul>
+  </div>
+
+  <h3>The 7 + 25 protocol</h3>
+  <p>This is the basic practice. It is a behavioral sequence, not a mantra.</p>
+  <div class="protocol">
+    <ol>
+      <li><strong>Pick one target output.</strong> It must be visible and concrete: paragraph, email draft, invoice sent, form submitted, slide drafted, phone call made.</li>
+      <li><strong>Set a 7-minute planning timer.</strong> Planning ends when the timer ends. You are not trying to feel ready. You are only identifying the first output.</li>
+      <li><strong>Write the first action as a physical behavior.</strong> Bad: "Work on project." Good: "Open the document and write the first rough paragraph under heading X."</li>
+      <li><strong>Set a 25-minute production timer.</strong> During this timer: only target-output behavior. No planning, improving, checking, cleaning, or optimizing.</li>
+      <li><strong>When avoidance appears, write it on a parking line</strong> — "Organize references later" — then immediately return to the target output.</li>
+      <li><strong>Record output, not feelings.</strong> "What exists now that did not exist before?"</li>
+    </ol>
+  </div>
+
+  <h3>7-minute planning — minute by minute</h3>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">0–2 min</span><span>Choose one deliverable. One concrete output — not a theme, not a project, not a goal.</span></div>
+    <div class="urge-step"><span class="urge-time">2–5 min</span><span>List the first three physical actions. "Open file → write heading → write first sentence."</span></div>
+    <div class="urge-step"><span class="urge-time">5–7 min</span><span>Open the work surface. Get the file, document, or tool actually open.</span></div>
+    <div class="urge-step"><span class="urge-time">Minute 7</span><span>Start producing, even if the plan is incomplete. Incomplete plan is not an excuse to extend planning.</span></div>
+  </div>
+
+  <h3>Examples of acceptable outputs — bad vs good targets</h3>
+  <table>
+    <thead>
+      <tr><th>Context</th><th>Bad target (vague)</th><th>Good target (concrete output)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Writing / academic</td><td>Clarify Theme 2</td><td>Write 200 words explaining Theme 2's central claim</td></tr>
+      <tr><td>Work project</td><td>Make progress on strategy</td><td>Draft the first three bullets of the client update</td></tr>
+      <tr><td>Coding</td><td>Plan the architecture</td><td>Write one failing test for the login function</td></tr>
+      <tr><td>Life admin</td><td>Organize finances</td><td>Open the bill and pay it or schedule payment</td></tr>
+      <tr><td>Learning</td><td>Build a study system</td><td>Complete 10 practice problems</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Productivity substitution detector</h3>
+  <p>If you switch from the hard task to any of these, pause and ask the question below before continuing:</p>
+  <div class="box box-flag">
+    <div class="box-label">Pause if you shift to any of these</div>
+    <ul class="check">
+      <li>Task-list editing or rewriting</li>
+      <li>Calendar rearranging</li>
+      <li>File or folder cleanup</li>
+      <li>App or tool setup</li>
+      <li>Template creation</li>
+      <li>Dashboard or tracker checking</li>
+      <li>Progress tracking or system review</li>
+      <li>AI planning or workflow research</li>
+      <li>Watching productivity content</li>
+    </ul>
+    <p style="margin-top:0.8rem"><strong>Question to answer before continuing:</strong> Am I producing the deliverable, or producing the feeling of being organized?</p>
+  </div>
+
+  <h3>Behavioral experiment — unplanned production</h3>
+  <div class="box box-neutral">
+    <p><strong>Prediction:</strong> "If I do not plan properly, I will waste the session."</p>
+    <p><strong>Experiment:</strong> Plan for exactly 7 minutes. Produce for 25 minutes. No task manager, no organizing, no tracker, no dashboard.</p>
+    <p><strong>Measure:</strong> What output exists? Was the session actually wasted? What planning was genuinely necessary? What planning was relief-seeking?</p>
+  </div>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">Step 1</span><span>Stop. Name it: <em>"This is productive procrastination."</em></span></div>
+    <div class="urge-step"><span class="urge-time">Step 2</span><span>Stay in front of the document for 60 seconds without doing anything. Observe the dread without acting on it.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 3</span><span>Deploy implementation intention: write one bad sentence. Not a good one. One sentence, in any condition.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 4</span><span>End each block with a self-compassionate close: "That was hard. I did it." — not to soften the rules, but because self-criticism drives the next avoidance cycle.</span></div>
+  </div>
+
+  <h3>TRAP → TRAC — apply to every avoidance substitution</h3>
+  <p>Use this to name the pattern when it happens, then construct the replacement response.</p>
+  <div class="two-col">
+    <div class="col col-stop">
+      <div class="col-label">TRAP (the pattern)</div>
+      <ul>
+        <li><strong>T</strong>rigger — what feeling started it? (dread, boredom, shame, uncertainty)</li>
+        <li><strong>R</strong>esponse — what did you do instead? (cleaned, planned, organized, opened AI)</li>
+        <li><strong>A</strong>voidance</li>
+        <li><strong>P</strong>attern — the substitution cycle repeats</li>
+      </ul>
+    </div>
+    <div class="col col-go">
+      <div class="col-label">TRAC (the replacement)</div>
+      <ul>
+        <li><strong>T</strong>rigger (same)</li>
+        <li><strong>R</strong>eplacement</li>
+        <li><strong>A</strong>lternative</li>
+        <li><strong>C</strong>oping — implement the intention: <em>"IF dread when I open the doc → THEN I write one imperfect paragraph for 25 minutes."</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Plain document rule (anti-system)</h3>
+  <div class="box box-flag">
+    <div class="box-label">When tempted to create a system</div>
+    <p>Open the plainest possible tool instead: blank document, notebook page, basic text editor, simple email draft, paper. No system is allowed until seven plain-paper repetitions of actual output exist. Do not build a tracker for your CBT practice — that is Compulsion 8 in disguise.</p>
+  </div>
+</div>
+
+
+<!-- ══ §6 PROBLEM-SOLVING ══ -->
+<div class="section" id="s6">
+  <div class="section-id">§6 — Compulsion 5 · Rumination-Focused CBT + MCT (Wells)</div>
+  <h2>Compulsive Problem-Solving <span class="compulsion-badge primary">Primary · High duration</span></h2>
+
+  <h3>What this is</h3>
+  <p>Watkins &amp; Moulds (2005) showed the mechanism: abstract/evaluative thinking ("why is this not working?" "what does this mean?") impairs problem-solving. Concrete/process-focused thinking ("what is the next step?") improves it. When you spin on a problem rather than writing your way through it, you are choosing the mode of thinking that makes it worse.</p>
+  <p>Mental problem-spinning keeps the problem safely unresolved and in your control. The moment you write through it — even imperfectly — it becomes testable, falsifiable, and judgeable. Rumination keeps the problem mental rather than textual, which is exactly the avoidance mechanism.</p>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li><strong>Why → How shift:</strong> the moment you notice "why"-mode thinking, reformulate: "What specifically is the next step about this, by when?" Do not continue in "why" mode.</li>
+      <li><strong>60-second externalization rule:</strong> any problem you are spinning on gets typed as two sentences within 60 seconds: situation and next action. If you cannot write it in two sentences, the problem is too abstract — that is the symptom, not the problem.</li>
+      <li><strong>Scheduled Thinking Time only:</strong> 30 minutes, at a desk, on paper. Problems outside this slot are parked: "I'll work on this at [time]."</li>
+      <li>No problem-spinning in the shower, in transit, or in bed. These are not thinking contexts. If an idea appears, write it in one sentence and move on.</li>
+    </ul>
+  </div>
+
+  <h3>Thinking Time protocol — 30 min, once daily, scheduled</h3>
+  <div class="protocol">
+    <ol>
+      <li>Sit at a desk. Paper and pen only — no screens, no AI.</li>
+      <li>Use the structured problem-solving format: Define concretely → Brainstorm ≥4 options → Evaluate → Choose with action + who + when → Implement → Evaluate.</li>
+      <li>If the problem cannot be defined in one concrete sentence, it is not ready for Thinking Time. Write "not ready yet" and close the notebook.</li>
+      <li>If no action is decidable after 30 minutes, the problem is misformulated. Rewrite the definition, or convert it to a behavioral experiment with a concrete test.</li>
+    </ol>
+  </div>
+
+  <h3>MCT two-week rumination log</h3>
+  <p>For 14 days, log: (a) minutes spent ruminating on a recurring problem, (b) decisions actually produced by that rumination. The second column will be near-empty. That is the data against the meta-belief "I need to think through this."</p>
+  <div class="parking-lot">
+    <div class="field">Minutes ruminating (daily total): ___________________________________________</div>
+    <div class="field">Decisions actually produced by that rumination: ___________________________________________</div>
+  </div>
+</div>
+
+
+<!-- ══ §7 AVAILABILITY ══ -->
+<div class="section" id="s7">
+  <div class="section-id">§7 — Compulsion 6 · Recovery Experiences (Sonnentag) + Stimulus Control</div>
+  <h2>Compulsive Availability <span class="compulsion-badge primary">Primary · Prevents recovery</span></h2>
+
+  <h3>What this is</h3>
+  <p>Staying mentally attached to work after the work day ends is not conscientiousness. Bakker, Demerouti, Oerlemans &amp; Sonnentag (2013) found that work-related activity in the evening is specifically more harmful for people with workaholic patterns than for others, while physical and social activities are specifically more protective. You cannot recover by staying available. You recover by fully disengaging.</p>
+  <p>Being available prevents the disconfirming experience that nothing catastrophic happens when you disconnect. Sonnentag &amp; Fritz's Recovery Experience Questionnaire identifies four protective experiences: psychological detachment, relaxation, mastery, and control — none of which can occur while you remain cognitively attached to work.</p>
+
+  <div class="parking-lot" style="margin-bottom:1.2rem">
+    <div class="log-label">My hard stop time (write it here — non-negotiable)</div>
+    <div class="field">___:___ every day. The shutdown ritual begins at this time regardless of where I am in the work.</div>
+    <div class="log-label">My chosen non-work evening activity (Sonnentag's four: detachment / relaxation / mastery / control)</div>
+    <div class="field"> </div>
+  </div>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li>No email, Slack, or work messages after the stop time above. Logged out on phone. Not muted — logged out.</li>
+      <li>No work-adjacent content after stop time: no work podcasts, no "light reading" that is actually research, no tool browsing, no AI use.</li>
+      <li>Phone physically in another room from 9pm until after your morning intention statement.</li>
+    </ul>
+  </div>
+
+  <h3>Shutdown ritual — every day, at stop time</h3>
+  <div class="protocol">
+    <ol>
+      <li><strong>Brain dump:</strong> open loops and tomorrow's one-sentence intention — onto paper, not into AI or task manager.</li>
+      <li><strong>Physical close:</strong> laptop closed in a drawer. Email and Slack signed out on phone. Laptop and phone separated.</li>
+      <li><strong>Verbal cue out loud:</strong> "Work is done for today." This sounds absurd. Do it anyway — it functions as a behavioral boundary marker.</li>
+      <li><strong>Simulated commute:</strong> 15–20 minute walk or shower, no work content, no earbuds.</li>
+      <li><strong>One scheduled non-work activity</strong> from Sonnentag's four: detachment / relaxation / mastery (non-work skill) / control (leisure choice). Physical and social activities specifically.</li>
+    </ol>
+  </div>
+
+  <h3>⚡ When the "just check" urge hits in the evening</h3>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">Step 1</span><span>Defuse: <em>"I'm noticing the thought that I should check. That thought is not an instruction."</em></span></div>
+    <div class="urge-step"><span class="urge-time">Step 2</span><span>Opposite action: do not check. Stay engaged with the chosen activity.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 3</span><span>Park the thought on a carry-over card: one sentence, to be addressed tomorrow morning. Do not act on it tonight.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 4</span><span>Run the behavioral experiment: you predicted something bad would happen if you didn't check. Check tomorrow whether it did. Log it.</span></div>
+  </div>
+</div>
+
+
+<!-- ══ §8 AI TOOL LOOP ══ -->
+<div class="section" id="s8">
+  <div class="section-id">§8 — Compulsion 7 · ERP + Theory A/B (Reassurance-Seeking Variant)</div>
+  <h2>AI / Tool Loop Dependence <span class="compulsion-badge secondary">Secondary · Uniquely disguised</span></h2>
+
+  <h3>What this is</h3>
+  <p>Using AI to "compare framings," "check if this is right," or "generate options before deciding" is functionally identical to asking a person for reassurance. It is not a productivity tool in those moments. It is a machine that never tires of providing relief, never refuses, generates more options (which increases uncertainty, which drives more prompting), and is available at 2am.</p>
+  <p>AI use outsources the discomfort of making a decision under uncertainty. It externalizes your judgment rather than building tolerance for imperfect judgment. Every time you prompt before deciding, you confirm the meta-belief: "I cannot trust my own assessment." That belief gets stronger, not weaker, with use.</p>
+
+  <div class="loop">
+    <div><span class="step">Trigger</span> — doubt, anxiety, boredom, shame, uncertainty, pressure</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Urge</span> — ask AI, compare tools, search more, generate options, revise again</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Short-term effect</span> — relief, stimulation, control, "almost clarity"</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Long-term effect</span> — less trust in own judgment, more options, more checking, less action</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Stronger urge next time</span></div>
+  </div>
+
+  <h3>The hidden functions of specific AI behaviors</h3>
+  <table>
+    <thead>
+      <tr><th>What you ask</th><th>Hidden function</th><th>Cost</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"Give me 10 ways to frame this."</td><td>Avoiding commitment</td><td>More options, less decision</td></tr>
+      <tr><td>"Is this good enough?"</td><td>Reassurance seeking</td><td>Lower trust in own judgment</td></tr>
+      <tr><td>"Build me a workflow for this."</td><td>Preparatory avoidance</td><td>System expands, task remains</td></tr>
+      <tr><td>"Rewrite this again, more precise."</td><td>Perfectionistic editing</td><td>No stopping point</td></tr>
+      <tr><td>"Compare these three approaches."</td><td>Certainty seeking</td><td>Analysis paralysis</td></tr>
+      <tr><td>"What am I missing?"</td><td>Expanding scope to delay action</td><td>Task grows, output shrinks</td></tr>
+      <tr><td>"Make a plan, then a tracker."</td><td>Substituting meta-work for work</td><td>Infrastructure without deliverable</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Recognize the loop — function, not time</h3>
+  <p>Do not rely on time spent. The same prompt can be useful or compulsive depending on why you are using it.</p>
+  <table>
+    <thead>
+      <tr><th>Signal</th><th>Functional use</th><th>Loop use</th></tr>
+    </thead>
+    <tbody>
+          <tr><td>Number of asks</td><td>One bounded ask, then action</td><td>Repeated asks, rephrasing, model comparison</td></tr>
+    <tr><td>Emotional driver</td><td>Need information to complete a task</td><td>Need relief from doubt, guilt, anxiety, uncertainty</td></tr>
+    <tr><td>Output</td><td>Draft, decision, implementation, message sent</td><td>More options, more notes, more doubt, more revisions</td></tr>
+    <tr><td>Stopping point</td><td>Defined before starting</td><td>Stops only when it "feels right"</td></tr>
+    <tr><td>After-effect</td><td>More ready to act</td><td>Less confident, more dependent, more stimulated</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-flag">
+    <div class="box-label">Red Flags — Stop Before Submitting</div>
+    <ul class="check">
+      <li>You ask the same question in slightly different words.</li>
+      <li>You compare ChatGPT, Claude, Google, Reddit, or another tool for reassurance.</li>
+      <li>You ask for more versions even though you already have a workable one.</li>
+      <li>You use AI before making your own attempt.</li>
+      <li>You feel anxious or irritated when you cannot ask the tool.</li>
+      <li>You leave the session with more options but less action.</li>
+      <li>You are trying to feel certain, not trying to complete a task.</li>
+    </ul>
+  </div>
+
+  <h3>The functional test — write this before every AI use</h3>
+  <div class="box box-blue">
+    <div class="box-label">The Functional Test</div>
+    <p><strong>What exact deliverable will this produce or change within the next 20 minutes?</strong></p>
+    <p>If the answer is vague, the behavior is probably serving discomfort regulation, not the task.</p>
+  </div>
+
+  <div class="two-col" style="margin-top:0.8rem">
+    <div class="col col-stop">
+      <div class="col-label">Vague answer — stop</div>
+      <ul>
+        <li>"It will help me think better."</li>
+        <li>"It will make the system cleaner."</li>
+        <li>"It will help future me."</li>
+        <li>"It will clarify the whole thing."</li>
+      </ul>
+    </div>
+    <div class="col col-go">
+      <div class="col-label">Concrete answer — allowed</div>
+      <ul>
+        <li>"It will identify one bug in this function."</li>
+        <li>"It will improve the transition in paragraph 3."</li>
+        <li>"It will extract three quotes for this section."</li>
+        <li>"It will decide between option A and B by 14:30."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-rule" style="margin-top:1.4rem">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li><strong>AI available in one 30-minute window per day.</strong> Outside that window, it is logged out. Not minimized — logged out.</li>
+      <li><strong>One-Ask Rule:</strong> before any prompt, write in your notebook: (a) the question in one sentence, (b) the feeling you are trying to reduce, (c) is this answerable and one-time? If anxiety-driven — do not submit.</li>
+      <li>Never re-ask the same question with different wording. If you rephrase, you are seeking reassurance, not information. Close the window.</li>
+      <li>Never compare two AI responses. "Let me ask Claude and then check GPT" is the same compulsion in two browser tabs.</li>
+      <li>No AI use for decisions about your own work before you have produced a first version. Produce first. AI may respond to what exists, not replace the first act of producing it.</li>
+    </ul>
+  </div>
+
+  <h3>The core protocol: Output → Support → Stop</h3>
+  <div class="protocol">
+    <ol>
+      <li><strong>Output first:</strong> produce a rough version using current tools and current knowledge.</li>
+      <li><strong>Support second:</strong> use AI only to improve the existing output — one bounded question about the thing that now exists.</li>
+      <li><strong>Stop third:</strong> end after one bounded support pass. Do not restart the loop.</li>
+    </ol>
+  </div>
+
+  <div class="two-col">
+    <div class="col col-stop">
+      <div class="col-label">Before-output AI — not allowed</div>
+      <ul>
+        <li>"Help me figure out what I should write."</li>
+        <li>"Give me the best structure."</li>
+        <li>"Generate options before I decide."</li>
+        <li>"What's the optimal way to approach this?"</li>
+        <li>"Give me 10 possible framings."</li>
+        <li>"Build the whole architecture for me."</li>
+      </ul>
+    </div>
+    <div class="col col-go">
+      <div class="col-label">After-output AI — allowed</div>
+      <ul>
+        <li>"Here is my draft. Identify the main claim."</li>
+        <li>"Here is my email. Flag only ambiguity."</li>
+        <li>"Here is my code. Identify the likely bug — do not rewrite."</li>
+        <li>"Here is my plan. Find one unrealistic assumption."</li>
+        <li>"I chose option A. List one risk to mitigate."</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Three AI use rules</h3>
+
+  <h4>Rule A — Draft-first AI</h4>
+  <p>You may use AI only after you have created your own version. Before AI: write the paragraph, choose the option, draft the email, sketch the plan, make the decision, write the code attempt, state your current interpretation. Then AI may comment on what exists.</p>
+
+  <h4>Rule B — One prompt → one action</h4>
+  <p>Every AI interaction must end in a real-world action, not another prompt.</p>
+  <div class="box box-neutral">
+    <p><strong>Old writing loop:</strong> Ask for better wording → ask for more academic version → ask for clearer version → compare → lose trust → ask another model.</p>
+    <p><strong>New practice:</strong> Ask "Which sentence is least clear?" → revise that sentence → close AI.</p>
+    <br>
+    <p><strong>Old coding loop:</strong> Ask for architecture → ask for refactor → ask for best practices → redesign the project.</p>
+    <p><strong>New practice:</strong> Ask "What is the smallest failing assumption in this function?" → test that one thing → close AI.</p>
+  </div>
+
+  <h4>Rule C — No model-shopping</h4>
+  <p>Do not ask multiple AI systems the same question to feel more certain. Model comparison is allowed only if all three conditions are true: (1) the decision is genuinely high-stakes, (2) you write the comparison criteria before asking, (3) you stop after the planned comparison and make a decision.</p>
+
+  <h3>Pre-tool card — use this before opening AI</h3>
+  <div class="parking-lot">
+    <h4 style="margin-bottom:0.8rem">PRE-TOOL CARD</h4>
+    <div class="log-label">1. Concrete task — what am I trying to finish?</div>
+    <div class="field"> </div>
+    <div class="log-label">2. First attempt already made? (If no, make a 5-minute attempt before using the tool.)</div>
+    <div class="field">Yes / No</div>
+    <div class="log-label">3. Exact tool question — one sentence only</div>
+    <div class="field"> </div>
+    <div class="log-label">4. Stopping rule — one answer / 10 minutes / one implementation / no re-asking</div>
+    <div class="field"> </div>
+    <div class="log-label">5. Forbidden behavior — what loop am I most likely to enter?</div>
+    <div class="field"> </div>
+  </div>
+
+  <h3>Concrete scenarios</h3>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 1 — You want AI to choose the best wording</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> write one sentence, dislike it, ask AI for alternatives, compare six options, ask for a more nuanced version, lose the original point.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Write the sentence yourself.</li>
+        <li>Mark it [ROUGH] instead of asking AI.</li>
+        <li>Continue producing for 10 minutes.</li>
+        <li>After the section exists, ask AI one question: "Which sentence is unclear? Do not rewrite; just point to it."</li>
+        <li>Fix one sentence. Stop.</li>
+      </ol>
+      <p><em>Exposure target: tolerate the feeling that your wording is not optimal.</em></p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 2 — You want AI to tell you whether a decision is right</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> ask AI which decision is best, ask it to compare criteria, ask another model, feel more confused.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Choose the option you would pick if AI were unavailable.</li>
+        <li>Write: "I choose Option B because ______."</li>
+        <li>Ask AI only: "Name one practical risk of Option B."</li>
+        <li>If the risk is not catastrophic, proceed. No second opinion.</li>
+      </ol>
+      <p><em>Exposure target: tolerate responsibility for a good-enough decision.</em></p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 3 — Coding / debugging loop</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> paste errors repeatedly, ask for a rewrite, ask for "best practice," refactor before understanding the bug.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Reproduce the bug yourself.</li>
+        <li>Write one hypothesis.</li>
+        <li>Ask AI for one test of that hypothesis.</li>
+        <li>Run the test before asking anything else.</li>
+        <li>If the test fails, write what changed. Only then ask the next question.</li>
+      </ol>
+      <p><em>Exposure target: tolerate not knowing while testing sequentially.</em></p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 4 — You want AI to perfect a message to someone</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> draft a message, ask AI to make it warmer, then clearer, then less needy, then more assertive — you no longer know what you mean.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Write the message in your own words.</li>
+        <li>Ask: "Is this message clear and respectful? Answer yes/no and name one issue."</li>
+        <li>Make one edit only.</li>
+        <li>Send, or schedule sending. No tone-shopping.</li>
+      </ol>
+      <p><em>Exposure target: tolerate being slightly imperfect and still communicative.</em></p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 5 — Learning / research spiral</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> ask AI for an explanation, then a deeper explanation, then sources, then counterarguments, then "what am I missing?" until the task expands.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Define the output first: "I need a 5-bullet summary / one paragraph / one decision."</li>
+        <li>Ask one learning question.</li>
+        <li>Immediately produce the output from memory.</li>
+        <li>Check once for accuracy. Stop.</li>
+      </ol>
+      <p><em>Exposure target: tolerate partial understanding and convert learning into output.</em></p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 6 — You want AI because your body feels anxious</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> anxiety spike → open AI → ask for framing → feel relief → more options appear → more anxiety later.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Put both feet on the floor. Keep AI closed.</li>
+        <li>Write in the document: [URGE: want AI because this feels uncertain]</li>
+        <li>Set a 10-minute timer.</li>
+        <li>Write one deliberately bad opening: "What I am trying to say is…"</li>
+        <li>After 10 minutes, rate the urge again.</li>
+      </ol>
+      <p><em>Exposure target: tolerate the urge without using AI as emotional regulation.</em></p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Scenario 7 — You want AI to reassure you about a health concern or mental state</div>
+    <div class="scenario-body">
+      <p><strong>Loop:</strong> you describe a symptom, ask AI whether it could be serious, ask again with more detail, add nuance, search, then ask a different tool. The loop never ends because AI cannot give medical certainty and each response opens new uncertainty.</p>
+      <p><strong>Practice:</strong></p>
+      <ol>
+        <li>Do not use AI for symptom assessment or medical reassurance — ever.</li>
+        <li>Use a predetermined rule instead:<br>
+          — <em>Urgent or acute symptoms</em> → medical service / emergency line, not AI.<br>
+          — <em>Non-urgent concern</em> → book a clinician or wait until your next planned appointment.<br>
+          — <em>Anxiety spike about health</em> → urge protocol (below), not AI.</li>
+        <li>Write the concern once in a notebook. One sentence.</li>
+        <li>No repeated symptom prompting. The note is the action. The appointment (if needed) is the action.</li>
+      </ol>
+      <p><em>Exposure target: tolerate health uncertainty without digital reassurance. For any genuine clinical concern, the appropriate response is a clinician — not a tool that can only generate more options.</em></p>
+    </div>
+  </div>
+
+  <h3>⚡ When the prompting urge hits outside the window</h3>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">Step 1</span><span>Write the question in the notebook. That is enough for now.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 2</span><span>Rate the anxiety 0–10. Set a 10-minute timer. Do not open AI.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 3</span><span>Ask: "What is the worst that happens if I make this decision with my own judgment right now?" Write the answer. Then make the decision without prompting.</span></div>
+    <div class="urge-step"><span class="urge-time">Step 4</span><span>Alternative: contact a human and say "I'm anxious about X — I don't need you to fix it, I need company while I sit with it." Support without certainty.</span></div>
+  </div>
+
+  <h3>AI use contract</h3>
+  <div class="two-col">
+    <div class="col col-go">
+      <div class="col-label">AI is permitted for</div>
+      <ul>
+        <li>Identifying unclear sentences in text already written</li>
+        <li>Asking questions about a draft that already exists</li>
+        <li>Helping create a checklist after a decision is already made</li>
+        <li>Summarizing feedback already received from a human</li>
+        <li>Checking whether a paragraph has a visible claim</li>
+        <li>Turning bracketed notes into a revision checklist</li>
+        <li>One narrow factual question — accepted once, acted on</li>
+      </ul>
+    </div>
+    <div class="col col-stop">
+      <div class="col-label">AI is not permitted for</div>
+      <ul>
+        <li>Deciding themes, framings, or options before your own attempt</li>
+        <li>Asking "is this good?" or "is this right?"</li>
+        <li>Generating 10 alternatives before committing to one</li>
+        <li>Repeating or rephrasing the same question</li>
+        <li>Comparing two models for the same reassurance</li>
+        <li>Rewriting text that already works</li>
+        <li>Managing anxiety (emotional regulation)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>What good AI use actually looks like</h3>
+  <div class="two-col">
+    <div class="col col-go">
+      <div class="col-label">Good for</div>
+      <ul>
+        <li>Summarizing known material</li>
+        <li>Checking clarity of existing draft</li>
+        <li>Generating one checklist</li>
+        <li>Explaining one specific error</li>
+        <li>Formatting an existing draft</li>
+      </ul>
+    </div>
+    <div class="col col-stop">
+      <div class="col-label">Risky for</div>
+      <ul>
+        <li>Choosing for you</li>
+        <li>Reassuring you about quality</li>
+        <li>Deciding what you feel or should feel</li>
+        <li>Comparing endless options</li>
+        <li>Generating identity-level certainty</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box box-rule">
+    <div class="box-label">Never primary for</div>
+    <p>Medical emergencies, self-harm risk, legal decisions, crisis judgment, or replacing professional care. For any of these, contact an appropriate professional or emergency service.</p>
+  </div>
+
+  <h3>Safe prompt templates — copy and use as-is</h3>
+  <div class="box box-neutral">
+    <div class="box-label">Four templates that enforce boundaries by design</div>
+    <ul class="plain">
+      <li>"Here is my draft. Identify the one place where the logic is unclear. Do not rewrite."</li>
+      <li>"Here is my plan. Name one practical risk I should consider. Do not generate alternatives."</li>
+      <li>"Here is my code and error. Suggest one hypothesis and one test. Do not rewrite the whole file."</li>
+      <li>"Here is my message. Is it clear and respectful? Answer yes/no and identify one issue only."</li>
+    </ul>
+  </div>
+
+  <h3>Common traps and precise counter-moves</h3>
+  <table>
+    <thead>
+      <tr><th>Trap</th><th>How it sounds</th><th>Counter-move</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Re-prompting</td><td>"Let me ask it another way."</td><td>Write what new data exists. If none, stop.</td></tr>
+      <tr><td>Option inflation</td><td>"Give me more alternatives."</td><td>Pick from current options; no new options allowed.</td></tr>
+      <tr><td>Model triangulation</td><td>"I'll ask Claude too."</td><td>One source only unless there is a factual need.</td></tr>
+      <tr><td>Prompt laundering</td><td>"I'm just being thorough."</td><td>Name the feeling you want relieved.</td></tr>
+      <tr><td>Tool-building via AI</td><td>"A better system will solve this."</td><td>72-hour tool freeze; capture idea only.</td></tr>
+      <tr><td>Self-therapy spiral</td><td>"Analyze my pattern more."</td><td>Move from insight to one exposure.</td></tr>
+      <tr><td>Perfection by AI</td><td>"Make this more polished."</td><td>Limit to one clarity edit, not perfection.</td></tr>
+      <tr><td>Certainty demand</td><td>"Are you sure?"</td><td>Act at 70% confidence for low-stakes decisions.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>90-second interruption — use before opening AI</h3>
+  <p>This is a behavioral interruption, not a mantra. Stop motor action, identify the urge, write a prediction, delay the compulsion.</p>
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">0–15 sec</span><span>Hands off keyboard or phone. Feet on floor.</span></div>
+    <div class="urge-step"><span class="urge-time">15–30 sec</span><span>Name the behavior: <em>"This is the urge to ask / compare / generate / reassure."</em></span></div>
+    <div class="urge-step"><span class="urge-time">30–45 sec</span><span>Locate body sensation: chest / throat / stomach / face / hands / head.</span></div>
+    <div class="urge-step"><span class="urge-time">45–60 sec</span><span>Rate intensity 0–10.</span></div>
+    <div class="urge-step"><span class="urge-time">60–90 sec</span><span>Write one sentence: <em>"If I do not do this, I predict ________."</em></span></div>
+    <div class="urge-step"><span class="urge-time">Then</span><span>Set a 10-minute delay. During those 10 minutes: write one sentence, make one decision, edit one paragraph, test one function, or send one draft. The delay must contain action.</span></div>
+  </div>
+
+  <h3>Combined loop chain protocols</h3>
+  <p>In practice the compulsions combine. You do not experience pure AI dependence or pure productivity. You experience chains. These protocols target the chains.</p>
+
+  <div class="scenario">
+    <div class="scenario-header">Chain A — AI → optimization → productivity → no output</div>
+    <div class="scenario-body">
+      <p><strong>Pattern:</strong> Ask AI for framing → get several options → redesign plan → create tracker → no output.</p>
+      <p><strong>Intervention:</strong></p>
+      <ol>
+        <li>Ask no AI before output.</li>
+        <li>Pick the current best version arbitrarily.</li>
+        <li>Lock it for 20 minutes.</li>
+        <li>Produce rough output.</li>
+        <li>Only after output: one critique question allowed.</li>
+        <li>No tracker or system creation.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Chain B — tool-building → research → AI → no output</div>
+    <div class="scenario-body">
+      <p><strong>Pattern:</strong> Build better note system → realize you need better sources → ask AI to summarize them → start building summary workflow.</p>
+      <p><strong>Intervention:</strong></p>
+      <ol>
+        <li>Write the tool idea in quarantine.</li>
+        <li>Open current imperfect material.</li>
+        <li>Produce one output unit for 25 minutes.</li>
+        <li>Mark gaps in brackets.</li>
+        <li>After output, choose at most one support action.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Chain C — checking → AI reassurance → editing loop</div>
+    <div class="scenario-body">
+      <p><strong>Pattern:</strong> Recheck draft → ask AI if it works → rewrite → ask again → compare versions.</p>
+      <p><strong>Intervention:</strong></p>
+      <ol>
+        <li>Define checklist before reading: Is the claim clear? Is there evidence? Is the next action obvious?</li>
+        <li>Read once.</li>
+        <li>Make one edit pass.</li>
+        <li>Do not ask AI for reassurance.</li>
+        <li>Move to next output or stop.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Chain D — always-on → late-night AI / tooling</div>
+    <div class="scenario-body">
+      <p><strong>Pattern:</strong> Idea appears at night → open AI → generate plan → tweak workflow → sleep delayed.</p>
+      <p><strong>Intervention:</strong></p>
+      <ol>
+        <li>Write one paper line: "Tomorrow: ________."</li>
+        <li>Add "review tomorrow at ___."</li>
+        <li>No AI, tool, or search after shutdown.</li>
+        <li>If still relevant tomorrow, handle in the support block.</li>
+        <li>Log whether the late-night action was actually necessary.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>AI / tool loop log — with filled example</h3>
+  <div class="parking-lot">
+    <h4 style="margin-bottom:0.8rem">AI / Tool Loop Log</h4>
+    <div class="field">Date / context: ___________________________________________</div>
+    <div class="field">Tool urge: ___________________________________________</div>
+    <div class="field">What did I want the tool to do for me emotionally?: ___________________________________________</div>
+    <div class="field">Prediction if I did not use it: ___________________________________________</div>
+    <div class="field">Response prevention used: ___________________________________________</div>
+    <div class="field">Peak discomfort 0–10: ___________________________________________</div>
+    <div class="field">Action I took instead: ___________________________________________</div>
+    <div class="field">Actual outcome: ___________________________________________</div>
+    <div class="field">What this teaches me: ___________________________________________</div>
+  </div>
+  <div class="box box-neutral">
+    <div class="box-label">Filled example</div>
+    <p><strong>Context:</strong> replying to a difficult message<br>
+    <strong>Tool urge:</strong> ask AI for the perfect tone<br>
+    <strong>Emotional function:</strong> avoid fear of sounding wrong<br>
+    <strong>Prediction:</strong> if I write it myself, I will sound cold or needy<br>
+    <strong>Response prevention:</strong> wrote message myself, asked no AI<br>
+    <strong>Peak discomfort:</strong> 7/10<br>
+    <strong>Action instead:</strong> sent a short, clear message<br>
+    <strong>Actual outcome:</strong> no negative response; discomfort dropped after sending<br>
+    <strong>Learning:</strong> the urge overestimated the danger of imperfect wording</p>
+  </div>
+
+  <h3>When to bring this to therapy</h3>
+  <div class="box box-flag">
+    <div class="box-label">Bring concrete logs, not just the concept</div>
+    <p>A therapist can help determine whether the pattern is better understood as anxiety, OCD-spectrum reassurance, perfectionism, ADHD-related stimulation seeking, workaholic over-engagement, avoidance, or a blend. Useful data to bring:</p>
+    <ul class="check">
+      <li>Most common AI/tool urge this week</li>
+      <li>What emotion or body sensation precedes it</li>
+      <li>What feared outcome you predicted if you did not use the tool</li>
+      <li>Which response-prevention rule you tried</li>
+      <li>What actually happened</li>
+      <li>Whether the practice felt tolerable or too intense</li>
+    </ul>
+    <p style="margin-top:0.8rem"><strong>Best therapy question:</strong> "How can I practice not using AI/tools as reassurance while still using them functionally?"</p>
+  </div>
+</div>
+
+
+<!-- ══ §9 TOOL BUILDING ══ -->
+<div class="section" id="s9">
+  <div class="section-id">§9 — Compulsion 8 · ACT Workability + Procrastination CBT</div>
+  <h2>Compulsive Tool-Building <span class="compulsion-badge secondary">Secondary · Feels like investment</span></h2>
+
+  <h3>What this is</h3>
+  <p>Building tools, systems, automations, integrations, note templates, and workflows is preparatory avoidance. It is the behavior of improving the conditions for work while not doing the work. ACT's workability test applies cleanly: does this directly produce the deliverable, or is it about producing the deliverable? The system is never finished because the system is not the point — the discomfort of starting is the point.</p>
+  <p>The implicit rule that drives this: "The next system will fix it." Every system built in the last two years reduced anxiety temporarily. None of them solved the underlying avoidance. Building gives the sensation of progress without requiring output.</p>
+
+  <h3>How it fuses with AI, optimization, and productivity</h3>
+  <div class="loop">
+    <div><span class="step">Discomfort with direct task</span></div>
+    <div class="arrow">↓</div>
+    <div><span class="step">"I need a better system / tool / context / workflow."</span></div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Build or improve infrastructure</span> — often using AI to design it, research to justify it, productivity methods to manage it</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">Short-term relief, stimulation, control</span></div>
+    <div class="arrow">↓</div>
+    <div><span class="step">More possibilities appear</span> — the system needs refining, integrating, extending</div>
+    <div class="arrow">↓</div>
+    <div><span class="step">The direct task remains undone or has expanded</span></div>
+  </div>
+
+  <h3>Three tests before building anything</h3>
+  <table>
+    <thead>
+      <tr><th>Test</th><th>Question</th><th>If the answer is no</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Immediate-output test</td><td>Will this help produce a named output today?</td><td>Do not build.</td></tr>
+      <tr><td>Current-tool test</td><td>Have I tried doing it with the current setup for 25 minutes?</td><td>Do that first.</td></tr>
+      <tr><td>Cost test</td><td>Will this take less than 20 minutes to build?</td><td>Defer to the scheduled tool window.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-rule">
+    <div class="box-label">Hard Rules</div>
+    <ul class="check">
+      <li><strong>30-day tool freeze, starting today.</strong> No new tools, plug-ins, templates, integrations, or system changes for 30 days. Capture everything in a plain text file or a single notebook.</li>
+      <li>Tool-building has one designated slot: Fridays, 4:00–5:00pm. Outside that slot, all tool urges go onto the <strong>Yak List</strong> — a paper list of "things I want to build or change." It is reviewed once per week, on Fridays, before the tool slot. Most items will have lost urgency by then.</li>
+      <li>The workability test applies before every tool session: "Can I name two specific future deliverables this directly serves?" If no — the tool is not built.</li>
+      <li>No tool-building until at least two production blocks have been completed that day.</li>
+    </ul>
+  </div>
+
+  <h3>The build / no-build decision tree</h3>
+  <div class="protocol">
+    <ol>
+      <li>Is there a deliverable due or active today? If yes → produce it first.</li>
+      <li>Did the missing tool block work today, or merely seem useful? If merely useful → do not build.</li>
+      <li>Can the tool be built in 20 minutes? If no → write it on the Tool Parking Lot.</li>
+      <li>Will it serve at least two specific future deliverables? If no → do not build.</li>
+      <li>Can you define "done" before starting? If no → do not build.</li>
+      <li>Build only in the designated tool slot. Never build during output time.</li>
+    </ol>
+  </div>
+
+  <div class="box box-accent">
+    <div class="box-label">Red Flag</div>
+    <p>"This will make everything easier later" is not a sufficient reason to build. It is usually the tool-building compulsion speaking.</p>
+  </div>
+
+  <h3>20-minute ugly tool rule</h3>
+  <p>If a tool is truly necessary, build the ugliest version that solves today's bottleneck.</p>
+  <div class="two-col">
+    <div class="col col-go">
+      <div class="col-label">Allowed</div>
+      <ul>
+        <li>A plain text checklist</li>
+        <li>A simple table</li>
+        <li>A manual copy/paste template</li>
+        <li>A one-off script that solves one task</li>
+      </ul>
+    </div>
+    <div class="col col-stop">
+      <div class="col-label">Not allowed</div>
+      <ul>
+        <li>Architecture or reusable framework</li>
+        <li>Dashboard or integration</li>
+        <li>Automated pipeline</li>
+        <li>Perfect taxonomy, tags, metadata, sync</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Tool parking lot</h3>
+  <div class="parking-lot">
+    <div class="field">Tool idea: ___________________________________________</div>
+    <div class="field">Trigger / what discomfort did this promise to reduce?: ___________________________________________</div>
+    <div class="field">Which exact deliverable would it help today?: ___________________________________________</div>
+    <div class="field">Can I complete it in 20 minutes? Yes / No</div>
+    <div class="field">What happens if I don't build it for 48 hours?: ___________________________________________</div>
+    <div class="field">Action taken: ___________________________________________</div>
+    <div class="field">Review date: ___________________________________________</div>
+  </div>
+
+  <h3>DOTS audit — do this once this week</h3>
+  <p>List every tool, system, or workflow adopted in the past 24 months. Against each: (a) did it permanently eliminate the discomfort that drove you to build it? (b) What did it cost in time and foregone production? The pattern you will see is the data against the meta-belief "the next system will fix it."</p>
+  <div class="parking-lot">
+    <div class="field">Tool / System: ___________________________________________</div>
+    <div class="field">Eliminated discomfort permanently? (Y/N): ___________________________________________</div>
+    <div class="field">Time cost vs. production gained: ___________________________________________</div>
+    <div class="field">Pattern I see across all systems: ___________________________________________</div>
+  </div>
+
+  <h3>Behavioral experiments — current toolchain exposure by context</h3>
+  <p>Prediction for all of these: "If I do not build/improve this tool, I will be unable to work effectively." Use the current setup for 25 minutes. Produce one direct-output unit. No integrations, automations, templates, or workflow redesigns.</p>
+
+  <div class="scenario">
+    <div class="scenario-header">Writing / knowledge work</div>
+    <div class="scenario-body">
+      <p><strong>Urge:</strong> Build a quote extraction workflow / AI summary pipeline / better highlighting system.<br>
+      <strong>Practice:</strong> Manually paste two quotes into the draft and write interpretation below each.<br>
+      <strong>Blocked:</strong> automation, highlighting redesign, AI extraction pipeline, new note template.</p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Coding / software</div>
+    <div class="scenario-body">
+      <p><strong>Urge:</strong> Create a better dev environment / compare frameworks / refactor setup before implementing.<br>
+      <strong>Practice:</strong> Implement the smallest ugly version in current environment.<br>
+      <strong>Blocked:</strong> config cleanup, tooling comparison, framework switch, architecture discussion for 25 minutes.</p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Knowledge management</div>
+    <div class="scenario-body">
+      <p><strong>Urge:</strong> Build a better summary template / AI summary workflow / redesign tags.<br>
+      <strong>Practice:</strong> Write a 5-bullet summary in the existing note, however it's formatted.<br>
+      <strong>Blocked:</strong> template design, tag redesign, AI summary workflow, integration.</p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-header">Life admin / finances</div>
+    <div class="scenario-body">
+      <p><strong>Urge:</strong> Build a finance dashboard / budgeting spreadsheet before handling the actual obligation.<br>
+      <strong>Practice:</strong> Pay one bill or list three due dates on paper.<br>
+      <strong>Blocked:</strong> spreadsheet redesign, app comparison, categorization system.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ §10 EXPOSURE HIERARCHY ══ -->
+<div class="section" id="s10">
+  <div class="section-id">§10 — ERP Ladder</div>
+  <h2>Exposure Hierarchy</h2>
+  <p>Start at a level that creates discomfort but is still doable. Repeat until the urge becomes less controlling, then move up. Do not skip levels.</p>
+
+  <div style="margin:1.2rem 0">
+    <div class="exp-header">
+      <span>Lvl</span><span>Practice</span><span>Blocked response</span>
+    </div>
+    <div class="exp-level"><span class="exp-num">1</span><span>Wait 5 minutes before asking AI. Write one sentence first.</span><span class="exp-blocked">Immediate prompting</span></div>
+    <div class="exp-level"><span class="exp-num">2</span><span>Write a rough first attempt before using AI.</span><span class="exp-blocked">AI-before-attempt</span></div>
+    <div class="exp-level"><span class="exp-num">3</span><span>Ask one prompt and act on it immediately. Close AI.</span><span class="exp-blocked">Re-prompting</span></div>
+    <div class="exp-level"><span class="exp-num">4</span><span>Do not compare two tools or models for the same issue.</span><span class="exp-blocked">Tool triangulation</span></div>
+    <div class="exp-level"><span class="exp-num">5</span><span>Make a low-stakes decision without AI.</span><span class="exp-blocked">Decision reassurance</span></div>
+    <div class="exp-level"><span class="exp-num">6</span><span>Send a good-enough message after one edit pass.</span><span class="exp-blocked">Tone-shopping</span></div>
+    <div class="exp-level"><span class="exp-num">7</span><span>Complete one 50-minute work block with AI closed.</span><span class="exp-blocked">AI as constant companion</span></div>
+    <div class="exp-level"><span class="exp-num">8</span><span>Use current tools for 72 hours without modifying them.</span><span class="exp-blocked">Tool-building / system improvement</span></div>
+    <div class="exp-level"><span class="exp-num">9</span><span>Leave an unanswered question overnight.</span><span class="exp-blocked">Late-night reassurance</span></div>
+    <div class="exp-level"><span class="exp-num">10</span><span>One full day with AI only in the planned 30-minute window.</span><span class="exp-blocked">Ambient AI dependence</span></div>
+    <div class="exp-level"><span class="exp-num">11</span><span>Write 25 minutes using deliberately imperfect setup — messy notes, current tools, no optimization.</span><span class="exp-blocked">Optimization before output</span></div>
+    <div class="exp-level"><span class="exp-num">12</span><span>Ship a 70% version to a low-risk audience or checkpoint.</span><span class="exp-blocked">Endless polish</span></div>
+  </div>
+
+  <h3>Seven-day starter plan</h3>
+  <p>Use this in the first week. It trains one thing: acting before seeking support. Do not start at a level that will cause the session to collapse.</p>
+
+  <table>
+    <thead>
+      <tr><th>Day</th><th>Practice</th><th>Minimum success</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Before using AI: write one sentence of your own attempt first. Any sentence.</td><td>One sentence produced before first AI use.</td></tr>
+      <tr><td>2</td><td>Delay AI by 10 minutes. Use brackets [CHECK LATER] instead of prompting immediately.</td><td>One 10-minute no-AI block completed.</td></tr>
+      <tr><td>3</td><td>One AI prompt per issue today. No rephrasing the same question.</td><td>Closed AI after one answer per issue.</td></tr>
+      <tr><td>4</td><td>No cross-model checking. One model only, all day.</td><td>Asked only one AI system for any single question.</td></tr>
+      <tr><td>5</td><td>Make one real decision today without asking AI first. Write your reasoning in one sentence before using any tool.</td><td>One decision documented before any AI input.</td></tr>
+      <tr><td>6</td><td>Complete one full 25-minute block with AI closed and no tool changes.</td><td>Output exists at the end of the block.</td></tr>
+      <tr><td>7</td><td>Use the current imperfect system (tools, notes, setup) all day. No optimization. Yak List only.</td><td>No new tool, tab, workflow, or template created. Yak List captures all urges.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Behavioral experiment template</h3>
+  <div class="parking-lot">
+    <div class="field">Task: ___________________________________________</div>
+    <div class="field">Compulsion I will block: ___________________________________________</div>
+    <div class="field">Prediction if I block it (0–100% likelihood, 0–10 severity): ___________________________________________</div>
+    <div class="field">Actual outcome: ___________________________________________</div>
+    <div class="field">What the data shows: ___________________________________________</div>
+  </div>
+</div>
+
+
+<!-- ══ §11 DAILY LOG ══ -->
+<div class="section" id="s11">
+  <div class="section-id">§11 — Non-Optional</div>
+  <h2>Daily Log</h2>
+  <p>Without this log, the behavioral experiments produce no data, the plan has no learning mechanism, and you are just following rules with no feedback. The log is what turns suffering into information. <strong>Do not digitize this into an app or tool — that is Compulsion 8.</strong> Print multiple copies or use a paper notebook.</p>
+
+  <div class="parking-lot">
+    <div class="log-label">Morning intention (from start of day)</div>
+    <div class="field"> </div>
+    <div class="log-label">Actual deliverable produced today</div>
+    <div class="field"> </div>
+    <div class="log-label">Compulsions that fired today (circle)</div>
+    <div class="field">1-Checking · 2-Optimizing · 3-Researching · 4-Productivity · 5-Problem-solving · 6-Availability · 7-AI · 8-Tools</div>
+    <div class="log-label">Compulsions resisted (circle same numbers)</div>
+    <div class="field">1 · 2 · 3 · 4 · 5 · 6 · 7 · 8</div>
+    <div class="log-label">Highest urge peak today (0–10)</div>
+    <div class="field"> </div>
+    <div class="log-label">Did the predicted catastrophe happen? (Y / N / Partial)</div>
+    <div class="field"> </div>
+    <div class="log-label">What the urge actually wanted me to avoid</div>
+    <div class="field"> </div>
+    <div class="log-label">Tomorrow's one-sentence intention</div>
+    <div class="field"> </div>
+  </div>
+</div>
+
+
+<!-- ══ §12 WEEKLY REVIEW ══ -->
+<div class="section" id="s12">
+  <div class="section-id">§12 — Fridays · 30 minutes · Paper only</div>
+  <h2>Weekly Review</h2>
+  <p>This is the only time you look at patterns across the week. It is also the only time you consult the Yak List and Research Parking Lot. Not in the tool-building window — before it.</p>
+
+  <div class="parking-lot">
+    <div class="log-label">Which compulsion fired most frequently this week?</div>
+    <div class="field"> </div>
+    <div class="log-label">What predictions did I make that were disconfirmed? (Catastrophes that did not happen.)</div>
+    <div class="field"> </div>
+    <div class="log-label">Which rules did I break? What was the urge that preceded each breach?</div>
+    <div class="field"> </div>
+    <div class="log-label">What is the Yak List telling me? (For each item: is this still relevant? Does it produce a named deliverable?)</div>
+    <div class="field"> </div>
+    <div class="log-label">What is the Research Parking Lot telling me? (How many items turned out not to matter?)</div>
+    <div class="field"> </div>
+    <div class="log-label">What am I still not doing? What is the specific thing I have been avoiding producing?</div>
+    <div class="field"> </div>
+    <div class="log-label">REQ self-rating this week (0–10 each): Detachment / Relaxation / Mastery / Control</div>
+    <div class="field"> </div>
+    <div class="log-label">Next week's behavioral experiment (one compulsion, one prediction, one test)</div>
+    <div class="field"> </div>
+  </div>
+</div>
+
+
+<!-- ══ §13 EMERGENCY ══ -->
+<div class="section" id="s13">
+  <div class="section-id">§13 — When Everything Collapses</div>
+  <h2>Emergency Protocol</h2>
+  <p>There will be days when every compulsion fires at once and you follow none of the rules. This is not failure — it is an OCD-spectrum pattern under stress, which behaves exactly like this. The protocol for those days is not to restart the entire plan. It is to do one thing.</p>
+
+  <div class="box box-accent" style="margin-bottom:1.2rem">
+    <div class="box-label">⚠ Emergency sequence — in order, stop when stable</div>
+    <p>Do not try to restart the whole plan. Do not redesign the system. Do exactly one step below, stop when the urge subsides, and log what happened.</p>
+  </div>
+
+  <div class="urge-seq">
+    <div class="urge-step"><span class="urge-time">1</span><span><strong>Name what is happening.</strong> Out loud: "Every compulsion is firing and I am in avoidance mode." This activates prefrontal labeling and reduces amygdala reactivity.</span></div>
+    <div class="urge-step"><span class="urge-time">2</span><span><strong>Do not try to fix everything.</strong> Pick the one compulsion with the highest current urge. Apply only that section's protocol. One urge, one intervention.</span></div>
+    <div class="urge-step"><span class="urge-time">3</span><span><strong>Set a 5-minute timer and produce one sentence</strong> of the primary deliverable. One sentence. In any condition. This is the behavioral experiment. The specific sentence does not matter.</span></div>
+    <div class="urge-step"><span class="urge-time">4</span><span><strong>Log what happened.</strong> What fired. What you resisted. What you did not. One sentence each. This converts the collapse into data.</span></div>
+    <div class="urge-step"><span class="urge-time">5</span><span><strong>Apply the self-compassionate close:</strong> "That was a hard day. The plan continues tomorrow." Not to excuse the breach — to prevent the shame spiral that drives the next avoidance cycle.</span></div>
+    <div class="urge-step"><span class="urge-time">6</span><span><strong>Do not rebuild, redesign, or restructure the plan.</strong> The urge to redesign the system after a bad day is Compulsion 8 in disguise. The plan stands as written.</span></div>
+  </div>
+</div>
+
+
+<!-- ══ §14 RESOURCES ══ -->
+<div class="section" id="s14">
+  <div class="section-id">§14 — Clinical Resources</div>
+  <h2>Where to Go for Each Pattern</h2>
+
+  <h3>Free, clinically validated resources — start here</h3>
+  <ul class="plain">
+    <li><strong>CCI full workbook hub</strong> (Perfectionism, Procrastination, Worry, Health Anxiety) — cci.health.wa.gov.au</li>
+    <li><strong>CCI Reducing Checking and Reassurance Seeking</strong> — Module 6 (Compulsions 1 &amp; 7)</li>
+    <li><strong>CCI Perfectionism in Perspective</strong> — Modules 5–6 full workbook (Compulsions 2 &amp; 8)</li>
+    <li><strong>CCI What? Me Worry</strong> — Modules 7 and 9 (Compulsion 3)</li>
+    <li><strong>CCI Put Off Procrastinating</strong> — Modules 5 and 6 (Compulsion 4)</li>
+    <li><strong>CCI Working with Worry and Rumination</strong> — Active Coping worksheet (Compulsion 5)</li>
+    <li><strong>Russ Harris ACT worksheets, free</strong> — actmindfully.com.au (Compulsions 7 &amp; 8)</li>
+    <li><strong>IOCDF reassurance-seeking handout</strong> (Compulsions 1 &amp; 7) — iocdf.org</li>
+    <li><strong>MCT Institute self-help protocols</strong> (Compulsions 3 &amp; 5) — mcti.no</li>
+  </ul>
+
+  <h3>Books with strongest evidence base for self-directed use</h3>
+  <ul class="plain">
+    <li><strong>Shafran, Egan &amp; Wade</strong> — Overcoming Perfectionism (2nd ed., 2018). Primary: Compulsions 2 and 8.</li>
+    <li><strong>Robichaud &amp; Dugas</strong> — The Generalized Anxiety Disorder Workbook (2015). Primary: Compulsion 3.</li>
+    <li><strong>Seif &amp; Winston</strong> — Needing to Know for Sure (2021). Primary: Compulsions 1 and 7.</li>
+    <li><strong>Russ Harris</strong> — The Happiness Trap (2007, updated 2022). ACT primer for Compulsions 7 and 8.</li>
+    <li><strong>Watkins</strong> — Rumination-Focused Cognitive-Behavioral Therapy for Depression (Guilford, 2016). Primary: Compulsion 5.</li>
+  </ul>
+
+  <div class="box box-neutral" style="margin-top:2rem">
+    <div class="box-label">One honest caveat</div>
+    <p>This plan is evidence-based and self-directed. Self-directed ERP is significantly harder than therapist-administered ERP. If these compulsions are materially impairing your functioning — output, relationships, sleep, health — a therapist trained in ERP and OCD-spectrum work would accelerate this considerably. This plan is not a replacement for that; it is the best available without it.</p>
+    <p style="margin-top:0.8rem">The ADHD-adjacent layer is worth separate attention. If there is genuine ADHD underneath this pattern, that dysregulation can undermine CBT gains — not make them impossible, but harder to sustain without addressing that layer. This is not a reason to delay starting the plan. It is a reason to be honest when the gains plateau.</p>
+  </div>
+</div>
+
+<hr class="divider">
+<p style="font-size:0.78rem;color:var(--ink-light);text-align:center;margin-top:2rem">This is not a diagnosis or a substitute for therapy. Every rule is a rule. When you feel like breaking one, that feeling is the compulsion — not a sign the rule is wrong.</p>
+
+</body>
+</html>

@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal CBT Practice Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0c;
+    --bg2: #131313;
+    --bg3: #1a1a1a;
+    --border: #2a2a2a;
+    --border-light: #222;
+    --text: #d8d4cc;
+    --text-dim: #888;
+    --text-muted: #555;
+    --red: #c0392b;
+    --red-dim: #7a1f17;
+    --red-text: #e05a4a;
+    --amber: #b8770a;
+    --amber-text: #d4940c;
+    --green: #1f6b3a;
+    --green-text: #2ea856;
+    --blue: #1a4a7a;
+    --blue-text: #4a90d9;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Playfair Display', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    border-bottom: 2px solid var(--red);
+    padding: 60px 0 40px;
+    margin-bottom: 0;
+    background: var(--bg);
+  }
+
+  .doc-header-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .doc-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red-text);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .doc-title {
+    font-family: var(--display);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ede9e0;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .doc-subtitle {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text-dim);
+    font-style: italic;
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .doc-meta {
+    margin-top: 32px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .doc-meta-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .doc-meta-item strong {
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 2px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  /* ── LAYOUT ── */
+  .main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section:first-child {
+    margin-top: 56px;
+    border-top: none;
+  }
+
+  .section-number {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    color: #ede9e0;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  /* ── CONTRACT BLOCK ── */
+  .contract {
+    background: var(--bg3);
+    border-left: 4px solid var(--red);
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+
+  .contract p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .contract p + p {
+    margin-top: 14px;
+  }
+
+  /* ── CORE RULE ── */
+  .core-rule {
+    background: var(--red-dim);
+    border: 1px solid var(--red);
+    padding: 32px 36px;
+    margin: 32px 0;
+    text-align: center;
+  }
+
+  .core-rule-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red-text);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .core-rule-text {
+    font-family: var(--display);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    color: #ede9e0;
+    line-height: 1.4;
+  }
+
+  .core-rule-sub {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #c09090;
+    line-height: 1.6;
+  }
+
+  /* ── RULE BLOCK ── */
+  .rule-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0;
+    margin: 20px 0;
+    overflow: hidden;
+  }
+
+  .rule-block-header {
+    background: var(--bg3);
+    padding: 10px 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rule-block-header .tag {
+    padding: 2px 8px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+  }
+
+  .tag-stop { background: var(--red-dim); color: var(--red-text); }
+  .tag-daily { background: #1a2a1a; color: var(--green-text); }
+  .tag-erp { background: #1a1f2a; color: var(--blue-text); }
+  .tag-exp { background: #2a2a1a; color: var(--amber-text); }
+
+  .rule-block-body {
+    padding: 20px 24px;
+  }
+
+  .rule-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .rule-list li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 15px;
+    line-height: 1.6;
+    position: relative;
+    font-family: var(--serif);
+  }
+
+  .rule-list li:last-child { border-bottom: none; }
+
+  .rule-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-family: var(--mono);
+  }
+
+  .rule-list.hard li::before {
+    content: '✕';
+    color: var(--red-text);
+    font-size: 12px;
+    top: 10px;
+  }
+
+  .rule-list.do li::before {
+    content: '→';
+    color: var(--green-text);
+  }
+
+  /* ── COMPULSION CARDS ── */
+  .compulsion-card {
+    border: 1px solid var(--border);
+    margin: 32px 0;
+    overflow: hidden;
+  }
+
+  .compulsion-header {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 0;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compulsion-number {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 16px;
+    border-right: 1px solid var(--border);
+    line-height: 1;
+  }
+
+  .compulsion-title-area {
+    padding: 16px 20px;
+  }
+
+  .compulsion-title {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    color: #ede9e0;
+    margin-bottom: 2px;
+  }
+
+  .compulsion-mechanism {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .compulsion-priority {
+    padding: 16px 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: right;
+    border-left: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .compulsion-body {
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .compulsion-body { grid-template-columns: 1fr; }
+    .doc-meta { gap: 20px; }
+    .main { padding: 0 20px 80px; }
+    .doc-header-inner { padding: 0 20px; }
+  }
+
+  .compulsion-col-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .compulsion-body p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .compulsion-full {
+    padding: 0 28px 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  /* ── URGE PROTOCOL ── */
+  .urge-protocol {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin: 12px 0;
+  }
+
+  .urge-protocol-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-text);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .urge-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .urge-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .urge-step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber-text);
+    background: rgba(212, 148, 12, 0.1);
+    padding: 2px 7px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    border-radius: 2px;
+  }
+
+  /* ── DAILY STRUCTURE ── */
+  .time-block {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .time-block:last-child { border-bottom: none; }
+
+  .time-block-time {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 16px 16px 16px 0;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    letter-spacing: 0.05em;
+  }
+
+  .time-block-content {
+    padding: 16px 0 16px 20px;
+  }
+
+  .time-block-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .time-block-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ── LOG TEMPLATE ── */
+  .log-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 20px 0;
+  }
+
+  .log-cell {
+    background: var(--bg2);
+    padding: 16px;
+  }
+
+  .log-cell-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .log-cell-line {
+    border-bottom: 1px solid var(--border);
+    height: 28px;
+    margin-bottom: 8px;
+  }
+
+  /* ── EXPERIMENT TEMPLATE ── */
+  .experiment {
+    background: var(--bg2);
+    border: 1px solid var(--amber);
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .experiment-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-text);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .experiment-field {
+    margin-bottom: 14px;
+  }
+
+  .experiment-field-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .experiment-field-line {
+    border-bottom: 1px solid var(--border);
+    height: 28px;
+  }
+
+  /* ── WEEKLY REVIEW ── */
+  .review-question {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .review-question:last-child { border-bottom: none; }
+
+  .review-q {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .review-line {
+    border-bottom: 1px solid var(--border);
+    height: 28px;
+    margin-bottom: 6px;
+  }
+
+  /* ── EMERGENCY ── */
+  .emergency-box {
+    border: 2px solid var(--red);
+    background: rgba(192, 57, 43, 0.05);
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+
+  .emergency-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red-text);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .emergency-steps {
+    list-style: none;
+    counter-reset: emergency;
+  }
+
+  .emergency-steps li {
+    counter-increment: emergency;
+    padding: 10px 0 10px 36px;
+    position: relative;
+    border-bottom: 1px solid rgba(192,57,43,0.15);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .emergency-steps li:last-child { border-bottom: none; }
+
+  .emergency-steps li::before {
+    content: counter(emergency);
+    position: absolute;
+    left: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red-text);
+    background: rgba(192, 57, 43, 0.15);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 12px;
+    border-radius: 50%;
+  }
+
+  /* ── QUOTE ── */
+  .pull-quote {
+    border-left: 3px solid var(--text-muted);
+    padding: 8px 0 8px 24px;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── MISC ── */
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 600; color: #ede9e0; }
+
+  .mono { font-family: var(--mono); font-size: 13px; }
+
+  .red { color: var(--red-text); }
+  .amber { color: var(--amber-text); }
+  .green { color: var(--green-text); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  .footnote {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 640px) {
+    .two-col { grid-template-columns: 1fr; }
+    .compulsion-header { grid-template-columns: 40px 1fr; }
+    .compulsion-priority { display: none; }
+    .log-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: white; color: #111; }
+    .log-cell, .compulsion-card, .rule-block, .contract, .urge-protocol, .experiment, .emergency-box, .core-rule {
+      break-inside: avoid;
+    }
+    .section { page-break-before: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <span class="doc-label">Personal Clinical CBT Practice Plan · Self-Directed</span>
+    <h1 class="doc-title">Your Practice Plan</h1>
+    <p class="doc-subtitle">Eight compulsions. Eight protocols. One rule that governs all of them. This is not reading material — it is a behavioral contract with yourself.</p>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><strong>Primary pattern</strong>Anxiety / avoidance</div>
+      <div class="doc-meta-item"><strong>Secondary</strong>OCD-spectrum</div>
+      <div class="doc-meta-item"><strong>Tertiary</strong>ADHD-adjacent</div>
+      <div class="doc-meta-item"><strong>Framework</strong>CBT · ERP · MCT · ACT</div>
+      <div class="doc-meta-item"><strong>Format</strong>Self-directed, daily practice</div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- ═══ CONTRACT ═══ -->
+  <section class="section">
+    <span class="section-number">Preamble</span>
+    <h2 class="section-title">What this is</h2>
+
+    <div class="contract">
+      <p>You have eight compulsions. They share one mechanism: you feel discomfort, you perform a behavior that removes it temporarily, your brain learns the behavior works, the threshold drops, the behaviors expand. The content looks responsible — checking, researching, optimizing, planning, building. That is exactly why they have lasted this long. They feel like work.</p>
+      <p>This plan treats all eight as the same operant problem. The surface varies. The intervention does not. You expose yourself to the discomfort, you do not perform the compulsion, you watch the discomfort peak and pass without the behavior, your brain learns the discomfort is survivable. You repeat this until the threshold rises and the behaviors shrink.</p>
+      <p>The ADHD-adjacent layer means you are fighting two things at once: you are avoiding discomfort <em>and</em> seeking the reward these behaviors deliver. Knowing this does not make you exempt from the plan. It means you will need to follow it more strictly, not less, because motivation will feel more variable and the pull of the behaviors will be stronger than it would be for someone without that layer.</p>
+      <p>This is not a suggestion document. Every rule below is a rule. When you feel like breaking one, that feeling is the compulsion — not a sign the rule is wrong.</p>
+    </div>
+  </section>
+
+  <!-- ═══ CORE RULE ═══ -->
+  <section class="section">
+    <span class="section-number">§0 — The One Rule</span>
+    <h2 class="section-title">The rule that governs all eight</h2>
+
+    <div class="core-rule">
+      <span class="core-rule-label">Core Rule — Non-Negotiable</span>
+      <p class="core-rule-text">If it does not produce a deliverable, it is avoidance.</p>
+      <p class="core-rule-sub">
+        Checking is not producing. Researching is not producing. Optimizing is not producing.<br>
+        Planning, organizing, prompting AI, building tools — none of it is producing.<br>
+        You may do these things. In their designated time slots. Not before producing.
+      </p>
+    </div>
+
+    <p>Before every session, answer one question in writing: <strong>"What will I have produced when this session ends, and in what form?"</strong> If you cannot answer it in one sentence, you do not start the session. You sit with the blankness until you can.</p>
+
+    <div class="pull-quote">
+      "The CBT question is not whether this behavior is thesis-related or work-related. It is whether it is producing output, or reducing anxiety."
+    </div>
+  </section>
+
+  <!-- ═══ DAILY STRUCTURE ═══ -->
+  <section class="section">
+    <span class="section-number">§1 — Daily Structure</span>
+    <h2 class="section-title">The non-negotiable daily frame</h2>
+
+    <p>This structure is a stimulus-control intervention. Its purpose is to make avoidance physically harder by removing ambient permission for it. It is not flexible until you have followed it for 21 consecutive days.</p>
+
+    <div class="rule-block" style="margin-top: 24px;">
+      <div class="rule-block-header">
+        Daily session structure <span class="tag tag-daily">Every day</span>
+      </div>
+      <div class="rule-block-body" style="padding: 0;">
+        <div class="time-block">
+          <div class="time-block-time">Morning<br>≤ 5 min</div>
+          <div class="time-block-content">
+            <div class="time-block-title">Intention statement</div>
+            <div class="time-block-desc">Write one sentence: <em>"Today I will produce [specific output] by [time]."</em> No other planning. No checking messages first. This is the first thing you do.</div>
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-block-time">Block 1<br>50 min</div>
+          <div class="time-block-content">
+            <div class="time-block-title">Mode-locked production</div>
+            <div class="time-block-desc">One window open: the document. Allowed: existing notes. Forbidden: AI, browser, email, tools, restructuring. Output: rough words, code, draft — in whatever condition they emerge.</div>
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-block-time">Break<br>10 min</div>
+          <div class="time-block-content">
+            <div class="time-block-title">Physical break only</div>
+            <div class="time-block-desc">No screens. No phone. No "quick checks." Walk, water, stretch. If you check anything during this break, the block resets.</div>
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-block-time">Block 2<br>50 min</div>
+          <div class="time-block-content">
+            <div class="time-block-title">Mode-locked production</div>
+            <div class="time-block-desc">Same rules as Block 1. If research is genuinely necessary, park the specific question on the Parking Lot (paper), continue writing with a bracket [CHECK LATER] and move on.</div>
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-block-time">Midday<br>30 min max</div>
+          <div class="time-block-content">
+            <div class="time-block-title">AI window / Research window</div>
+            <div class="time-block-desc">The only permitted slot for AI use and research. Governed by §5 and §7 rules. Hard stop at 30 minutes by timer. If you exceed it, the window closes for the rest of the day.</div>
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-block-time">Block 3<br>50 min</div>
+          <div class="time-block-content">
+            <div class="time-block-title">Mode-locked production</div>
+            <div class="time-block-desc">Same rules as Blocks 1–2. The output from this block is the measurable deliverable against your morning intention.</div>
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-block-time">End of day<br>10 min</div>
+          <div class="time-block-content">
+            <div class="time-block-title">Shutdown ritual + daily log</div>
+            <div class="time-block-desc">Brain dump of open loops (onto paper, not into AI). Write tomorrow's one-sentence intention. Close laptop. Phone away. Walk or shower without content. Governed by §6 rules. Work is done.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-block-header">
+        Hard limits on the daily structure <span class="tag tag-stop">Stop</span>
+      </div>
+      <div class="rule-block-body">
+        <ul class="rule-list hard">
+          <li>Do not check messages, email, or notifications before completing your morning intention statement.</li>
+          <li>Do not begin any research or AI use before completing at least one production block.</li>
+          <li>Do not carry the AI / research window beyond 30 minutes on any day. If you do, it closes.</li>
+          <li>Do not work after your declared end-of-day time. The shutdown ritual is non-negotiable even when the work feels unfinished.</li>
+          <li>Do not skip the end-of-day log. Without it, the behavioral-experiment data does not accumulate and the plan has no learning mechanism.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 1: CHECKING ═══ -->
+  <section class="section">
+    <span class="section-number">§2 — Compulsion 1 (Primary)</span>
+    <h2 class="section-title">Compulsive checking</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">1</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Checking</div>
+          <div class="compulsion-mechanism">CBT concept: Checking / reassurance-seeking / safety behavior · Protocol: ERP + Theory A/B</div>
+        </div>
+        <div class="compulsion-priority">Primary · Highest frequency</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Checking temporarily removes doubt. Your brain has learned that checking makes the discomfort go away. Research by van den Hout &amp; Kindt shows that repeated checking actually <em>degrades</em> memory confidence — meaning every check you perform makes the next urge more likely, not less. You are not solving a problem. You are feeding a cycle.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>You check because something feels unresolved, wrong, or uncertain. The check provides 60–90 seconds of relief. Then the doubt returns — usually stronger. The behavior that promises certainty is the behavior that destroys it.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li><strong>One-look rule:</strong> everything — every document, every sent message, every locked door — gets looked at exactly once. You look, you move on.</li>
+              <li>Do not re-read sent messages. Ever. After sending, the window closes.</li>
+              <li>Do not re-check completed work before starting a new block. Completed means completed.</li>
+              <li>Do not seek reassurance from other people as a substitute (asking a colleague "does this look right?" compulsively is the same behavior in social form).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="urge-protocol">
+          <span class="urge-protocol-label">⚡ When the urge hits — ERP sequence</span>
+          <div class="urge-steps">
+            <div class="urge-step"><span class="urge-step-num">1</span><span>Name it out loud or in writing: <em>"Checking urge. This is a compulsion, not a need."</em></span></div>
+            <div class="urge-step"><span class="urge-step-num">2</span><span>Set a 10-minute timer. Do not perform the check during this window.</span></div>
+            <div class="urge-step"><span class="urge-step-num">3</span><span>Rate your anxiety: 0–10 now. Rate again at 5 min. Watch it move without acting on it.</span></div>
+            <div class="urge-step"><span class="urge-step-num">4</span><span>When the timer ends: if the urge has not resolved, extend by 10 minutes. Most urges resolve without the check. That is the data.</span></div>
+            <div class="urge-step"><span class="urge-step-num">5</span><span>Log: urge fired / resisted Y/N / peak anxiety rating / actual outcome.</span></div>
+          </div>
+        </div>
+
+        <div class="experiment">
+          <span class="experiment-label">Weekly behavioral experiment</span>
+          <p style="font-size:13px; margin-bottom:14px; color: var(--text-dim);">Pick one checking behavior. Leave it completely unchecked for 7 days. Complete before starting.</p>
+          <div class="experiment-field"><span class="experiment-field-label">Behavior to not check this week:</span><div class="experiment-field-line"></div></div>
+          <div class="two-col">
+            <div class="experiment-field"><span class="experiment-field-label">Predicted catastrophe (0–10 severity):</span><div class="experiment-field-line"></div></div>
+            <div class="experiment-field"><span class="experiment-field-label">Actual outcome after 7 days:</span><div class="experiment-field-line"></div></div>
+          </div>
+          <p class="footnote">Resource: CCI Reducing Checking and Reassurance Seeking — Module 6 · cci.health.wa.gov.au</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 2: OPTIMIZING ═══ -->
+  <section class="section">
+    <span class="section-number">§3 — Compulsion 2 (Primary)</span>
+    <h2 class="section-title">Compulsive optimizing</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">2</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Optimizing</div>
+          <div class="compulsion-mechanism">CBT concept: Perfectionistic overcontrol · Protocol: Clinical perfectionism CBT (Shafran/Egan/Wade)</div>
+        </div>
+        <div class="compulsion-priority">Primary · High cost</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Reworking structure, renaming headings, adjusting outlines, refining themes — these are not production. They are the behavior of someone who will not commit to imperfect prose. The structure feels unstable. You optimize it instead of writing through it, and the structure becomes the problem you work on instead of the work itself.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>Optimizing avoids the moment of exposure: producing something imperfect, in writing, that can be seen and judged. While you adjust the outline, you are never failing. This is the exact mechanism perfectionistic overcontrol maintains.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li>Structure gets 5 minutes at session start. When the timer ends, the structure is locked. Write through it as-is.</li>
+              <li>Do not rename, reorder, or restructure anything during a production block. Bracketed notes ([restructure later?]) are permitted; acting on them is not.</li>
+              <li>No restructuring until the draft of a section exists. The draft comes first. Every time.</li>
+              <li>Define "good enough" in behavioral terms before writing. Write it down. Emotional readiness is not a criterion.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-block-header">Good-enough criteria — fill this in before each session <span class="tag tag-daily">Required</span></div>
+          <div class="rule-block-body">
+            <p style="font-size:13px; margin-bottom:12px; color: var(--text-dim);">This section is complete when it has: <strong>1 claim. 2–3 pieces of evidence. 1 interpretive paragraph. 1 link to the central question. Bracketed gaps permitted.</strong> It is not complete when it <em>feels</em> complete. It is complete when those behavioral criteria are met.</p>
+            <ul class="rule-list">
+              <li>Not: "feels theoretically secure." Not: "I would be comfortable showing this." Not: "I've checked all sources."</li>
+              <li>Yes: "claim stated. evidence cited. paragraph exists. link made." That is the finish line.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="urge-protocol">
+          <span class="urge-protocol-label">⚡ When the restructuring urge hits</span>
+          <div class="urge-steps">
+            <div class="urge-step"><span class="urge-step-num">1</span><span>Name it: <em>"Restructuring urge. This is optimizing, not producing."</em></span></div>
+            <div class="urge-step"><span class="urge-step-num">2</span><span>Write one bracketed note in the document: [RESTRUCTURE IDEA: ___]. Do not act on it.</span></div>
+            <div class="urge-step"><span class="urge-step-num">3</span><span>Return to the sentence you were on. Type the next word. That is the only required action.</span></div>
+            <div class="urge-step"><span class="urge-step-num">4</span><span>Disputation check: <em>"Would I hold a colleague to this structural standard at draft stage?"</em> If no — keep writing.</span></div>
+          </div>
+        </div>
+
+        <p class="footnote" style="margin-top: 16px;">Resource: CCI Perfectionism in Perspective, Modules 5–6 · cci.health.wa.gov.au | Shafran, Egan &amp; Wade, Overcoming Perfectionism (2018)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 3: RESEARCHING ═══ -->
+  <section class="section">
+    <span class="section-number">§4 — Compulsion 3 (Primary)</span>
+    <h2 class="section-title">Compulsive researching</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">3</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Researching</div>
+          <div class="compulsion-mechanism">CBT concept: Intolerance of uncertainty / preparatory avoidance · Protocol: CBT-IU (Dugas/Robichaud)</div>
+        </div>
+        <div class="compulsion-priority">Primary · Very high cost</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>"One more source" is not a research need. It is an anxiety-reduction behavior. CBT-IU (Behavioral Experiments for Intolerance of Uncertainty, Hebert &amp; Dugas 2019) treats information-seeking as a safety behavior that lowers distress short-term and reinforces the catastrophic belief: <em>"I cannot act until I am certain."</em> More research does not produce certainty. It produces more research.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>Reading makes you feel competent without requiring you to produce. Researching seeks epistemic certainty you cannot actually obtain. The CBT move is not to stop researching permanently — it is to break the belief that certainty must precede action, by acting without it and recording what actually happens.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li>Before any research: write the specific question in one sentence. If you cannot write it in one sentence, you are not ready to research — you are anxious.</li>
+              <li>Source cap: maximum 3 sources per sub-claim. When the cap is reached, the research is done.</li>
+              <li>25-minute hard timebox per research session. Timer set before opening any browser or document.</li>
+              <li>When the timer ends, you write with what you have. Brackets for gaps are permitted — [CITE] is fine. Missing a source is not a crisis. That is the experiment.</li>
+              <li>Research parking lot: any "one more source" urge during a production block goes onto the paper list. You do not act on it during the block.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-block-header">Triage: real problem or hypothetical worry? <span class="tag tag-daily">Apply to every urge</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list">
+              <li><strong>Current, real, actionable problem</strong> (there is a specific gap in a specific claim) → structured 25-min research with source cap. Write immediately after.</li>
+              <li><strong>Hypothetical "what if"</strong> (I might be missing something / what if there's a better framing) → research will not help. Park it. Continue writing. Return in weekly review.</li>
+            </ul>
+            <p style="font-size:13px; margin-top: 12px; color: var(--text-dim);">Resource: CCI What? Me Worry — Module 7 (Problem-solving) and Module 9 (Accepting Uncertainty) · cci.health.wa.gov.au</p>
+          </div>
+        </div>
+
+        <div class="experiment">
+          <span class="experiment-label">This week's behavioral experiment — approach uncertainty</span>
+          <div class="experiment-field"><span class="experiment-field-label">Section to write with current sources only (no new research):</span><div class="experiment-field-line"></div></div>
+          <div class="experiment-field"><span class="experiment-field-label">Belief being tested (write the fear explicitly):</span><div class="experiment-field-line"></div></div>
+          <div class="two-col">
+            <div class="experiment-field"><span class="experiment-field-label">Predicted outcome severity (0–10):</span><div class="experiment-field-line"></div></div>
+            <div class="experiment-field"><span class="experiment-field-label">Actual outcome after writing:</span><div class="experiment-field-line"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 4: PRODUCTIVITY ═══ -->
+  <section class="section">
+    <span class="section-number">§5 — Compulsion 4 (Primary)</span>
+    <h2 class="section-title">Compulsive productivity</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">4</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Productivity</div>
+          <div class="compulsion-mechanism">CBT concept: Productive procrastination · Protocol: Behavioral Activation + CCI Procrastination</div>
+        </div>
+        <div class="compulsion-priority">Primary · Disguised as work</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Planning, organizing, tracking, filing, formatting — these feel like work and produce nothing. Pychyl's research frames procrastination as short-term mood repair: you substitute the difficult task with a lower-priority one, get relief, and the brain records the substitution as successful. The CCI Procrastination workbook names this explicitly: doing lower-priority tasks instead of the priority task <em>is</em> procrastination, regardless of how productive it looks.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>Productivity activities create the feeling of progress without exposing you to the discomfort of actual production. They are particularly sticky for your pattern because the ADHD-adjacent reward-seeking mechanism makes task-switching genuinely pleasurable. You are not being lazy. You are being very effective at avoidance.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li>When you notice yourself planning, organizing, filing, or formatting during production time: stop. Name it out loud: <em>"This is avoidance, not work."</em></li>
+              <li>Inbox zero, notifications, filing, task-list maintenance — none of these happen during production blocks. They have no designated slot; they happen after all production blocks are complete, if at all.</li>
+              <li>The smallest next physical action: when resistance hits, ask only "what is the next word / line / sentence?" Never "what does this section need?"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-block-header">TRAP → TRAC — apply to every avoidance substitution <span class="tag tag-daily">Daily log</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list">
+              <li><strong>T</strong>rigger — what feeling started it? <strong>R</strong>esponse — what did you do instead? <strong>A</strong>voidance <strong>P</strong>attern — the substitution cycle.</li>
+              <li><strong>T</strong>rigger (same) → <strong>R</strong>eplacement <strong>A</strong>lternative <strong>C</strong>oping — implement intention: <em>"IF dread when I open the doc → THEN I write one imperfect paragraph for 25 minutes."</em></li>
+            </ul>
+            <p style="font-size:13px; margin-top:12px; color: var(--text-dim);">Resource: CCI Put Off Procrastinating, Modules 5–6 · cci.health.wa.gov.au | Sirois &amp; Pychyl, Procrastination, Health &amp; Wellbeing (2016)</p>
+          </div>
+        </div>
+
+        <div class="urge-protocol">
+          <span class="urge-protocol-label">⚡ When the avoidance substitution begins</span>
+          <div class="urge-steps">
+            <div class="urge-step"><span class="urge-step-num">1</span><span>Stop. Name it: <em>"This is productive procrastination."</em></span></div>
+            <div class="urge-step"><span class="urge-step-num">2</span><span>Stay in front of the document for 60 seconds without doing anything. Observe the dread without acting on it.</span></div>
+            <div class="urge-step"><span class="urge-step-num">3</span><span>Deploy implementation intention: write one bad sentence. Not a good one. One sentence, in any condition.</span></div>
+            <div class="urge-step"><span class="urge-step-num">4</span><span>End each block with a self-compassionate close: <em>"That was hard. I did it."</em> — not to soften the rules, but because self-criticism drives the next avoidance cycle. (Sirois, 2014)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 5: PROBLEM-SOLVING ═══ -->
+  <section class="section">
+    <span class="section-number">§6 — Compulsion 5 (Primary)</span>
+    <h2 class="section-title">Compulsive problem-solving</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">5</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Problem-Solving</div>
+          <div class="compulsion-mechanism">CBT concept: Rumination / over-analysis · Protocol: Rumination-Focused CBT (Watkins) + MCT (Wells)</div>
+        </div>
+        <div class="compulsion-priority">Primary · High duration</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Watkins &amp; Moulds (2005) showed the mechanism: abstract/evaluative thinking ("why is this not working?" "what does this mean?") impairs problem-solving. Concrete/process-focused thinking ("what is the next step?") improves it. When you spin on a problem rather than writing your way through it, you are choosing the mode of thinking that makes it worse, not better.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>Mental problem-spinning keeps the problem safely unresolved and in your control. The moment you write through it — even imperfectly — it becomes testable, falsifiable, and judgeable. Rumination keeps the problem mental rather than textual, which is exactly the avoidance mechanism.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li><strong>Why → How shift:</strong> the moment you notice "why"-mode thinking, reformulate: <em>"What specifically is the next step about this, by when?"</em> Do not continue in "why" mode.</li>
+              <li><strong>60-second externalization rule:</strong> any problem you are spinning on gets typed as one sentence in a document within 60 seconds. One sentence: situation. One sentence: next action. If you cannot write it in two sentences, the problem is too abstract — that is the symptom, not the problem.</li>
+              <li>Scheduled Thinking Time only: 30 minutes, at a desk, with the CCI Active Coping worksheet on paper. Problems that arise outside this slot are parked on a card with: <em>"I'll work on this at [time]."</em></li>
+              <li>No problem-spinning in the shower, in transit, or in bed. These are not thinking contexts. If an idea appears, write it in one sentence and move on.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-block-header">Thinking Time protocol — 30 min, scheduled, once daily <span class="tag tag-daily">Structured</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list do">
+              <li>Sit at a desk. Paper and pen only — no screens, no AI.</li>
+              <li>Use the CCI Active Coping 6-step structure: Define concretely → Brainstorm ≥4 options → Evaluate → Choose with: action + who + when → Implement → Evaluate.</li>
+              <li>If the problem cannot be defined in one concrete sentence, it is not ready for Thinking Time. Write "not ready yet" and close the notebook.</li>
+              <li>If no action is decidable after 30 minutes, the problem is misformulated. Rewrite the definition, or convert it to a behavioral experiment with a concrete test.</li>
+            </ul>
+            <p style="font-size:13px; margin-top:12px; color: var(--text-dim);">Resource: CCI Active Coping worksheet · CCI Working with Worry and Rumination manual · Watkins, Rumination-Focused CBT (Guilford 2016)</p>
+          </div>
+        </div>
+
+        <div class="experiment">
+          <span class="experiment-label">MCT experiment — two-week rumination log</span>
+          <p style="font-size:13px; margin-bottom:14px; color: var(--text-dim);">For 14 days, log: (a) minutes spent ruminating on Problem X, (b) decisions actually produced by that rumination. The second column will be near-empty. That is the data against the meta-belief "I need to think through this."</p>
+          <div class="two-col">
+            <div class="experiment-field"><span class="experiment-field-label">Minutes ruminating (daily total):</span><div class="experiment-field-line"></div></div>
+            <div class="experiment-field"><span class="experiment-field-label">Decisions produced by rumination:</span><div class="experiment-field-line"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 6: AVAILABILITY ═══ -->
+  <section class="section">
+    <span class="section-number">§7 — Compulsion 6 (Primary)</span>
+    <h2 class="section-title">Compulsive availability</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">6</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Availability</div>
+          <div class="compulsion-mechanism">CBT concept: Workaholic cognition / poor disengagement · Protocol: Recovery Experiences (Sonnentag) + stimulus control</div>
+        </div>
+        <div class="compulsion-priority">Primary · Prevents recovery</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Staying mentally attached to work after the work day ends is not conscientiousness. Bakker, Demerouti, Oerlemans &amp; Sonnentag (2013) found that work-related activity in the evening is specifically more harmful for workaholics than for others, while physical and social activities are specifically more protective. You cannot recover by staying available. You recover by fully disengaging.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>Being available prevents the disconfirming experience that nothing catastrophic happens when you disconnect. Sonnentag &amp; Fritz's Recovery Experience Questionnaire identifies four protective experiences: psychological detachment, relaxation, mastery, and control — none of which can occur while you remain cognitively attached to work.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li>Hard stop time: <strong>[you define this — write it here: ___:___ ]</strong>. Non-negotiable. The shutdown ritual begins at this time regardless of where you are in the work.</li>
+              <li>No email, Slack, or work messages after the stop time. Logged out on phone. Not muted — logged out.</li>
+              <li>No work-adjacent content after stop time: no work podcasts, no "light reading" that is actually research, no tool browsing, no AI use.</li>
+              <li>Phone physically in another room from 9pm until after your morning intention statement.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-block-header">Shutdown ritual — every day, at stop time <span class="tag tag-daily">Non-negotiable</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list do">
+              <li>Brain dump: open loops and tomorrow's one-sentence intention — onto paper, not into AI or task manager.</li>
+              <li>Physical close: laptop closed in a drawer. Email and Slack signed out on phone. Laptop and phone separated.</li>
+              <li>Verbal cue out loud: <em>"Work is done for today."</em> This sounds absurd. Do it anyway — it functions as a behavioral boundary marker.</li>
+              <li>Simulated commute: 15–20 minute walk or shower, no work content, no earbuds.</li>
+              <li>One scheduled non-work activity from Sonnentag's four: detachment / relaxation / mastery (non-work skill) / control (leisure choice). Physical and social activities specifically.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="urge-protocol">
+          <span class="urge-protocol-label">⚡ When the "just check" urge hits in the evening</span>
+          <div class="urge-steps">
+            <div class="urge-step"><span class="urge-step-num">1</span><span>Defuse: <em>"I'm noticing the thought that I should check. That thought is not an instruction."</em></span></div>
+            <div class="urge-step"><span class="urge-step-num">2</span><span>Opposite action: do not check. Stay engaged with the chosen activity.</span></div>
+            <div class="urge-step"><span class="urge-step-num">3</span><span>Park the thought on a carry-over card: one sentence, checked tomorrow in the first 15-minute block. Do not act on it tonight.</span></div>
+            <div class="urge-step"><span class="urge-step-num">4</span><span>Run the behavioral experiment: you predicted something bad would happen if you didn't check. Check tomorrow whether it did. It almost certainly did not. Log it.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 7: AI LOOP ═══ -->
+  <section class="section">
+    <span class="section-number">§8 — Compulsion 7 (Secondary)</span>
+    <h2 class="section-title">AI / tool loop dependence</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">7</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">AI / Tool Loop Dependence</div>
+          <div class="compulsion-mechanism">CBT concept: Reassurance-seeking / externalized judgment · Protocol: ERP + Theory A/B (reassurance-seeking variant)</div>
+        </div>
+        <div class="compulsion-priority">Secondary · Uniquely disguised</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Using AI to "compare framings," "check if this is right," or "generate options before deciding" is functionally identical to asking a person for reassurance. It is not a productivity tool in those moments. It is a machine that never tires of providing relief, never refuses, generates more options (which increases uncertainty, which drives more prompting), and is available at 2am. The IOCDF defines reassurance-seeking as: repetitive, anxiety-driven, demanding certainty. Apply that definition honestly to your AI use.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>AI use outsources the discomfort of making a decision under uncertainty. It externalizes your judgment rather than building tolerance for imperfect judgment. Every time you prompt before deciding, you confirm the meta-belief: <em>"I cannot trust my own assessment."</em> That belief gets stronger, not weaker, with use.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">The functional analysis you must run on every AI use <span class="tag tag-daily">Before every prompt</span></div>
+          <div class="rule-block-body">
+            <p style="font-size:14px; margin-bottom:12px;">The IOCDF distinction, applied directly:</p>
+            <ul class="rule-list">
+              <li><strong>Information use</strong> (permitted): one-time, accepts the answer, specific factual question, would a single qualified human give the same answer once. → Permitted in the AI window.</li>
+              <li><strong>Reassurance seeking</strong> (compulsion): repetitive or rephrased, anxiety-driven, demands certainty, unanswerable, compares two AI responses for "another opinion." → Stop. Do not submit. Surf the urge.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li>AI is available in one 30-minute window per day. Outside that window, it is logged out. Not minimized — logged out.</li>
+              <li><strong>One-Ask Rule:</strong> before any prompt, write in your notebook: (a) the question in one sentence, (b) the feeling you are trying to reduce, (c) is this answerable and one-time? If anxiety-driven — do not submit.</li>
+              <li>Never re-ask the same question with different wording. If you rephrase, you are seeking reassurance, not information. Close the window.</li>
+              <li>Never compare two AI responses. "Let me ask Claude and then check GPT" is the same compulsion in two browser tabs.</li>
+              <li>No AI use for decisions about your own work. Produce first. If you want AI feedback after producing, that is a different function — permitted in the window, once per section.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="urge-protocol">
+          <span class="urge-protocol-label">⚡ When the prompting urge hits outside the window</span>
+          <div class="urge-steps">
+            <div class="urge-step"><span class="urge-step-num">1</span><span>Write the question in the notebook. That is enough for now.</span></div>
+            <div class="urge-step"><span class="urge-step-num">2</span><span>Rate the anxiety: 0–10. Set a 10-minute timer. Do not open AI.</span></div>
+            <div class="urge-step"><span class="urge-step-num">3</span><span>Ask: <em>"What is the worst that happens if I make this decision with my own judgment right now?"</em> Write the answer. Then make the decision without prompting.</span></div>
+            <div class="urge-step"><span class="urge-step-num">4</span><span>Alternative: contact a human and say <em>"I'm anxious about X — I don't need you to fix it, I need company while I sit with it."</em> Support without certainty. (Halldorsson &amp; Salkovskis, 2017)</span></div>
+          </div>
+        </div>
+
+        <p class="footnote" style="margin-top:16px;">Resource: CCI AI and Your Mental Health handout · IOCDF Information-seekers vs reassurance-seekers handout · iocdf.org | Seif &amp; Winston, Needing to Know for Sure (New Harbinger 2021)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPULSION 8: TOOL-BUILDING ═══ -->
+  <section class="section">
+    <span class="section-number">§9 — Compulsion 8 (Secondary)</span>
+    <h2 class="section-title">Compulsive tool-building</h2>
+
+    <div class="compulsion-card">
+      <div class="compulsion-header">
+        <div class="compulsion-number">8</div>
+        <div class="compulsion-title-area">
+          <div class="compulsion-title">Compulsive Tool-Building</div>
+          <div class="compulsion-mechanism">CBT concept: Preparatory avoidance / optimization ritual · Protocol: ACT workability + CCI Procrastination</div>
+        </div>
+        <div class="compulsion-priority">Secondary · Feels like investment</div>
+      </div>
+      <div class="compulsion-body">
+        <div>
+          <span class="compulsion-col-label">What this is</span>
+          <p>Building tools, systems, automations, integrations, note templates, and workflows is preparatory avoidance. It is the behavior of improving the conditions for work while not doing the work. ACT's "workability" test applies cleanly: does this directly produce the deliverable, or is it about producing the deliverable? The system is never finished because the system is not the point — the discomfort of starting is the point.</p>
+        </div>
+        <div>
+          <span class="compulsion-col-label">The function it serves</span>
+          <p>Russ Harris's DOTS audit names the implicit rule that drives this: <em>"The next system will fix it."</em> Every system you built in the last two years reduced anxiety temporarily. None of them solved the underlying avoidance. The next one won't either. Building gives the sensation of progress without requiring output.</p>
+        </div>
+      </div>
+      <div class="compulsion-full">
+        <div class="rule-block" style="margin: 0 0 20px;">
+          <div class="rule-block-header">Hard rules <span class="tag tag-stop">Stop</span></div>
+          <div class="rule-block-body">
+            <ul class="rule-list hard">
+              <li><strong>30-day tool freeze, starting today.</strong> No new tools, plug-ins, templates, integrations, or system changes for 30 days. Capture everything in a plain text file or a single notebook.</li>
+              <li>Tool-building has one designated slot: Fridays, 4:00–5:00pm. Outside that slot, all tool urges go onto the Yak List on paper.</li>
+              <li>The workability test applies before every tool session: <em>"Can I name two specific future deliverables this directly serves?"</em> If no — the tool is not built.</li>
+              <li>No tool-building until at least two production blocks have been completed that day.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experiment">
+          <span class="experiment-label">DOTS audit — do this once, this week</span>
+          <p style="font-size:13px; margin-bottom:14px; color: var(--text-dim);">List every tool, system, or workflow you adopted in the past 24 months. Against each: (a) did it permanently eliminate the discomfort that drove you to build it? (b) What did it cost in time and foregone production? The pattern you will see is the data against the meta-belief "the next system will fix it."</p>
+          <div class="experiment-field"><span class="experiment-field-label">Tool / System:</span><div class="experiment-field-line"></div></div>
+          <div class="two-col">
+            <div class="experiment-field"><span class="experiment-field-label">Eliminated discomfort? (Y/N):</span><div class="experiment-field-line"></div></div>
+            <div class="experiment-field"><span class="experiment-field-label">Time cost vs. production gained:</span><div class="experiment-field-line"></div></div>
+          </div>
+          <div class="experiment-field"><span class="experiment-field-label">Pattern I see across all systems:</span><div class="experiment-field-line"></div></div>
+          <p class="footnote">Resource: Russ Harris, Nuts and Bolts of Creative Hopelessness (free PDF) · actmindfully.com.au | ACT Matrix template · Polk &amp; Schoendorff (2014)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DAILY LOG ═══ -->
+  <section class="section">
+    <span class="section-number">§10 — Daily Log</span>
+    <h2 class="section-title">The daily 5-minute log</h2>
+
+    <p>This is not optional. Without this log, the behavioral experiments produce no data, the plan has no learning mechanism, and you are just following rules with no feedback. The log is what turns suffering into information.</p>
+
+    <div class="log-grid">
+      <div class="log-cell">
+        <span class="log-cell-label">Today's intention (from morning)</span>
+        <div class="log-cell-line"></div>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">Actual deliverable produced</span>
+        <div class="log-cell-line"></div>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">Compulsions fired today (circle)<br><span style="font-size:11px; letter-spacing:0; text-transform:none;">1-checking · 2-optimizing · 3-researching · 4-productivity · 5-problem-solving · 6-availability · 7-AI · 8-tools</span></span>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">Compulsions resisted (circle same)</span>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">Highest urge peak today (0–10)</span>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">Did the catastrophe happen? (Y/N)</span>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">What the urge actually wanted me to avoid:</span>
+        <div class="log-cell-line"></div>
+        <div class="log-cell-line"></div>
+      </div>
+      <div class="log-cell">
+        <span class="log-cell-label">Tomorrow's one-sentence intention:</span>
+        <div class="log-cell-line"></div>
+        <div class="log-cell-line"></div>
+      </div>
+    </div>
+
+    <p class="footnote">Print multiple copies of this page, or replicate in a single paper notebook. Do not digitize the log into an app or tool — that is Compulsion 8.</p>
+  </section>
+
+  <!-- ═══ WEEKLY REVIEW ═══ -->
+  <section class="section">
+    <span class="section-number">§11 — Weekly Review</span>
+    <h2 class="section-title">The weekly review</h2>
+
+    <p>Fridays. 30 minutes. Paper only. Not in the tool-building window — before it. This is the only time you look at patterns across the week. It is also the only time you consult the Yak List and Research Parking Lot.</p>
+
+    <div class="rule-block">
+      <div class="rule-block-header">Weekly review questions</div>
+      <div class="rule-block-body" style="padding-top: 8px; padding-bottom: 8px;">
+
+        <div class="review-question">
+          <p class="review-q">Which compulsion fired most frequently this week?</p>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">What predictions did I make that were disconfirmed? (The catastrophes that did not happen.)</p>
+          <div class="review-line"></div>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">Which rules did I break? What was the urge that preceded each breach?</p>
+          <div class="review-line"></div>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">What is the Yak List telling me? (For each item: is this still relevant? Does it produce a named deliverable?)</p>
+          <div class="review-line"></div>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">What is the Research Parking Lot telling me? (How many items turned out not to matter?)</p>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">What am I still not doing? What is the specific thing I have been avoiding producing?</p>
+          <div class="review-line"></div>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">REQ self-rating this week (0–10 each): Psychological detachment / Relaxation / Mastery / Control</p>
+          <div class="review-line"></div>
+        </div>
+
+        <div class="review-question">
+          <p class="review-q">Next week's behavioral experiment (one compulsion, one prediction, one test):</p>
+          <div class="review-line"></div>
+          <div class="review-line"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EMERGENCY ═══ -->
+  <section class="section">
+    <span class="section-number">§12 — When Everything Collapses</span>
+    <h2 class="section-title">Emergency protocol</h2>
+
+    <p>There will be days when every compulsion fires at once and you follow none of the rules. This is not failure — it is an OCD-spectrum pattern under stress, which behaves exactly like this. The protocol for those days is not to restart the entire plan. It is to do one thing.</p>
+
+    <div class="emergency-box">
+      <span class="emergency-label">⚠ Emergency sequence — in order, stop when stable</span>
+      <ol class="emergency-steps">
+        <li><strong>Name what is happening.</strong> Out loud: <em>"Every compulsion is firing and I am in avoidance mode."</em> This activates prefrontal labeling and reduces amygdala reactivity. (Lieberman et al., 2007)</li>
+        <li><strong>Do not try to fix everything.</strong> Pick the one compulsion with the highest current urge. Apply only that section's protocol. One urge, one intervention.</li>
+        <li><strong>Set a 5-minute timer and produce one sentence of the primary deliverable.</strong> One sentence. In any condition. This is the behavioral experiment. The specific sentence does not matter.</li>
+        <li><strong>Log what happened.</strong> What fired. What you resisted. What you did not. One sentence each. This converts the collapse into data.</li>
+        <li><strong>Apply the self-compassionate close.</strong> Not to excuse the breach — to prevent the shame spiral that drives the next avoidance cycle. <em>"That was a hard day. The plan continues tomorrow."</em></li>
+        <li><strong>Do not rebuild, redesign, or restructure the plan.</strong> The urge to redesign the system after a bad day is Compulsion 8 in disguise. The plan stands as written.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ RESOURCES ═══ -->
+  <section class="section">
+    <span class="section-number">§13 — Clinical Resources</span>
+    <h2 class="section-title">Where to go for each pattern</h2>
+
+    <div class="rule-block">
+      <div class="rule-block-header">Free, clinically validated resources — start with these</div>
+      <div class="rule-block-body">
+        <ul class="rule-list">
+          <li><strong>CCI full workbook hub</strong> (Perfectionism, Procrastination, Worry, Health Anxiety) — <span class="mono">cci.health.wa.gov.au/Resources/Looking-After-Yourself</span></li>
+          <li><strong>CCI Reducing Checking (compulsions 1 &amp; 7)</strong> — Helping Health Anxiety Module 6</li>
+          <li><strong>CCI Perfectionism in Perspective (compulsions 2 &amp; 8)</strong> — full 9-module workbook, start Module 5</li>
+          <li><strong>CCI What? Me Worry (compulsion 3)</strong> — Modules 7 and 9</li>
+          <li><strong>CCI Put Off Procrastinating (compulsion 4)</strong> — Modules 5 and 6</li>
+          <li><strong>CCI Working with Worry and Rumination (compulsion 5)</strong> — Active Coping worksheet</li>
+          <li><strong>Russ Harris ACT worksheets, free (compulsions 7 &amp; 8)</strong> — <span class="mono">actmindfully.com.au</span></li>
+          <li><strong>IOCDF reassurance-seeking handout (compulsions 1 &amp; 7)</strong> — <span class="mono">iocdf.org/wp-content/uploads/2016/04/18-Information-seekers-vs-reassurance-seekers.pdf</span></li>
+          <li><strong>MCT Institute self-help protocols (compulsions 3 &amp; 5)</strong> — <span class="mono">mcti.no</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block" style="margin-top: 16px;">
+      <div class="rule-block-header">Books with strongest evidence base for self-directed use</div>
+      <div class="rule-block-body">
+        <ul class="rule-list">
+          <li><strong>Shafran, Egan &amp; Wade</strong> — Overcoming Perfectionism (2nd ed., 2018). Primary book for compulsions 2 and 8.</li>
+          <li><strong>Robichaud &amp; Dugas</strong> — The Generalized Anxiety Disorder Workbook (2015). Primary book for compulsion 3.</li>
+          <li><strong>Seif &amp; Winston</strong> — Needing to Know for Sure (2021). Primary book for compulsions 1 and 7.</li>
+          <li><strong>Russ Harris</strong> — The Happiness Trap (2007, updated 2022). ACT primer for compulsions 7 and 8.</li>
+          <li><strong>Watkins</strong> — Rumination-Focused Cognitive-Behavioral Therapy for Depression (2016, Guilford). Primary book for compulsion 5 — more clinical, worth it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contract" style="margin-top: 32px;">
+      <p><strong>One honest caveat.</strong> This plan is evidence-based and self-directed. Self-directed ERP is significantly harder than therapist-administered ERP. If these compulsions are materially impairing your functioning — output, relationships, sleep, health — a therapist trained in ERP and OCD-spectrum work would accelerate this considerably. The plan above is not a replacement for that; it is the best available without it.</p>
+      <p>The ADHD-adjacent layer is also worth separate attention. If there is genuine ADHD underneath this pattern, that dysregulation can undermine CBT gains. Not make them impossible — but harder to sustain without addressing that layer. This is not a reason to delay starting the plan. It is a reason to be honest when the gains plateau.</p>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
