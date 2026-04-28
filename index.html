@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Pages Index</title>
+  <style>
+    :root {
+      --bg: #f7f4ed;
+      --panel: #fffdf8;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #9a3412;
+      --accent-soft: #fed7aa;
+      --border: #e5ded3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, #fff7ed 0%, transparent 35%),
+        linear-gradient(180deg, #f7f4ed 0%, #efe7da 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
+    }
+
+    main {
+      width: min(900px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 12px 40px rgba(31, 41, 55, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    a {
+      display: block;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--text);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--accent-soft);
+      box-shadow: 0 10px 24px rgba(154, 52, 18, 0.12);
+      outline: none;
+    }
+
+    .title {
+      display: block;
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .file {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Project Pages</h1>
+    <p>Select any page below to open it after uploading this folder to GitHub or GitHub Pages.</p>
+    <ul>
+      <li>
+        <a href="AI,%20Tool-Building,%20Optimization%20&amp;%20Productivity%20Loops.html">
+          <span class="title">AI, Tool-Building, Optimization &amp; Productivity Loops</span>
+          <span class="file">AI, Tool-Building, Optimization &amp; Productivity Loops.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="ai_tool_loop_cbt_practical_guide.html">
+          <span class="title">AI Tool Loop CBT Practical Guide</span>
+          <span class="file">ai_tool_loop_cbt_practical_guide.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="ai_tool_loop_cbt_practice.html">
+          <span class="title">AI Tool Loop CBT Practice</span>
+          <span class="file">ai_tool_loop_cbt_practice.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="ai_tool_loop_cbt_practice_guide.html">
+          <span class="title">AI Tool Loop CBT Practice Guide</span>
+          <span class="file">ai_tool_loop_cbt_practice_guide.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="compulsive%20optimizing.html">
+          <span class="title">Compulsive Optimizing</span>
+          <span class="file">compulsive optimizing.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="compulsive%20productivity%20and%20compulsive%20checking.html">
+          <span class="title">Compulsive Productivity and Compulsive Checking</span>
+          <span class="file">compulsive productivity and compulsive checking.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="compulsive_optimizing_cbt_practice.html">
+          <span class="title">Compulsive Optimizing CBT Practice</span>
+          <span class="file">compulsive_optimizing_cbt_practice.html</span>
+        </a>
+      </li>
+      <li>
+        <a href="compulsive_productivity_cbt_practical_guide.html">
+          <span class="title">Compulsive Productivity CBT Practical Guide</span>
+          <span class="file">compulsive_productivity_cbt_practical_guide.html</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>
