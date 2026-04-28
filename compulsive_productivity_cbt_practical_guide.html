@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compulsive Productivity — Practical CBT Guide</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fffdf8;
+      --ink: #1f1f1f;
+      --muted: #666056;
+      --line: #d9d1c3;
+      --accent: #8f3d2e;
+      --accent-soft: #f1ddd7;
+      --blue: #214f74;
+      --blue-soft: #dce9f2;
+      --green: #2f6245;
+      --green-soft: #dcebe2;
+      --yellow: #8a6500;
+      --yellow-soft: #f4e8bd;
+      --red: #92352d;
+      --red-soft: #efd8d5;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.62;
+    }
+
+    header {
+      background: #171717;
+      color: #f7f4ee;
+      padding: 56px 24px 44px;
+      border-bottom: 6px solid var(--accent);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .kicker {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: #d8a395;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 1.02;
+      font-weight: 700;
+    }
+
+    header p {
+      max-width: 780px;
+      color: #d8d0c4;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      margin: 24px 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.12;
+      margin: 0 0 18px;
+    }
+
+    h3 {
+      margin: 28px 0 10px;
+      font-size: 21px;
+      line-height: 1.25;
+      color: #161616;
+    }
+
+    h4 {
+      margin: 20px 0 8px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-family: var(--mono);
+      color: var(--muted);
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul, ol { margin-top: 8px; padding-left: 24px; }
+    li { margin: 6px 0; }
+
+    code, pre {
+      font-family: var(--mono);
+    }
+
+    pre {
+      background: #1f1f1f;
+      color: #f4efe6;
+      padding: 18px;
+      border-radius: 12px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      background: #faf6ee;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 650;
+    }
+
+    .box {
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+    }
+
+    .danger { background: var(--red-soft); border-color: #d4aaa5; }
+    .good { background: var(--green-soft); border-color: #b6d0c0; }
+    .blue { background: var(--blue-soft); border-color: #b8cfdf; }
+    .yellow { background: var(--yellow-soft); border-color: #d9c57f; }
+    .accent { background: var(--accent-soft); border-color: #d3a89e; }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eee6d9;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .protocol {
+      counter-reset: step;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .step:first-child { border-top: none; }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .step strong { display: block; margin-bottom: 4px; }
+
+    .worksheet {
+      border: 2px dashed #b9ae9d;
+      background: #fffaf0;
+      padding: 18px;
+      border-radius: 14px;
+      margin: 18px 0;
+    }
+
+    .line {
+      border-bottom: 1px solid #9e9383;
+      height: 28px;
+      margin: 6px 0 12px;
+    }
+
+    .tiny {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .example-card {
+      background: #fffaf2;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue);
+      padding: 16px;
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .bad-good {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .bad-good .bad { border-left: 5px solid var(--red); }
+    .bad-good .good { border-left: 5px solid var(--green); }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    @media print {
+      body { background: white; }
+      header { color: #111; background: white; border-bottom: 2px solid #111; }
+      header p, .kicker { color: #333; }
+      section { box-shadow: none; break-inside: avoid; }
+      a { color: #111; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="kicker">CBT Practice Guide · Compulsive Productivity</div>
+      <h1>Compulsive Productivity</h1>
+      <p>A practical CBT-style field guide for when planning, organizing, tracking, cleaning, preparing, and system-maintenance replace the real task. This guide is deliberately concrete: protocols, examples, scripts, rules, exposure tasks, and logs.</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="orientation">
+      <h2>1. What this pattern is</h2>
+      <p><strong>Compulsive productivity</strong> is not laziness. It is doing useful-looking, lower-threat tasks instead of the task that actually matters. It often feels disciplined, responsible, and adult. That is why it is hard to detect.</p>
+
+      <div class="box accent">
+        <span class="label">Working definition</span>
+        <p><strong>Compulsive productivity = productive-looking avoidance.</strong> It is the repeated shift from a high-value, emotionally difficult task into lower-risk activities that create relief, control, cleanliness, or a feeling of momentum.</p>
+      </div>
+
+      <p>The behavior may include:</p>
+      <ul>
+        <li>planning instead of starting</li>
+        <li>rewriting task lists instead of doing the task</li>
+        <li>organizing files instead of producing output</li>
+        <li>cleaning the workspace before beginning</li>
+        <li>checking calendars, dashboards, trackers, inboxes, or notes</li>
+        <li>watching productivity content</li>
+        <li>building a better workflow</li>
+        <li>doing easy admin before the difficult project</li>
+        <li>doing many small tasks to avoid one important one</li>
+      </ul>
+
+      <div class="box yellow">
+        <span class="label">The key CBT point</span>
+        <p>The problem is not the productivity behavior itself. Planning, tracking, organizing, cleaning, and admin can be useful. The problem is the <strong>function</strong>: when these behaviors reduce discomfort and delay the real task, they strengthen avoidance.</p>
+      </div>
+
+      <nav class="toc">
+        <a href="#mechanism">Mechanism</a>
+        <a href="#signatures">Trap signatures</a>
+        <a href="#protocol">Core protocol</a>
+        <a href="#examples">Practical examples</a>
+        <a href="#exposures">Behavioral experiments</a>
+        <a href="#rules">Stopping rules</a>
+        <a href="#urge">Urge handling</a>
+        <a href="#worksheets">Worksheets</a>
+      </nav>
+    </section>
+
+    <section id="mechanism">
+      <h2>2. The CBT mechanism</h2>
+      <p>Compulsive productivity usually follows this loop:</p>
+
+      <pre>Important task appears
+↓
+Discomfort: dread, uncertainty, shame, boredom, pressure, fear of judgment
+↓
+Shift into a lower-risk productive task
+↓
+Short-term relief: “At least I’m doing something”
+↓
+The real task remains untouched
+↓
+Pressure increases
+↓
+Next time, the urge to prepare/organize/plan becomes stronger</pre>
+
+      <div class="box blue">
+        <span class="label">Why it is reinforcing</span>
+        <p>The substitute task gives immediate reward: clarity, completion, cleanliness, control, novelty, and relief. The target task gives delayed reward and immediate discomfort. Your nervous system learns to choose the substitute.</p>
+      </div>
+
+      <h3>The hidden belief</h3>
+      <p>Compulsive productivity is often powered by one of these rules:</p>
+      <ul>
+        <li>“I need a clear plan before I start.”</li>
+        <li>“I need to feel ready before I begin.”</li>
+        <li>“I should clear small tasks first so I can focus.”</li>
+        <li>“If I organize the system, the work will become easier.”</li>
+        <li>“If I start now, I’ll do it badly.”</li>
+        <li>“I cannot tolerate the messiness of beginning.”</li>
+      </ul>
+
+      <div class="box danger">
+        <span class="label">Clinical-style reframe</span>
+        <p>The goal is not to become less organized. The goal is to stop using organization as the price of entry to action.</p>
+      </div>
+    </section>
+
+    <section id="signatures">
+      <h2>3. Trap signatures: how to recognize it fast</h2>
+      <p>Do not ask, “Is this useful?” Many avoidance behaviors are useful. Ask, “Is this the priority task, or a lower-threat substitute?”</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Trap signature</th>
+            <th>What it sounds like</th>
+            <th>What is likely happening</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Task-list grooming</td>
+            <td>“Let me clarify the tasks first.”</td>
+            <td>Planning is replacing starting.</td>
+          </tr>
+          <tr>
+            <td>Calendar reshuffling</td>
+            <td>“I need a better schedule.”</td>
+            <td>Control-seeking is replacing exposure to the task.</td>
+          </tr>
+          <tr>
+            <td>Inbox clearing</td>
+            <td>“I’ll just clear email so I can focus.”</td>
+            <td>Small completions are replacing hard progress.</td>
+          </tr>
+          <tr>
+            <td>Workspace cleaning</td>
+            <td>“I can’t work in this mess.”</td>
+            <td>Physical order is being used to avoid emotional disorder.</td>
+          </tr>
+          <tr>
+            <td>Researching methods/tools</td>
+            <td>“There must be a better system for this.”</td>
+            <td>System improvement is replacing output.</td>
+          </tr>
+          <tr>
+            <td>Preparing materials</td>
+            <td>“I need all the documents open first.”</td>
+            <td>Preparation is expanding beyond what the first action needs.</td>
+          </tr>
+          <tr>
+            <td>Easy-task stacking</td>
+            <td>“I’ll do these quick things first.”</td>
+            <td>Completion dopamine is replacing meaningful work.</td>
+          </tr>
+          <tr>
+            <td>Meta-work</td>
+            <td>“I need to rethink how I work.”</td>
+            <td>The work system has become the work.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box good">
+        <span class="label">Fast detection rule</span>
+        <p>If the behavior makes you feel more prepared but does not produce the target output, treat it as suspect during work-starting time.</p>
+      </div>
+    </section>
+
+    <section id="protocol">
+      <h2>4. Core practical protocol: 7 + 25</h2>
+      <p>This is the basic practice. It is not a mantra. It is a behavioral sequence.</p>
+
+      <div class="box accent">
+        <span class="label">Protocol summary</span>
+        <p><strong>7 minutes planning. 25 minutes producing. No organizing, tracking, cleaning, researching, or system-improving during the production block.</strong></p>
+      </div>
+
+      <div class="protocol">
+        <div class="step">
+          <div>
+            <strong>Pick one target output.</strong>
+            <p>It must be visible and concrete: paragraph, email draft, outline subsection, invoice sent, phone call made, form submitted, slide drafted, room section cleaned, application paragraph written.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Set a 7-minute planning timer.</strong>
+            <p>Planning ends when the timer ends. You are not trying to feel ready. You are only identifying the first output.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Write the first action as a physical behavior.</strong>
+            <p>Bad: “Work on project.” Good: “Open the document and write the first rough paragraph under heading X.”</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Set a 25-minute production timer.</strong>
+            <p>During this timer, only target-output behavior is allowed. Not planning. Not improving. Not checking. Not cleaning. Not optimizing.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>When avoidance appears, write it on a parking line.</strong>
+            <p>Example: “Organize references later.” Then immediately return to the target output.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>At the end, record output, not feelings.</strong>
+            <p>The question is not “Did I feel productive?” The question is “What exists now that did not exist before?”</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>What counts as output?</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Output</th>
+            <th>Not output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Thesis / academic</td>
+            <td>200 rough words, one claim paragraph, one coded example written up</td>
+            <td>reorganizing notes, refining outline, checking literature list</td>
+          </tr>
+          <tr>
+            <td>Work project</td>
+            <td>drafted section, sent decision email, completed analysis table</td>
+            <td>cleaning task board, reading Slack, updating status labels</td>
+          </tr>
+          <tr>
+            <td>Admin</td>
+            <td>form submitted, bill paid, appointment booked</td>
+            <td>making an admin list, sorting documents, researching the best app</td>
+          </tr>
+          <tr>
+            <td>Creative work</td>
+            <td>rough sketch, 300 words, recorded demo, edited one scene</td>
+            <td>organizing references, watching tutorials, mood-board expansion</td>
+          </tr>
+          <tr>
+            <td>Personal life</td>
+            <td>call made, message sent, drawer cleaned, meal cooked</td>
+            <td>planning life system, researching routines, reorganizing planner</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="examples">
+      <h2>5. Detailed practical examples</h2>
+
+      <div class="example-card">
+        <h3>Example A: Thesis writing</h3>
+        <p><strong>Target task:</strong> Write part of the findings chapter.</p>
+        <p><strong>Compulsive productivity trap:</strong> You open your notes, decide the theme structure is messy, start cleaning headings, move excerpts, rename tags, and update your plan. Ninety minutes pass. No prose.</p>
+
+        <h4>Intervention</h4>
+        <pre>7-minute planning:
+Target output: 250 rough words explaining Theme 2.
+First action: write “This theme shows...” and continue.
+
+25-minute production:
+Allowed: chapter document + one note page.
+Forbidden: note reorganization, theme renaming, source searching, AI, task-list editing.
+
+Parking line:
+[Later: maybe split Theme 2 into two subsections]
+
+End metric:
+Words produced: ___
+Planning minutes: ___
+Avoidance urges parked: ___</pre>
+
+        <p><strong>CBT experiment:</strong> Test the prediction: “If I do not organize the notes first, I cannot write anything coherent.”</p>
+      </div>
+
+      <div class="example-card">
+        <h3>Example B: Work report</h3>
+        <p><strong>Target task:</strong> Draft a client update or internal report.</p>
+        <p><strong>Trap:</strong> You start by checking Slack, then update the project board, then clean files, then reread old messages to “make sure you understand the context.”</p>
+
+        <h4>Intervention</h4>
+        <pre>7-minute planning:
+Target output: ugly first draft of the update.
+Required sections: context, current status, blocker, next step.
+
+25-minute production:
+Write the draft in bullet form.
+Use placeholders:
+[CHECK DATE]
+[VERIFY NUMBER]
+[ADD LINK]
+
+Forbidden:
+Slack
+email
+project board
+file cleanup
+searching old threads
+
+After block:
+15 minutes verification only for bracketed items.</pre>
+
+        <p><strong>Why this works:</strong> It separates production from verification. Verification is allowed, but only after a draft exists.</p>
+      </div>
+
+      <div class="example-card">
+        <h3>Example C: Life admin</h3>
+        <p><strong>Target task:</strong> Resolve a practical obligation: insurance form, tax document, appointment, bank issue.</p>
+        <p><strong>Trap:</strong> You make a master admin list, sort emails, create folders, look for documents, research the best way to manage admin, then stop before submitting anything.</p>
+
+        <h4>Intervention</h4>
+        <pre>7-minute planning:
+Target output: submit one form OR send one email OR book one appointment.
+
+25-minute production:
+Do only that one administrative action.
+If missing info appears, write the exact missing item:
+[MISSING: policy number]
+
+Do not:
+create folders
+clean inbox
+make a master list
+research productivity systems
+sort all documents
+
+If blocked:
+send the “incomplete but advancing” email:
+“I’m trying to complete X. I’m missing Y. Can you tell me where to find it?”</pre>
+
+        <p><strong>CBT experiment:</strong> Test the prediction: “If I do not organize everything first, I will make a mistake.”</p>
+      </div>
+
+      <div class="example-card">
+        <h3>Example D: Creative project</h3>
+        <p><strong>Target task:</strong> Write, design, draw, compose, or edit.</p>
+        <p><strong>Trap:</strong> You collect references, update the mood board, research techniques, organize inspiration, compare tools, and never make the rough object.</p>
+
+        <h4>Intervention</h4>
+        <pre>7-minute planning:
+Target output: one rough sketch / 300 words / one draft scene / one demo loop.
+
+25-minute production:
+Make the rough object.
+No references unless already open.
+No tutorial videos.
+No tool switching.
+No aesthetic cleanup.
+
+Use placeholders:
+[better image later]
+[fix rhythm later]
+[research technique later]
+
+End metric:
+Does a rough object exist? Y/N</pre>
+
+        <p><strong>Core exposure:</strong> Let an ugly version exist.</p>
+      </div>
+
+      <div class="example-card">
+        <h3>Example E: Household task</h3>
+        <p><strong>Target task:</strong> Clean the kitchen, handle laundry, fix one part of the apartment.</p>
+        <p><strong>Trap:</strong> You create a cleaning plan, research storage systems, reorganize one drawer, decide the whole apartment system needs redesign, then avoid the unpleasant task.</p>
+
+        <h4>Intervention</h4>
+        <pre>7-minute planning:
+Target output: sink empty OR laundry in machine OR trash out.
+
+25-minute production:
+Do the physical task.
+No storage redesign.
+No online shopping.
+No “while I’m at it” expansion.
+No whole-house reset.
+
+Rule:
+Only the chosen zone exists for 25 minutes.</pre>
+
+        <p><strong>CBT experiment:</strong> Test whether a limited, imperfect task creates more progress than a perfect system plan.</p>
+      </div>
+
+      <div class="example-card">
+        <h3>Example F: Difficult conversation</h3>
+        <p><strong>Target task:</strong> Send a message, ask for help, set a boundary, schedule a call.</p>
+        <p><strong>Trap:</strong> You draft and redraft, plan the conversation, read about communication styles, organize your thoughts, wait until you feel clear, then avoid sending.</p>
+
+        <h4>Intervention</h4>
+        <pre>7-minute planning:
+Target output: send one clear message.
+
+25-minute production:
+Write and send a simple version.
+
+Template:
+“Hi __, I wanted to ask about __.
+Would you be available to discuss it this week?”
+
+Forbidden:
+rewriting more than twice
+researching communication tips
+asking multiple people to review
+creating a full conversation strategy
+
+After sending:
+No rereading sent message.</pre>
+
+        <p><strong>Exposure:</strong> Send a good-enough message without achieving perfect certainty about tone.</p>
+      </div>
+    </section>
+
+    <section id="exposures">
+      <h2>6. Behavioral experiments for compulsive productivity</h2>
+      <p>CBT behavioral experiments are stronger than advice because they test predictions directly. The practice is not “think differently.” It is “act differently, observe what happens, and update based on data.”</p>
+
+      <div class="grid">
+        <div class="box blue">
+          <span class="label">Experiment 1</span>
+          <h3>Minimal planning test</h3>
+          <p><strong>Prediction:</strong> “If I plan for only 7 minutes, I will waste the session.”</p>
+          <p><strong>Test:</strong> 7 minutes planning, 25 minutes producing.</p>
+          <p><strong>Measure:</strong> What output exists?</p>
+        </div>
+
+        <div class="box blue">
+          <span class="label">Experiment 2</span>
+          <h3>Messy start test</h3>
+          <p><strong>Prediction:</strong> “If I start while unprepared, the work will be incoherent.”</p>
+          <p><strong>Test:</strong> Start with the current messy materials.</p>
+          <p><strong>Measure:</strong> Was the result unusable or just rough?</p>
+        </div>
+
+        <div class="box blue">
+          <span class="label">Experiment 3</span>
+          <h3>No easy tasks first</h3>
+          <p><strong>Prediction:</strong> “I need to clear small tasks before I can focus.”</p>
+          <p><strong>Test:</strong> Do the hard task first for 25 minutes.</p>
+          <p><strong>Measure:</strong> Did focus collapse, or did momentum improve?</p>
+        </div>
+
+        <div class="box blue">
+          <span class="label">Experiment 4</span>
+          <h3>Imperfect output test</h3>
+          <p><strong>Prediction:</strong> “If I produce something rough, I’ll feel worse or create more work.”</p>
+          <p><strong>Test:</strong> Produce an intentionally rough first version.</p>
+          <p><strong>Measure:</strong> Did the rough object make revision easier?</p>
+        </div>
+      </div>
+
+      <div class="worksheet">
+        <span class="label">Behavioral experiment worksheet</span>
+        <p>Target output:</p><div class="line"></div>
+        <p>Productivity trap I will block:</p><div class="line"></div>
+        <p>Prediction if I block it:</p><div class="line"></div><div class="line"></div>
+        <p>Experiment length:</p><div class="line"></div>
+        <p>Actual output produced:</p><div class="line"></div><div class="line"></div>
+        <p>What actually happened?</p><div class="line"></div><div class="line"></div>
+        <p>What did this teach me?</p><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2>7. Stopping rules and permissions</h2>
+      <p>Compulsive productivity thrives when boundaries are vague. You need rules that tell you when planning, organizing, tracking, and preparing must stop.</p>
+
+      <h3>Core stopping rules</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Behavior</th>
+            <th>Stopping rule</th>
+            <th>Allowed alternative</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Planning</td>
+            <td>Stops after 7 minutes.</td>
+            <td>Write one target sentence and begin.</td>
+          </tr>
+          <tr>
+            <td>Task-list editing</td>
+            <td>Not allowed before the first production block.</td>
+            <td>Write the one task on paper.</td>
+          </tr>
+          <tr>
+            <td>Inbox clearing</td>
+            <td>Only after one output block.</td>
+            <td>Park “check email” on a list.</td>
+          </tr>
+          <tr>
+            <td>Organizing files</td>
+            <td>Only if a file is required for the current output.</td>
+            <td>Use current materials; mark missing item.</td>
+          </tr>
+          <tr>
+            <td>Cleaning workspace</td>
+            <td>Maximum 3 minutes: clear only what blocks the task physically.</td>
+            <td>Move clutter aside, not solve the room.</td>
+          </tr>
+          <tr>
+            <td>Productivity content</td>
+            <td>Never before production.</td>
+            <td>Use a known protocol, not new advice.</td>
+          </tr>
+          <tr>
+            <td>System improvement</td>
+            <td>Only in a scheduled admin/system window.</td>
+            <td>Capture idea on “not now” list.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Functional permissions</h3>
+      <p>These are not motivational slogans. They are permission rules that authorize action before readiness.</p>
+
+      <div class="bad-good">
+        <div class="box bad">
+          <span class="label">Old rule</span>
+          <p>“I need to be organized before I start.”</p>
+        </div>
+        <div class="box good">
+          <span class="label">New permission</span>
+          <p>“I can start with one visible next action and organize later if needed.”</p>
+        </div>
+      </div>
+
+      <div class="bad-good">
+        <div class="box bad">
+          <span class="label">Old rule</span>
+          <p>“I should clear small tasks first.”</p>
+        </div>
+        <div class="box good">
+          <span class="label">New permission</span>
+          <p>“Small tasks can wait. The difficult task gets the first 25 minutes.”</p>
+        </div>
+      </div>
+
+      <div class="bad-good">
+        <div class="box bad">
+          <span class="label">Old rule</span>
+          <p>“If I start without a full plan, I’ll waste time.”</p>
+        </div>
+        <div class="box good">
+          <span class="label">New permission</span>
+          <p>“A rough start generates information that planning cannot.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="urge">
+      <h2>8. What to do when the urge hits</h2>
+      <p>The urge to organize, plan, clean, check, or prepare can feel physical: pressure in the chest, heat, restlessness, dread, agitation, or a sense that starting now is wrong. The practice is not to erase this sensation. The practice is to act while it is present.</p>
+
+      <div class="box danger">
+        <span class="label">Important</span>
+        <p>If the physical-emotional distress is intense, the task should be made smaller, not replaced by preparation. Reduce the exposure size, but keep the direction: one concrete output.</p>
+      </div>
+
+      <h3>The 10-minute urge protocol</h3>
+      <div class="protocol">
+        <div class="step">
+          <div>
+            <strong>Freeze the substitute behavior.</strong>
+            <p>Hands off the task list, email, files, planner, or cleaning object. Do not continue the productivity loop while analyzing it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Name the exact substitute.</strong>
+            <p>“I am trying to organize instead of starting.” “I am trying to clear email instead of drafting.” “I am trying to plan because the task feels aversive.”</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Set a 10-minute delay.</strong>
+            <p>You are not banning the behavior forever. You are delaying it long enough to weaken the automatic link between discomfort and substitution.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Do the smallest target action.</strong>
+            <p>One sentence. One form field. One email subject line. One bullet. One paragraph stub. One phone number dialed. One object moved.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <strong>Re-rate the urge.</strong>
+            <p>At minute 10, rate the urge again. Then choose another 10 minutes or a contained support behavior.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Substitute-to-target conversions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Urge</th>
+            <th>Do not do this</th>
+            <th>Do this instead for 10 minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rewrite task list</td>
+            <td>Open task manager</td>
+            <td>Write the first line of the target output</td>
+          </tr>
+          <tr>
+            <td>Clean workspace</td>
+            <td>Start organizing desk</td>
+            <td>Move only the object blocking the keyboard, then begin</td>
+          </tr>
+          <tr>
+            <td>Clear inbox</td>
+            <td>Open email</td>
+            <td>Draft the one email/project/message you are avoiding</td>
+          </tr>
+          <tr>
+            <td>Plan the project</td>
+            <td>Create a new plan</td>
+            <td>Produce the smallest deliverable from the current plan</td>
+          </tr>
+          <tr>
+            <td>Find better tool</td>
+            <td>Search apps/templates</td>
+            <td>Use current tool for one rough output</td>
+          </tr>
+          <tr>
+            <td>Organize notes</td>
+            <td>Re-tag, sort, rename</td>
+            <td>Write one paragraph using the first relevant note you find</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="worksheets">
+      <h2>9. Practical worksheets</h2>
+
+      <div class="worksheet">
+        <span class="label">Daily 7 + 25 worksheet</span>
+        <p>Date:</p><div class="line"></div>
+        <p>Target output:</p><div class="line"></div>
+        <p>First physical action:</p><div class="line"></div>
+        <p>Planning started at:</p><div class="line"></div>
+        <p>Planning stopped at:</p><div class="line"></div>
+        <p>Production block started at:</p><div class="line"></div>
+        <p>Productivity urges that appeared:</p><div class="line"></div><div class="line"></div>
+        <p>What I produced:</p><div class="line"></div><div class="line"></div>
+      </div>
+
+      <div class="worksheet">
+        <span class="label">TRAP → TRAC worksheet</span>
+        <p><strong>TRAP: avoidance cycle</strong></p>
+        <p>Trigger: What task or feeling started it?</p><div class="line"></div>
+        <p>Response: What productive substitute did I move toward?</p><div class="line"></div>
+        <p>Avoidance pattern: What real task was avoided?</p><div class="line"></div>
+        <p><strong>TRAC: alternative coping</strong></p>
+        <p>Replacement action: What 10-minute target action will I do?</p><div class="line"></div>
+        <p>Outcome: What happened after I did it?</p><div class="line"></div>
+      </div>
+
+      <div class="worksheet">
+        <span class="label">Weekly review</span>
+        <p>Most common productivity substitute this week:</p><div class="line"></div>
+        <p>Most avoided target task:</p><div class="line"></div>
+        <p>Best 25-minute production block:</p><div class="line"></div>
+        <p>Worst trap:</p><div class="line"></div>
+        <p>Rule to keep next week:</p><div class="line"></div>
+        <p>Rule to simplify next week:</p><div class="line"></div>
+      </div>
+    </section>
+
+    <section id="implementation">
+      <h2>10. First 7 days of practice</h2>
+      <p>Do not overhaul your life. Use one daily exposure. The aim is to practice acting before feeling ready.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Practice</th>
+            <th>Blocked substitute</th>
+            <th>Success condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>7 + 25 on one high-value task</td>
+            <td>planning expansion</td>
+            <td>one visible output exists</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>hard task before email/admin</td>
+            <td>small-task stacking</td>
+            <td>25 minutes before inbox</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>messy start</td>
+            <td>workspace/file cleanup</td>
+            <td>started without cleaning system</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>output before tool/system change</td>
+            <td>workflow improvement</td>
+            <td>used current tool for one output</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>one task only</td>
+            <td>task switching</td>
+            <td>stayed with one target for 25 minutes</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>imperfect deliverable</td>
+            <td>polishing before completion</td>
+            <td>rough version finished</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>review, not redesign</td>
+            <td>meta-system building</td>
+            <td>one rule selected for next week</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box good">
+        <span class="label">Success metric</span>
+        <p>Success is not feeling calm, inspired, organized, or efficient. Success is producing a visible output before performing the productivity substitute.</p>
+      </div>
+    </section>
+
+    <section id="summary">
+      <h2>11. Compact field version</h2>
+      <p>Use this when you are already in the loop.</p>
+
+      <pre>1. Stop the substitute behavior.
+2. Name it: “This is productive avoidance.”
+3. Choose one visible output.
+4. Plan for 7 minutes maximum.
+5. Produce for 25 minutes.
+6. Park every organizing/planning urge.
+7. Log what exists now.
+8. Only then decide whether support behavior is truly needed.</pre>
+
+      <div class="box accent">
+        <span class="label">Central practice</span>
+        <p>Do the important task before you feel organized enough to do it.</p>
+      </div>
+    </section>
+
+    <p class="footer-note">This guide is educational and self-practice oriented. It is not a diagnosis or a substitute for therapy. Use it with a therapist if the pattern is causing substantial impairment.</p>
+  </main>
+</body>
+</html>

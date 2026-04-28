@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI / Tool Loop Dependence — Practical CBT Guide</title>
+<style>
+  :root {
+    --bg: #f6f2eb;
+    --paper: #fffdf8;
+    --ink: #22201c;
+    --muted: #675f54;
+    --line: #ddd2c1;
+    --accent: #7c3f2c;
+    --accent2: #2c5a64;
+    --soft: #efe4d2;
+    --warning: #fff2c2;
+    --danger: #f5d3c8;
+    --good: #dcebd8;
+    --code: #292521;
+    --codeText: #f5ead9;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.62;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 24px 90px;
+  }
+
+  header {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 42px 44px;
+    box-shadow: 0 18px 45px rgba(45, 35, 20, 0.08);
+    margin-bottom: 28px;
+  }
+
+  .label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    margin: 14px 0 16px;
+    letter-spacing: -0.035em;
+  }
+
+  .subtitle {
+    max-width: 760px;
+    font-size: 20px;
+    color: var(--muted);
+  }
+
+  .notice {
+    background: var(--soft);
+    border-left: 5px solid var(--accent);
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin-top: 22px;
+  }
+
+  main section {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 34px 38px;
+    margin: 26px 0;
+    box-shadow: 0 10px 28px rgba(45, 35, 20, 0.045);
+  }
+
+  h2 {
+    font-size: 31px;
+    line-height: 1.16;
+    margin: 0 0 18px;
+    letter-spacing: -0.02em;
+    color: #2b231d;
+  }
+
+  h3 {
+    font-size: 23px;
+    margin: 30px 0 12px;
+    color: #342a22;
+  }
+
+  h4 {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin: 24px 0 8px;
+    color: var(--accent2);
+  }
+
+  p { margin: 0 0 14px; }
+
+  ul, ol { margin: 10px 0 20px 22px; padding: 0; }
+  li { margin: 7px 0; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .grid3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  @media (max-width: 780px) {
+    header, main section { padding: 26px 22px; }
+    .grid, .grid3 { grid-template-columns: 1fr; }
+    body { font-size: 16px; }
+  }
+
+  .card {
+    background: #fbf5ea;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 18px;
+  }
+
+  .card strong:first-child {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent);
+  }
+
+  .example {
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0;
+    background: #fffaf0;
+  }
+
+  .example .top {
+    background: #eadbc4;
+    padding: 10px 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #5c3a26;
+    font-weight: 700;
+  }
+
+  .example .body { padding: 18px 18px; }
+
+  .bad, .good, .warn {
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 12px 0;
+  }
+  .bad { background: var(--danger); }
+  .good { background: var(--good); }
+  .warn { background: var(--warning); }
+
+  .tag {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px 9px;
+    margin: 2px 3px 2px 0;
+    background: #fff9ed;
+    color: var(--muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0 22px;
+    font-size: 15px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 12px 13px;
+    vertical-align: top;
+  }
+  th {
+    background: #eadbc4;
+    text-align: left;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  pre {
+    background: var(--code);
+    color: var(--codeText);
+    border-radius: 14px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .checklist label {
+    display: block;
+    padding: 8px 0 8px 34px;
+    position: relative;
+    border-bottom: 1px solid #eadfce;
+  }
+  .checklist label:last-child { border-bottom: 0; }
+  .checklist input { position: absolute; left: 0; top: 13px; }
+
+  .rule {
+    background: #2c5a64;
+    color: #fffdf8;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 20px 0;
+  }
+  .rule strong { color: #fff; }
+
+  .mini {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .print-hint {
+    margin-top: 26px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer {
+    color: var(--muted);
+    padding: 20px 4px;
+    font-size: 14px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: none; padding: 0; }
+    header, main section { box-shadow: none; border-radius: 0; page-break-inside: avoid; }
+    a { color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="label">Practical CBT Guide · AI / Tool Loop Dependence</div>
+  <h1>Breaking the AI / Tool Reassurance Loop</h1>
+  <p class="subtitle">A practical guide for when AI, search, notes, productivity systems, coding tools, or decision tools become a way to seek certainty, avoid discomfort, or postpone action.</p>
+  <div class="notice">
+    <strong>Use with judgment.</strong> This is not a diagnosis or a replacement for therapy. It is a structured CBT/ERP/ACT-informed practice guide. If AI use relates to self-harm, medical risk, crisis decisions, legal decisions, or urgent safety concerns, do not use AI as the primary support; contact an appropriate professional or emergency service.
+  </div>
+</header>
+
+<main>
+<section>
+  <h2>1. The problem in one sentence</h2>
+  <p>AI/tool loop dependence is not simply “using AI too much.” It is using AI or tools to escape the discomfort of uncertainty, responsibility, imperfection, or decision-making.</p>
+
+  <div class="rule">
+    <strong>Core rule:</strong> AI and tools are allowed to support action. They are not allowed to replace commitment, judgment, or tolerating uncertainty.
+  </div>
+
+  <p>The loop usually looks like this:</p>
+  <pre>Trigger: doubt, anxiety, boredom, shame, uncertainty, pressure
+↓
+Urge: ask AI, compare tools, search more, generate options, revise again
+↓
+Short-term effect: relief, stimulation, control, “almost clarity”
+↓
+Long-term effect: less trust in your own judgment, more options, more checking, less action</pre>
+
+  <div class="grid">
+    <div class="card">
+      <strong>Functional tool use</strong>
+      <p>Has a defined task, limited input, a stopping point, and produces a decision, draft, action, or repair.</p>
+    </div>
+    <div class="card">
+      <strong>Compulsive tool use</strong>
+      <p>Repeats, rephrases, compares, seeks certainty, expands options, avoids action, and leaves you less confident than before.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>2. How to recognize the loop</h2>
+  <p>Do not rely on time spent. Rely on function. The same prompt can be useful or compulsive depending on why you are using it.</p>
+
+  <table>
+    <tr><th>Signal</th><th>Functional use</th><th>Loop use</th></tr>
+    <tr><td>Number of asks</td><td>One bounded ask, then action</td><td>Repeated asks, rephrasing, model comparison</td></tr>
+    <tr><td>Emotional driver</td><td>Need information to complete a task</td><td>Need relief from doubt, guilt, anxiety, uncertainty</td></tr>
+    <tr><td>Output</td><td>Draft, decision, implementation, message sent</td><td>More options, more notes, more doubt, more revisions</td></tr>
+    <tr><td>Stopping point</td><td>Defined before starting</td><td>Stops only when it “feels right”</td></tr>
+    <tr><td>After-effect</td><td>More ready to act</td><td>Less confident, more dependent, more stimulated</td></tr>
+  </table>
+
+  <h3>Red flags</h3>
+  <div class="checklist">
+    <label><input type="checkbox"> You ask the same question in slightly different words.</label>
+    <label><input type="checkbox"> You compare ChatGPT, Claude, Google, Reddit, notes, or another tool for reassurance.</label>
+    <label><input type="checkbox"> You ask for more versions even though you already have a workable one.</label>
+    <label><input type="checkbox"> You use AI before making your own attempt.</label>
+    <label><input type="checkbox"> You feel anxious or irritated when you cannot ask the tool.</label>
+    <label><input type="checkbox"> You leave the session with more options but less action.</label>
+    <label><input type="checkbox"> You are trying to feel certain, not trying to complete a task.</label>
+  </div>
+</section>
+
+<section>
+  <h2>3. The basic practice: output before input</h2>
+  <p>This is the central CBT practice. Before asking AI, searching, comparing tools, or opening a system, you must produce a small first version yourself.</p>
+
+  <pre>Step 1 — Produce first
+Write, decide, code, draft, list, send, choose, or act in a small way.
+
+Step 2 — Use tool second
+Ask one bounded question about the thing that now exists.
+
+Step 3 — Act third
+Apply one change, make one decision, or stop.</pre>
+
+  <div class="example">
+    <div class="top">Example · writing</div>
+    <div class="body">
+      <div class="bad"><strong>Loop version:</strong> “Give me 10 ways to frame this argument.” Then compare, revise, ask again, and avoid committing.</div>
+      <div class="good"><strong>Practice version:</strong> Write your own rough paragraph first. Then ask: “Identify the main claim and one unclear sentence. Do not rewrite it.” Apply one change. Stop.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Example · decision</div>
+    <div class="body">
+      <div class="bad"><strong>Loop version:</strong> “Which option is best?” then “Are you sure?” then “Compare again using different criteria.”</div>
+      <div class="good"><strong>Practice version:</strong> Choose a provisional option yourself. Ask AI only: “List one risk I may have missed.” Then decide without further prompting.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>4. The pre-tool card</h2>
+  <p>Use this before opening AI, search, a notes system, a coding assistant, a productivity app, or a comparison tool. It is deliberately short. If you cannot fill it out quickly, you are probably entering the loop.</p>
+
+  <pre>PRE-TOOL CARD
+
+1. Concrete task:
+What am I trying to finish?
+
+2. First attempt already made?
+Yes / No
+If no, make a 5-minute first attempt before using the tool.
+
+3. Exact tool question:
+Write one sentence only.
+
+4. Stopping rule:
+One answer / 10 minutes / one implementation / no re-asking.
+
+5. Forbidden behavior:
+What loop am I most likely to enter?
+Examples: re-prompting, comparing tools, asking for more options, rewriting endlessly.</pre>
+
+  <h3>Filled example: work email</h3>
+  <pre>Concrete task:
+Send a clear update email to my manager.
+
+First attempt made?
+Yes — I wrote a rough email.
+
+Exact tool question:
+Make this email clearer without changing the message or making it longer.
+
+Stopping rule:
+Use one suggestion. Send after one edit pass.
+
+Forbidden behavior:
+Do not ask for five tones. Do not compare versions. Do not ask “does this sound okay?” repeatedly.</pre>
+
+  <h3>Filled example: coding</h3>
+  <pre>Concrete task:
+Fix the failing API call.
+
+First attempt made?
+Yes — I reproduced the error and identified the failing function.
+
+Exact tool question:
+Given this stack trace and function, suggest the most likely cause and one test.
+
+Stopping rule:
+Run one test before asking again.
+
+Forbidden behavior:
+Do not paste the whole project repeatedly. Do not ask AI to “find all possible issues.”</pre>
+</section>
+
+<section>
+  <h2>5. The urge protocol: what to do when it physically hurts</h2>
+  <p>The urge often feels bodily: pressure, heat, agitation, dread, restlessness, tight chest, stomach drop, mental buzzing, or a sense that something is unfinished. The goal is not to make that feeling vanish. The goal is to act while it is present.</p>
+
+  <pre>10-MINUTE URGE PROTOCOL
+
+0:00 — Stop physically.
+Hands off keyboard. Feet on floor. Do not open the tool.
+
+0:30 — Name the behavior.
+“This is an AI/tool reassurance urge.”
+“This is a comparison urge.”
+“This is an option-generation urge.”
+
+1:00 — Locate the pain.
+Chest / stomach / throat / head / hands / restlessness.
+Rate 0–10.
+
+2:00 — Define the blocked action.
+“What am I trying not to feel or decide?”
+Example: “I am trying not to feel responsible for choosing.”
+
+3:00 — Do the smallest opposite action.
+Write one sentence.
+Send the draft.
+Choose one option.
+Run one test.
+Close one tab.
+Make one note: [ASK LATER].
+
+5:00 — Stay with the discomfort.
+No tool. No checking. No alternative source.
+
+10:00 — Re-rate.
+Did the urge peak, shift, or reduce?
+What happened without obeying it?</pre>
+
+  <div class="warn"><strong>Important:</strong> If you use breathing, grounding, or self-talk as a way to make the urge disappear before acting, it can become another ritual. Use regulation only to make action possible, not to guarantee comfort.</div>
+</section>
+
+<section>
+  <h2>6. Concrete scenarios and practices</h2>
+
+  <div class="example">
+    <div class="top">Scenario 1 · You want AI to choose the best wording</div>
+    <div class="body">
+      <p><strong>Loop:</strong> You write one sentence, dislike it, ask AI for alternatives, compare six options, ask for a more nuanced version, then lose the original point.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Write the sentence yourself.
+2. Mark it [ROUGH] instead of asking AI.
+3. Continue for 10 minutes.
+4. After the section exists, ask AI one question:
+   “Which sentence is unclear? Do not rewrite; just point to it.”
+5. Fix one sentence. Stop.</pre>
+      <p><strong>Exposure target:</strong> tolerate the feeling that your wording is not optimal.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Scenario 2 · You want AI to tell you whether a decision is right</div>
+    <div class="body">
+      <p><strong>Loop:</strong> You ask AI which decision is best, then ask it to compare criteria, then ask another model, then feel more confused.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Choose the option you would pick if AI were unavailable.
+2. Write: “I choose Option B because ______.”
+3. Ask AI only: “Name one practical risk of Option B.”
+4. If the risk is not catastrophic, proceed.
+5. No second opinion.</pre>
+      <p><strong>Exposure target:</strong> tolerate responsibility for a good-enough decision.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Scenario 3 · You want to compare tools or build a better system</div>
+    <div class="body">
+      <p><strong>Loop:</strong> “Maybe Notion/Obsidian/Claude/ChatGPT/Zotero/my scripts could be configured better.” You spend the session improving the system.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Freeze the current toolchain for 72 hours.
+2. Use the current tool to produce one real output.
+3. Capture the tool idea in a plain list:
+   “Tool idea: ______. Trigger: ______. Output it would help: ______.”
+4. Review tool ideas once per week only.
+5. Build nothing unless the same bottleneck blocked output twice.</pre>
+      <p><strong>Exposure target:</strong> tolerate inefficient tools while still producing.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Scenario 4 · You want AI to reassure you about health, symptoms, or mental state</div>
+    <div class="body">
+      <p><strong>Loop:</strong> You ask about symptoms, then ask if it could be serious, then ask again with more details, then search, then ask another tool.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Do not use AI for diagnosis or risk reassurance.
+2. Use a predetermined rule:
+   - urgent symptoms → medical service / emergency line
+   - non-urgent concern → book clinician / wait until planned appointment
+   - anxiety spike → urge protocol, not AI
+3. Write the concern once in a note.
+4. No repeated symptom prompting.</pre>
+      <p><strong>Exposure target:</strong> tolerate uncertainty without endless digital reassurance. For health/safety, use professional care rather than AI reassurance.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Scenario 5 · You want AI to perfect a message to someone</div>
+    <div class="body">
+      <p><strong>Loop:</strong> You draft a message, ask AI to make it warmer, then clearer, then less needy, then more assertive, then you no longer know what you mean.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Write the message in your own words.
+2. Ask: “Is this message clear and respectful? Answer yes/no and name one issue.”
+3. Make one edit only.
+4. Send, or schedule sending.
+5. No tone-shopping.</pre>
+      <p><strong>Exposure target:</strong> tolerate being slightly imperfect and still communicative.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Scenario 6 · Coding/debugging loop</div>
+    <div class="body">
+      <p><strong>Loop:</strong> You paste errors repeatedly, ask for a rewrite, then another rewrite, then “best practice,” then refactor before understanding the bug.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Reproduce the bug yourself.
+2. Write one hypothesis.
+3. Ask AI for one test of that hypothesis.
+4. Run the test before asking anything else.
+5. If the test fails, write what changed.
+6. Only then ask the next question.</pre>
+      <p><strong>Exposure target:</strong> tolerate not knowing while testing sequentially.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="top">Scenario 7 · Learning/research spiral</div>
+    <div class="body">
+      <p><strong>Loop:</strong> You ask AI for an explanation, then a deeper explanation, then sources, then counterarguments, then “what am I missing?” until the task expands.</p>
+      <p><strong>Practice:</strong></p>
+      <pre>1. Define the output first:
+   “I need a 5-bullet summary / one paragraph / one decision.”
+2. Ask one learning question.
+3. Immediately produce the output from memory.
+4. Check once for accuracy.
+5. Stop.</pre>
+      <p><strong>Exposure target:</strong> tolerate partial understanding and convert learning into output.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>7. Response-prevention rules</h2>
+  <p>These rules are practical. Pick one or two at first. Do not turn them into a complex system.</p>
+
+  <div class="grid">
+    <div class="card">
+      <strong>Draft-first rule</strong>
+      <p>Produce your own attempt before asking AI. Minimum: 5 minutes or 100 words, one rough message, one decision sentence, one bug hypothesis.</p>
+    </div>
+    <div class="card">
+      <strong>One-ask rule</strong>
+      <p>One prompt per issue. Rephrasing the same question counts as reassurance unless new concrete data exists.</p>
+    </div>
+    <div class="card">
+      <strong>No comparison rule</strong>
+      <p>Do not ask multiple tools for the same reassurance. No ChatGPT vs Claude vs Google vs Reddit triangulation.</p>
+    </div>
+    <div class="card">
+      <strong>Implementation-before-input rule</strong>
+      <p>After receiving an answer, implement or decide before asking again.</p>
+    </div>
+    <div class="card">
+      <strong>Timebox rule</strong>
+      <p>Use 10–25 minute tool windows. When the timer ends, act with what you have.</p>
+    </div>
+    <div class="card">
+      <strong>Deferred-question rule</strong>
+      <p>Put extra questions in a parking lot. Revisit later. Most will lose urgency.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>8. Exposure hierarchy</h2>
+  <p>Start at a level that creates discomfort but is still doable. Repeat until the urge becomes less controlling, then move up.</p>
+
+  <table>
+    <tr><th>Level</th><th>Practice</th><th>Blocked response</th></tr>
+    <tr><td>1</td><td>Wait 5 minutes before asking AI.</td><td>Immediate prompting</td></tr>
+    <tr><td>2</td><td>Write a rough first attempt before using AI.</td><td>AI-before-attempt</td></tr>
+    <tr><td>3</td><td>Ask one prompt and act on it.</td><td>Re-prompting</td></tr>
+    <tr><td>4</td><td>Do not compare two tools for the same issue.</td><td>Tool triangulation</td></tr>
+    <tr><td>5</td><td>Make a low-stakes decision without AI.</td><td>Decision reassurance</td></tr>
+    <tr><td>6</td><td>Send a good-enough message after one edit pass.</td><td>Tone-shopping</td></tr>
+    <tr><td>7</td><td>Complete one work block with AI closed.</td><td>AI as constant companion</td></tr>
+    <tr><td>8</td><td>Use current tools for 72 hours without modifying them.</td><td>Tool-building / system improvement</td></tr>
+    <tr><td>9</td><td>Leave an unanswered question overnight.</td><td>Late-night reassurance</td></tr>
+    <tr><td>10</td><td>One full day with AI only in a planned 30-minute window.</td><td>Ambient AI dependence</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>9. Seven-day practice plan</h2>
+  <p>This plan is intentionally narrow. It trains one thing: using AI/tools after action, not before action.</p>
+
+  <table>
+    <tr><th>Day</th><th>Practice</th><th>Minimum success</th></tr>
+    <tr><td>1</td><td>Delay AI by 5 minutes once.</td><td>You noticed the urge and waited.</td></tr>
+    <tr><td>2</td><td>Make a rough first attempt before one AI use.</td><td>A first attempt existed before prompting.</td></tr>
+    <tr><td>3</td><td>Use one prompt only on one task.</td><td>No rephrasing or second opinion.</td></tr>
+    <tr><td>4</td><td>Make one low-stakes decision without AI.</td><td>Decision made; discomfort allowed.</td></tr>
+    <tr><td>5</td><td>Use AI only to critique existing work, not generate options.</td><td>AI responded to output.</td></tr>
+    <tr><td>6</td><td>No tool changes for the day.</td><td>Tool urges captured, not acted on.</td></tr>
+    <tr><td>7</td><td>Review prediction vs outcome.</td><td>Identify one feared outcome that did not occur.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>10. Logs that are actually useful</h2>
+  <p>Logging should create learning, not another productivity system. Use only these fields.</p>
+
+  <pre>AI / TOOL LOOP LOG
+
+Date:
+Context:
+Tool urge:
+What did I want the tool to do for me emotionally?
+Prediction if I did not use it:
+Response prevention used:
+Peak discomfort 0–10:
+Action I took instead:
+Actual outcome:
+What this teaches me:</pre>
+
+  <h3>Filled example</h3>
+  <pre>Date: Tuesday
+Context: replying to a difficult message
+Tool urge: ask AI for the perfect tone
+Emotional function: avoid fear of sounding wrong
+Prediction: if I write it myself, I will sound cold or needy
+Response prevention: wrote message myself, asked no AI
+Peak discomfort: 7/10
+Action instead: sent a short clear message
+Actual outcome: no negative response; discomfort dropped after sending
+Learning: the urge overestimated the danger of imperfect wording</pre>
+</section>
+
+<section>
+  <h2>11. Common traps and precise counter-moves</h2>
+
+  <table>
+    <tr><th>Trap</th><th>How it sounds</th><th>Counter-move</th></tr>
+    <tr><td>Re-prompting</td><td>“Let me ask it another way.”</td><td>Write what new data exists. If none, stop.</td></tr>
+    <tr><td>Option inflation</td><td>“Give me more alternatives.”</td><td>Pick from current options; no new options.</td></tr>
+    <tr><td>Model triangulation</td><td>“I’ll ask Claude too.”</td><td>One source only unless there is a factual need.</td></tr>
+    <tr><td>Prompt laundering</td><td>“I’m just being thorough.”</td><td>Name the feeling you want relieved.</td></tr>
+    <tr><td>Tool-building</td><td>“A better system will solve this.”</td><td>72-hour tool freeze; capture idea only.</td></tr>
+    <tr><td>Self-therapy spiral</td><td>“Analyze my pattern more.”</td><td>Move from insight to one exposure.</td></tr>
+    <tr><td>Perfection by AI</td><td>“Make this more polished.”</td><td>Limit to one clarity edit, not perfection.</td></tr>
+    <tr><td>Certainty demand</td><td>“Are you sure?”</td><td>Act at 70% confidence for low-stakes decisions.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>12. What “good” AI use looks like</h2>
+  <p>AI is not banned. It becomes safer when it is bounded, downstream of your effort, and tied to implementation.</p>
+
+  <div class="grid3">
+    <div class="card">
+      <strong>Good for</strong>
+      <p>Summarizing known material, checking clarity, generating one checklist, explaining an error, formatting an existing draft.</p>
+    </div>
+    <div class="card">
+      <strong>Risky for</strong>
+      <p>Choosing for you, reassuring you, diagnosing you, deciding what you feel, comparing endless options, generating identity-level certainty.</p>
+    </div>
+    <div class="card">
+      <strong>Never primary for</strong>
+      <p>Medical emergencies, self-harm risk, legal decisions, crisis judgment, or replacing professional care.</p>
+    </div>
+  </div>
+
+  <h3>Safe prompt templates</h3>
+  <pre>“Here is my draft. Identify the one place where the logic is unclear. Do not rewrite.”
+
+“Here is my plan. Name one practical risk I should consider. Do not generate alternatives.”
+
+“Here is my code and error. Suggest one hypothesis and one test. Do not rewrite the whole file.”
+
+“Here is my message. Is it clear and respectful? Answer yes/no and identify one issue only.”</pre>
+</section>
+
+<section>
+  <h2>13. When to bring this to therapy</h2>
+  <p>Bring concrete logs, not just the concept. A therapist can help determine whether the pattern is better understood as anxiety, OCD-spectrum reassurance, perfectionism, ADHD-related stimulation seeking, workaholic over-engagement, avoidance, or a blend.</p>
+
+  <h3>Useful therapy data</h3>
+  <ul>
+    <li>Most common AI/tool urge.</li>
+    <li>What emotion or bodily sensation precedes it.</li>
+    <li>What feared outcome you predict if you do not use the tool.</li>
+    <li>Which response-prevention rule you tried.</li>
+    <li>What actually happened.</li>
+    <li>Whether the practice felt tolerable or too intense.</li>
+  </ul>
+
+  <div class="notice">
+    <strong>Best therapy question:</strong> “How can I practice not using AI/tools as reassurance while still using them functionally?”
+  </div>
+</section>
+
+<section>
+  <h2>14. Sources and clinical grounding</h2>
+  <p class="mini">This guide adapts standard CBT/ERP concepts for a modern AI/tool-use pattern. The AI-specific research base is still emerging, so the strongest clinical grounding comes from established work on reassurance-seeking, checking, exposure and response prevention, behavioral experiments, intolerance of uncertainty, and compulsive checking. These are not citations for a diagnosis; they are the conceptual basis for the exercises above.</p>
+  <ul class="mini">
+    <li>Centre for Clinical Interventions — “Artificial Intelligence and Your Mental Health.”</li>
+    <li>Centre for Clinical Interventions — “Reducing Checking and Reassurance Seeking.”</li>
+    <li>International OCD Foundation — “Distinguishing Information-Seeking and Reassurance Seeking.”</li>
+    <li>NICE Guideline CG31 — CBT including exposure and response prevention for OCD-related compulsive patterns.</li>
+    <li>International OCD Foundation — overview of Exposure and Response Prevention.</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <p>Prepared as a practical CBT-style guide for AI/tool loop dependence. Print or save as PDF if useful. Keep the practice simple; complexity can become part of the loop.</p>
+</footer>
+</div>
+</body>
+</html>

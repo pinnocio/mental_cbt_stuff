@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI / Tool Loop Dependence — CBT Practice Guide</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #20242e;
+      --text: #f3f0e8;
+      --muted: #b7b1a5;
+      --subtle: #7f776b;
+      --line: #343946;
+      --accent: #d6903d;
+      --accent-2: #9c6b34;
+      --danger: #d75b5b;
+      --good: #67b26f;
+      --blue: #6fa8dc;
+      --code: #111318;
+      --max: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+
+    header {
+      padding: 42px 32px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #171a21 0%, #111318 100%);
+      border-radius: 24px;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    nav {
+      margin: 28px 0 40px;
+      padding: 18px 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    nav h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--subtle);
+      margin: 0 0 8px;
+    }
+
+    nav ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 42px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      margin: 32px 0;
+      padding: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.65rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 24px 0 10px;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul, ol {
+      margin: 10px 0 16px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      background: var(--panel-2);
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .callout.danger {
+      border-left-color: var(--danger);
+    }
+
+    .callout.good {
+      border-left-color: var(--good);
+    }
+
+    .rule {
+      background: #2a2117;
+      border: 1px solid var(--accent-2);
+      padding: 22px;
+      border-radius: 16px;
+      margin: 20px 0;
+    }
+
+    .rule .label {
+      color: var(--accent);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .rule .text {
+      font-size: 1.35rem;
+      line-height: 1.35;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .card {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin: 0 6px 6px 0;
+    }
+
+    .tag.bad {
+      border-color: rgba(215, 91, 91, 0.5);
+      color: #ffb7b7;
+      background: rgba(215, 91, 91, 0.09);
+    }
+
+    .tag.good {
+      border-color: rgba(103, 178, 111, 0.5);
+      color: #bff0c5;
+      background: rgba(103, 178, 111, 0.09);
+    }
+
+    pre {
+      background: var(--code);
+      color: #ede9df;
+      padding: 16px 18px;
+      border-radius: 14px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      font-size: 0.94rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--panel-2);
+      color: var(--accent);
+      text-align: left;
+    }
+
+    td {
+      background: #141720;
+    }
+
+    .worksheet {
+      background: #12141b;
+      border: 1px dashed #555c6c;
+      padding: 20px;
+      border-radius: 16px;
+      margin: 18px 0;
+    }
+
+    .worksheet label {
+      display: block;
+      margin: 14px 0 6px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .line {
+      min-height: 34px;
+      border-bottom: 1px solid #555c6c;
+    }
+
+    .lines {
+      min-height: 96px;
+      border: 1px solid #555c6c;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 46px;
+      margin: 14px 0;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: #111;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .print-note {
+      margin-top: 38px;
+      color: var(--subtle);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav ol {
+        columns: 1;
+      }
+
+      header, section {
+        padding: 22px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      header, section, nav, .card, .rule, .worksheet, .callout {
+        background: #fff !important;
+        color: #111 !important;
+        border-color: #999 !important;
+        box-shadow: none !important;
+      }
+
+      .subtitle, .muted, .print-note, p, li, td {
+        color: #111 !important;
+      }
+
+      h1, h2, h3, strong, th, .rule .text {
+        color: #000 !important;
+      }
+
+      pre {
+        background: #f3f3f3 !important;
+        color: #111 !important;
+        border-color: #999 !important;
+      }
+
+      nav {
+        break-after: page;
+      }
+
+      section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="eyebrow">CBT Practice Guide · Thesis Work</div>
+      <h1>AI / Tool Loop Dependence</h1>
+      <p class="subtitle">A practical behavioral protocol for using AI and tools without letting them become reassurance, option-generation, or avoidance loops.</p>
+    </header>
+
+    <nav aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#target">What we are treating</a></li>
+        <li><a href="#core-rule">Core rule</a></li>
+        <li><a href="#draft-first">Draft First, AI Second</a></li>
+        <li><a href="#allowed-vs-compulsive">Allowed vs compulsive AI</a></li>
+        <li><a href="#one-prompt">One Prompt Only</a></li>
+        <li><a href="#exposures">Practical exposures</a></li>
+        <li><a href="#scenarios">Thesis scenarios</a></li>
+        <li><a href="#contract">AI use contract</a></li>
+        <li><a href="#work-block">Full example work block</a></li>
+        <li><a href="#relapse">Handling relapse</a></li>
+        <li><a href="#daily-practice">Minimal daily practice</a></li>
+      </ol>
+    </nav>
+
+    <section id="target">
+      <h2>1. What we are treating</h2>
+      <p>The problematic loop is not “using AI.” It is using AI or tools to reduce uncertainty before making a thesis move.</p>
+
+      <div class="callout">
+        <strong>Thesis move:</strong> writing a claim, defining a theme, choosing a provisional heading, selecting evidence, drafting an interpretation, or making a small decision.
+      </div>
+
+      <pre><code>Uncertainty / discomfort
+↓
+AI or tool urge
+↓
+Prompt, compare, revise, generate options, build workflow
+↓
+Short-term relief or stimulation
+↓
+More doubt, more options, less trust in your own judgment
+↓
+More prompting</code></pre>
+
+      <table>
+        <thead>
+          <tr>
+            <th>AI/tool behavior</th>
+            <th>What it looks like</th>
+            <th>CBT function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pre-draft prompting</td>
+            <td>“Help me figure out this theme” before writing</td>
+            <td>Avoiding commitment</td>
+          </tr>
+          <tr>
+            <td>Option generation</td>
+            <td>“Give me 10 framings / structures / names”</td>
+            <td>Certainty-seeking disguised as exploration</td>
+          </tr>
+          <tr>
+            <td>Comparison loop</td>
+            <td>Asking ChatGPT, Claude, then comparing</td>
+            <td>Reassurance-seeking</td>
+          </tr>
+          <tr>
+            <td>Rewrite loop</td>
+            <td>Feeding paragraphs for endless improvement</td>
+            <td>Perfectionistic editing</td>
+          </tr>
+          <tr>
+            <td>Validation loop</td>
+            <td>“Is this good? Is this defensible?”</td>
+            <td>Externalized reassurance</td>
+          </tr>
+          <tr>
+            <td>Tool-building loop</td>
+            <td>Better prompts, context packs, summaries, integrations</td>
+            <td>Preparatory avoidance</td>
+          </tr>
+          <tr>
+            <td>Context-loading loop</td>
+            <td>Adding more notes/files before asking AI</td>
+            <td>“I need perfect input before output”</td>
+          </tr>
+          <tr>
+            <td>Meta-analysis loop</td>
+            <td>Asking AI to analyze your process instead of writing</td>
+            <td>Intellectualized avoidance</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="core-rule">
+      <h2>2. Core rule</h2>
+      <div class="rule">
+        <span class="label">Two-week rule</span>
+        <p class="text">No AI before original thesis output.</p>
+      </div>
+
+      <p>Before AI, produce one concrete piece of thesis work:</p>
+      <ul>
+        <li>150 rough words</li>
+        <li>one theme definition</li>
+        <li>one claim paragraph</li>
+        <li>one interpretation paragraph</li>
+        <li>one provisional outline decision</li>
+        <li>one evidence table row</li>
+      </ul>
+
+      <div class="callout danger">
+        <strong>Not enough:</strong> thinking, preparing context, organizing notes, building a prompt, or asking AI what to write.
+      </div>
+    </section>
+
+    <section id="draft-first">
+      <h2>3. Draft First, AI Second protocol</h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Choose a tiny thesis output.</strong>
+          <pre><code>Bad target:
+Clarify Theme 2.
+
+Good target:
+Write 180 rough words explaining what Theme 2 means.
+
+Alternative:
+Write one paragraph beginning: “Theme 2 shows that…”</code></pre>
+        </li>
+        <li>
+          <strong>Start a 25-minute no-AI block.</strong>
+          <div class="grid">
+            <div class="card">
+              <h3>Allowed</h3>
+              <span class="tag good">Word / document</span>
+              <span class="tag good">Existing notes already open</span>
+              <span class="tag good">Rough writing</span>
+              <span class="tag good">Brackets</span>
+            </div>
+            <div class="card">
+              <h3>Forbidden</h3>
+              <span class="tag bad">ChatGPT</span>
+              <span class="tag bad">Claude</span>
+              <span class="tag bad">AI framing</span>
+              <span class="tag bad">AI rewrite</span>
+              <span class="tag bad">AI validation</span>
+              <span class="tag bad">Prompt engineering</span>
+              <span class="tag bad">Context preparation for AI</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <strong>Use brackets instead of AI.</strong>
+          <pre><code>[AI URGE: want better theme name]
+[UNCERTAIN: not sure if this claim is too strong]
+[CHECK LATER: link to literature]
+[ROUGH: transition weak]</code></pre>
+        </li>
+        <li>
+          <strong>After the block, decide whether AI is actually needed.</strong>
+          <p>Only use AI if you produced something AI can respond to. If no thesis output exists, AI is still not allowed.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="allowed-vs-compulsive">
+      <h2>4. Allowed AI vs compulsive AI</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Allowed AI use</h3>
+          <ul>
+            <li>You already wrote your own text.</li>
+            <li>The question is narrow.</li>
+            <li>The answer improves a specific paragraph.</li>
+            <li>You will not ask the same question again.</li>
+            <li>You are not asking AI to decide for you.</li>
+          </ul>
+          <pre><code>Here is a rough paragraph from my findings chapter.
+Do not rewrite it.
+Please identify:
+1. the main claim as written
+2. one unclear sentence
+3. one place where evidence is needed</code></pre>
+        </div>
+
+        <div class="card">
+          <h3>Compulsive AI use</h3>
+          <ul>
+            <li>Can you give me a better framing?</li>
+            <li>What are all the possible themes here?</li>
+            <li>Which version is best?</li>
+            <li>Can you rewrite this more academically?</li>
+            <li>Can you compare these 8 versions?</li>
+            <li>Maybe Claude will do this better.</li>
+            <li>Let me ask again with more context.</li>
+            <li>Let me create a better prompt first.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="one-prompt">
+      <h2>5. The One Prompt Only rule</h2>
+      <div class="rule">
+        <span class="label">Bounded AI use</span>
+        <p class="text">One paragraph → one AI prompt → one action → stop.</p>
+      </div>
+
+      <p>Do not let this happen:</p>
+      <pre><code>one paragraph → prompt → revise → prompt again → compare → ask another model → rewrite → ask again</code></pre>
+
+      <h3>Example</h3>
+      <p>You write:</p>
+      <pre><code>Participants described institutional procedures not simply as external obstacles, but as repeated encounters that shaped their sense of professional legitimacy. This suggests that identity was not only internally held but negotiated through institutional response.</code></pre>
+
+      <p>Permitted AI prompt:</p>
+      <pre><code>I wrote this rough findings paragraph. Do not rewrite it.
+Identify:
+1. the central analytic claim
+2. whether the second sentence follows from the first
+3. one specific question I should answer in the next sentence</code></pre>
+
+      <p>Then do one action only:</p>
+      <ul>
+        <li>Add one sentence.</li>
+        <li>Clarify one claim.</li>
+        <li>Mark one evidence gap.</li>
+      </ul>
+    </section>
+
+    <section id="exposures">
+      <h2>6. Practical exposures</h2>
+
+      <div class="card">
+        <h3>Exposure A — Choose without AI</h3>
+        <p><strong>Target belief:</strong> “If I don’t ask AI, I’ll miss the best version.”</p>
+        <pre><code>Setup:
+Choose one thing you want AI to help with:
+- theme name
+- theme definition
+- paragraph structure
+- interpretive claim
+- subsection order
+- transition sentence
+
+Prediction:
+If I choose this myself without AI, it will be weaker and I will waste time.
+
+Exposure:
+Set 20 minutes.
+No AI, no Google, no prompt drafting, no comparing.
+Produce:
+- one chosen theme name
+- a 2–3 sentence working definition
+- one sentence explaining why it matters</code></pre>
+
+        <p>Example output:</p>
+        <pre><code>Theme name:
+Institutional friction and professional self-understanding
+
+Working definition:
+This theme captures how participants described institutional procedures, delays, and expectations as shaping not only what they did, but how they understood their legitimacy and role. The friction was not merely logistical; it became part of how they narrated professional identity.
+
+Why it matters:
+The finding shows identity formation as a negotiated process rather than an internal trait.</code></pre>
+
+        <p>Optional AI afterward:</p>
+        <pre><code>Here is my chosen theme name and definition.
+Do not generate alternatives.
+Tell me whether the definition clearly distinguishes this theme from a generic “barriers” theme.</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>Exposure B — No model comparison</h3>
+        <p><strong>Target loop:</strong> “Maybe another model will give a better answer.”</p>
+        <pre><code>Rule:
+One model per task.
+No cross-checking.
+No ChatGPT → Claude → ChatGPT comparison.
+
+Trigger:
+I asked one model and now want to ask another.
+
+Response prevention:
+1. Write: “Urge to compare with Claude.”
+2. Rate intensity 0–10.
+3. Choose one action from the first response.
+4. Work for 10 minutes.
+5. Re-rate urge.</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>Exposure C — No AI rewrite</h3>
+        <p><strong>Target belief:</strong> “My own prose is not usable until something external improves it.”</p>
+        <pre><code>Rule:
+AI may diagnose.
+AI may not rewrite.
+
+Allowed:
+Identify unclear claims.
+Identify missing evidence.
+Ask me three questions.
+
+Forbidden:
+Rewrite this.
+Make this more academic.
+Improve the flow.
+Make it sound better.
+Give me a polished version.</code></pre>
+
+        <p>Diagnosis-only prompt:</p>
+        <pre><code>Do not rewrite this paragraph.
+Give diagnostic feedback only:
+1. What is the main claim?
+2. Which sentence is least clear?
+3. What evidence is missing?
+4. What is the next sentence I should try to write myself?</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>Exposure D — No “better prompt” building</h3>
+        <p><strong>Target loop:</strong> prompt engineering instead of thesis writing.</p>
+        <pre><code>Rule:
+No prompt engineering before prose.
+
+Ugly prompt limit:
+After writing your own paragraph, you are allowed one simple prompt, maximum 80 words.
+
+Example:
+Here is my rough paragraph. Do not rewrite it. Identify the main claim, the weakest sentence, and one missing link to the research question.</code></pre>
+      </div>
+    </section>
+
+    <section id="ladder">
+      <h2>7. AI delay ladder</h2>
+      <p>Do not jump straight to a no-AI day if that will collapse the work session. Start where it is uncomfortable but possible.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Practice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Delay AI by 5 minutes. Write one sentence first.</td></tr>
+          <tr><td>2</td><td>Delay AI by 10 minutes. Write 3–5 rough sentences first.</td></tr>
+          <tr><td>3</td><td>Write for 25 minutes before AI.</td></tr>
+          <tr><td>4</td><td>One complete rough paragraph before AI.</td></tr>
+          <tr><td>5</td><td>One rough subsection before AI.</td></tr>
+          <tr><td>6</td><td>One thesis workday with no AI.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="scenarios">
+      <h2>8. Specific thesis scenarios</h2>
+
+      <div class="card">
+        <h3>Scenario A — You want AI to help name a theme</h3>
+        <p><strong>Old loop:</strong></p>
+        <pre><code>Rough theme → ask AI for 10 names → compare names → ask Claude too → generate more nuanced names → none feel right → no writing happens</code></pre>
+
+        <p><strong>CBT practice:</strong></p>
+        <pre><code>1. Choose a deliberately provisional name yourself.
+2. Lock it for 25 minutes.
+3. Write under that name.
+4. Put alternatives in brackets, not prompts.</code></pre>
+
+        <p><strong>Example:</strong></p>
+        <pre><code>Theme name for now:
+Institutional friction
+
+Paragraph:
+By “institutional friction,” I refer to the recurring moments in which participants encountered procedural, organizational, or communicative obstacles that shaped their sense of what was possible...</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>Scenario B — You want AI to clarify your findings</h3>
+        <p><strong>Old loop:</strong></p>
+        <pre><code>Upload notes → ask AI what the themes are → receive plausible synthesis → feel relieved and alienated → ask for another version → doubt increases</code></pre>
+
+        <p><strong>CBT practice:</strong></p>
+        <pre><code>Write your own interpretation first:
+
+My current interpretation:
+Participants are not only describing barriers; they are describing how repeated institutional encounters reshape what they believe they are allowed to do professionally.</code></pre>
+
+        <p>Optional AI afterward:</p>
+        <pre><code>Here is my interpretation.
+Do not generate new themes.
+Ask me three questions that would help me clarify this finding using my own data.</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>Scenario C — You want AI to decide which paragraph is better</h3>
+        <p><strong>Old loop:</strong></p>
+        <pre><code>Version A vs Version B → ask AI which is better → feel unsure → ask another AI → create Version C → compare again</code></pre>
+
+        <p><strong>CBT practice:</strong></p>
+        <pre><code>I choose Version A for now because it makes the analytic claim earlier.</code></pre>
+
+        <p>Optional AI afterward:</p>
+        <pre><code>I chose Version A.
+Do not compare it to Version B.
+Tell me whether the first two sentences establish a clear analytic claim.</code></pre>
+      </div>
+
+      <div class="card">
+        <h3>Scenario D — You want AI because your body feels anxious</h3>
+        <p><strong>Old loop:</strong></p>
+        <pre><code>Anxiety spike → open AI → ask for framing → feel relief → more options appear → more anxiety later</code></pre>
+
+        <p><strong>CBT practice:</strong></p>
+        <pre><code>1. Put both feet on the floor.
+2. Keep AI closed.
+3. Write in the document:
+   [URGE: want AI because this feels uncertain]
+4. Set a 10-minute timer.
+5. Write one deliberately bad paragraph opening:
+   “What I am trying to say is…”
+6. After 10 minutes, rate urge again.</code></pre>
+      </div>
+    </section>
+
+    <section id="contract">
+      <h2>9. AI use contract for thesis work</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>AI is permitted for</h3>
+          <ul>
+            <li>Identifying unclear sentences in text already written.</li>
+            <li>Asking questions about a paragraph already drafted.</li>
+            <li>Helping create a checklist after a decision is already made.</li>
+            <li>Summarizing feedback already received from a human/supervisor.</li>
+            <li>Checking whether a paragraph has a visible claim.</li>
+            <li>Turning bracketed notes into a revision checklist.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>AI is not permitted for</h3>
+          <ul>
+            <li>Deciding themes before writing.</li>
+            <li>Generating many alternatives before committing.</li>
+            <li>Comparing multiple possible framings.</li>
+            <li>Rewriting the findings section in its own voice.</li>
+            <li>Validating whether you are “right.”</li>
+            <li>Reassuring you that the thesis is good.</li>
+            <li>Building workflows before prose exists.</li>
+            <li>Replacing supervisor judgment.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="label">Hard rule</span>
+        <p class="text">AI can help revise a commitment. AI cannot help avoid making one.</p>
+      </div>
+    </section>
+
+    <section id="work-block">
+      <h2>10. Full example work block</h2>
+      <p><strong>Situation:</strong> you are stuck on a findings subsection and want to ask AI: “Help me develop Theme 2 from my notes.”</p>
+
+      <h3>Minute 0–2: define output</h3>
+      <pre><code>Output:
+One rough paragraph defining Theme 2.</code></pre>
+
+      <h3>Minute 2–3: prediction</h3>
+      <pre><code>Prediction:
+If I do not ask AI first, my theme definition will be vague and I will waste the session.</code></pre>
+
+      <h3>Minute 3–25: write without AI</h3>
+      <pre><code>Theme 2 describes how participants encountered institutional processes as more than background conditions. These processes shaped how they interpreted their own professional agency. Rather than simply reporting barriers, participants narrated repeated moments where institutional expectations, delays, or ambiguities changed what they felt able to do. This suggests that professional identity was being negotiated through institutional contact, not merely expressed within it. [NEED EXAMPLE QUOTE] [CHECK LINK TO LITERATURE]</code></pre>
+
+      <h3>Minute 25–30: log</h3>
+      <pre><code>Output:
+112 rough words defining Theme 2.
+
+Peak urge:
+8/10 at minute 6.
+
+Safety behavior blocked:
+AI before drafting.
+
+Actual outcome:
+Paragraph is rough but usable. Not a wasted session. Needs quote and literature link, but AI was not required to begin.
+
+Learning:
+AI may be useful later, but not necessary for first commitment.</code></pre>
+
+      <h3>Optional AI after block</h3>
+      <pre><code>Here is my rough theme definition.
+Do not rewrite it.
+Identify:
+1. the central claim
+2. one vague phrase
+3. one type of evidence that would strengthen it</code></pre>
+    </section>
+
+    <section id="relapse">
+      <h2>11. Handling relapse into the AI loop</h2>
+      <p>You will sometimes open AI automatically. The goal is to exit quickly, not analyze perfectly.</p>
+
+      <h3>When you catch yourself mid-loop</h3>
+      <pre><code>1. Stop immediately.
+2. Copy one useful sentence or point, if any.
+3. Close AI.
+4. Write:
+   “I entered the AI loop when I felt ______.”
+5. Return to thesis document.
+6. Produce one sentence in your own words.</code></pre>
+
+      <h3>Relapse log</h3>
+      <div class="worksheet">
+        <label>Trigger: what discomfort was I trying to reduce?</label>
+        <div class="lines"></div>
+        <label>AI behavior: prompting / comparing / rewriting / validating / tool-building</label>
+        <div class="line"></div>
+        <label>Short-term relief, 0–10</label>
+        <div class="line"></div>
+        <label>Cost: what did it delay?</label>
+        <div class="lines"></div>
+        <label>Exit action: what thesis sentence did I write afterward?</label>
+        <div class="lines"></div>
+      </div>
+    </section>
+
+    <section id="daily-practice">
+      <h2>12. Minimal daily AI-loop practice</h2>
+      <pre><code>Every thesis session:
+
+1. Write before AI.
+   Minimum: 100 words or 10 minutes.
+
+2. Mark AI urges in brackets.
+   [AI URGE: want better framing]
+
+3. After writing, decide:
+   Is AI needed for this existing text?
+
+4. If yes:
+   one bounded diagnostic prompt only.
+
+5. Apply one piece of feedback.
+
+6. Close AI.
+
+7. Log:
+   urge intensity
+   whether I wrote first
+   whether I re-prompted
+   what I learned</code></pre>
+
+      <div class="worksheet">
+        <label>Date</label>
+        <div class="line"></div>
+        <label>Thesis output before AI</label>
+        <div class="lines"></div>
+        <label>AI urge intensity, 0–10</label>
+        <div class="line"></div>
+        <label>Did AI happen before or after my own commitment?</label>
+        <div class="line"></div>
+        <label>Did I re-prompt or compare models?</label>
+        <div class="line"></div>
+        <label>What did I learn?</label>
+        <div class="lines"></div>
+      </div>
+
+      <div class="callout good">
+        <strong>Most important exposure:</strong> make a small academic commitment without external validation. Examples: choose a theme name for today, claim a pattern matters because X, interpret a quote as showing Y, place one subsection before another, or keep one paragraph version for now.
+      </div>
+    </section>
+
+    <p class="print-note">Designed as a practical worksheet. Use only the smallest section needed for the next thesis session; do not turn this document into another optimization project.</p>
+  </div>
+</body>
+</html>

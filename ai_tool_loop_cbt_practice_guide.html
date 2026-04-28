@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CBT Practice Guide: AI / Tool Loop, Optimization, Productivity, and Compulsive Building</title>
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --paper: #fffaf1;
+      --ink: #1f2933;
+      --muted: #5f6b76;
+      --line: #d8ccba;
+      --accent: #7c2d12;
+      --accent2: #1f4e5f;
+      --soft: #efe4d3;
+      --warn: #fff0d6;
+      --danger: #f8d7da;
+      --ok: #dcefe3;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 28px 96px;
+    }
+
+    header {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 32px;
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      max-width: 920px;
+    }
+
+    .subtitle {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 840px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    nav {
+      position: sticky;
+      top: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.86);
+      padding: 18px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    nav h2 {
+      margin: 0 0 12px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      border-top: 1px solid var(--line);
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 26px rgba(31, 41, 51, 0.06);
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 34px;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-top: 28px;
+      font-size: 22px;
+      line-height: 1.25;
+      color: var(--accent2);
+    }
+
+    h4 {
+      margin: 22px 0 8px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: var(--mono);
+      color: var(--accent);
+    }
+
+    p { margin: 0 0 14px; }
+
+    strong { color: #111827; }
+
+    .lead {
+      font-size: 19px;
+      color: #29333d;
+    }
+
+    .box {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 18px;
+      border-radius: 14px;
+      margin: 18px 0;
+    }
+
+    .box.warn { background: var(--warn); }
+    .box.danger { background: var(--danger); }
+    .box.ok { background: var(--ok); }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    code, pre {
+      font-family: var(--mono);
+    }
+
+    pre {
+      background: #1f2933;
+      color: #f6f2ea;
+      padding: 16px;
+      border-radius: 12px;
+      overflow-x: auto;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: #fffdf7;
+    }
+
+    .card h4 { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+
+    .example {
+      border-left: 5px solid var(--accent2);
+      background: #eef6f7;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 16px 0;
+    }
+
+    .badgood {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .bad {
+      background: #fff0f0;
+      border: 1px solid #e8b9b9;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .good {
+      background: #edf8ef;
+      border: 1px solid #b8dcbf;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .mini {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .checklist label {
+      display: block;
+      margin: 8px 0;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fffdf7;
+    }
+
+    input[type="checkbox"] { margin-right: 8px; }
+
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; }
+      nav { position: static; }
+      .grid2, .grid3, .badgood { grid-template-columns: 1fr; }
+      section { padding: 22px; }
+    }
+
+    @media print {
+      body { background: white; }
+      nav { display: none; }
+      .page { max-width: none; padding: 20px; }
+      main { display: block; }
+      section { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="eyebrow">Practical CBT / ERP / ACT Practice Guide</div>
+      <h1>AI / Tool Loop, Optimization, Productivity, and Compulsive Building</h1>
+      <p class="subtitle">A concrete practice manual for moments when AI, tools, systems, planning, optimizing, researching, and checking become ways to avoid discomfort, uncertainty, or direct output. This guide is broader than thesis work: it applies to academic writing, coding, creative projects, work tasks, personal admin, learning, knowledge management, and productivity systems.</p>
+      <div class="meta">
+        <div class="pill">Focus: AI/tool loop first</div>
+        <div class="pill">Method: behavioral experiments</div>
+        <div class="pill">Rule: output before optimization</div>
+        <div class="pill">Tone: firm, non-punitive</div>
+      </div>
+    </header>
+
+    <main>
+      <nav>
+        <h2>Contents</h2>
+        <a href="#start">1. Starting principle</a>
+        <a href="#ai-loop">2. AI/tool loop</a>
+        <a href="#optimization">3. Optimization spiral</a>
+        <a href="#productivity">4. Productivity trap</a>
+        <a href="#tool-building">5. Tool-building loop</a>
+        <a href="#checking-research">6. Checking + researching</a>
+        <a href="#availability">7. Always-on availability</a>
+        <a href="#combined">8. Combined protocols</a>
+        <a href="#examples">9. Real-world examples</a>
+        <a href="#logs">10. Logs and templates</a>
+        <a href="#week-plan">11. First week</a>
+      </nav>
+
+      <div>
+        <section id="start">
+          <h2>1. Starting principle</h2>
+          <p class="lead">The goal is not to ask yourself better questions or repeat calming phrases. The goal is to run small behavioral experiments that change what your nervous system learns.</p>
+
+          <div class="box ok">
+            <div class="label">Core learning target</div>
+            <p><strong>I can feel the pull to ask AI, optimize, build, plan, check, or research — and still do the direct output task first.</strong></p>
+          </div>
+
+          <p>In practice, this means that the intervention must include an actual behavior: writing a paragraph, sending a draft, making a decision, coding a rough function, completing a boring admin step, cleaning one physical object, or stopping work on time. Self-talk is only useful if it helps you do the behavior while the urge is still present.</p>
+
+          <h3>The practical CBT shape</h3>
+          <pre>1. Notice the trigger.
+2. Predict what will go wrong if you do not perform the compulsion.
+3. Block or delay the compulsion.
+4. Do a small direct-output action.
+5. Measure what actually happened.
+6. Repeat until the threat prediction weakens.</pre>
+
+          <h3>Direct output vs support behavior</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Direct output</th>
+                <th>Support behavior</th>
+                <th>Compulsive version</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Writing 250 rough words</td>
+                <td>Checking notes to verify a fact</td>
+                <td>Rechecking notes repeatedly before writing</td>
+              </tr>
+              <tr>
+                <td>Coding a minimal working function</td>
+                <td>Reading documentation for one error</td>
+                <td>Reading docs, examples, and comparisons before trying</td>
+              </tr>
+              <tr>
+                <td>Sending a simple email</td>
+                <td>Checking the recipient or attachment once</td>
+                <td>Rereading the email five times and asking AI to improve tone</td>
+              </tr>
+              <tr>
+                <td>Making one decision</td>
+                <td>Getting one piece of information</td>
+                <td>Prompting AI for alternatives, comparing tools, searching more opinions</td>
+              </tr>
+              <tr>
+                <td>Studying one chapter</td>
+                <td>Using a note template</td>
+                <td>Building a better knowledge system instead of studying</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="box warn">
+            <div class="label">Important</div>
+            <p>Support behaviors are not banned. They become a problem when they are used <strong>before direct output</strong> as a way to reduce anxiety, increase certainty, or avoid imperfect action.</p>
+          </div>
+        </section>
+
+        <section id="ai-loop">
+          <h2>2. AI/tool loop: the main starting point</h2>
+          <p class="lead">The AI/tool loop is especially powerful because it combines reassurance, optimization, productivity, research, and tool-building in one frictionless interface.</p>
+
+          <h3>What it looks like</h3>
+          <ul>
+            <li>Asking AI to frame the task before you try.</li>
+            <li>Prompting for better options, then more options, then a comparison.</li>
+            <li>Using AI to judge whether your own idea is acceptable.</li>
+            <li>Moving from one model to another: ChatGPT → Claude → Perplexity → Google → Reddit → back to ChatGPT.</li>
+            <li>Creating prompts, templates, agents, workflows, summaries, and integrations instead of doing the task.</li>
+            <li>Asking AI to make a plan, then another plan, then a more realistic plan, then a tracker.</li>
+            <li>Rewriting the same paragraph, email, outline, or code snippet repeatedly without committing.</li>
+          </ul>
+
+          <h3>The hidden functions</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>AI behavior</th>
+                <th>Possible function</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>“Give me 10 ways to frame this.”</td>
+                <td>Avoiding commitment</td>
+                <td>More options, less decision</td>
+              </tr>
+              <tr>
+                <td>“Is this good enough?”</td>
+                <td>Reassurance seeking</td>
+                <td>Lower trust in own judgment</td>
+              </tr>
+              <tr>
+                <td>“Build me a workflow for this.”</td>
+                <td>Preparatory avoidance</td>
+                <td>System expands, task remains</td>
+              </tr>
+              <tr>
+                <td>“Rewrite this again, more precise.”</td>
+                <td>Perfectionistic editing</td>
+                <td>No stopping point</td>
+              </tr>
+              <tr>
+                <td>“Compare these three approaches.”</td>
+                <td>Certainty seeking</td>
+                <td>Analysis paralysis</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>The first rule: output before AI</h3>
+          <div class="box ok">
+            <div class="label">Rule</div>
+            <p><strong>AI may respond to your output. AI may not replace the first act of output.</strong></p>
+          </div>
+
+          <div class="badgood">
+            <div class="bad">
+              <h4>Before-output AI use</h4>
+              <p>“Help me figure out what I should write.”</p>
+              <p>“Give me the best structure.”</p>
+              <p>“Generate options before I decide.”</p>
+              <p>“What’s the optimal way to approach this?”</p>
+            </div>
+            <div class="good">
+              <h4>After-output AI use</h4>
+              <p>“Here is my rough paragraph. Identify the main claim.”</p>
+              <p>“Here is my draft email. Flag only ambiguity or missing context.”</p>
+              <p>“Here is my code. Identify the likely bug without rewriting the whole thing.”</p>
+              <p>“Here is my plan. Find one unrealistic assumption.”</p>
+            </div>
+          </div>
+
+          <h3>AI exposure practice: 20-minute no-AI commitment</h3>
+          <p>This is the core exercise. Use it with thesis work, job work, personal decisions, coding, writing, or planning.</p>
+          <pre>1. Pick one direct-output task.
+   Examples:
+   - Write one rough paragraph.
+   - Draft one email.
+   - Code the first crude version.
+   - Choose one option.
+   - Fill one form.
+   - Make one phone call script.
+
+2. Write the prediction:
+   “If I do this without AI first, then ________.”
+
+3. Set a 20-minute timer.
+
+4. During the timer:
+   No AI.
+   No search.
+   No tool changes.
+   No comparing.
+   No asking for alternatives.
+
+5. Produce the rough version.
+
+6. After the timer, decide:
+   Does this actually need AI feedback?
+   If yes, ask ONE narrow question about the existing output.</pre>
+
+          <h3>Concrete example: thesis</h3>
+          <div class="example">
+            <p><strong>Compulsive urge:</strong> “I need AI to help me frame this theme before I write.”</p>
+            <p><strong>Prediction:</strong> “If I do not ask AI first, the framing will be weak and I will waste the block.”</p>
+            <p><strong>Practice:</strong> Write for 20 minutes beginning with: “My current interpretation is...”</p>
+            <p><strong>Blocked behaviors:</strong> no AI, no theme comparison, no better wording search.</p>
+            <p><strong>After:</strong> If needed, ask: “Here is my paragraph. What is the main claim? Do not rewrite.”</p>
+          </div>
+
+          <h3>Concrete example: coding</h3>
+          <div class="example">
+            <p><strong>Compulsive urge:</strong> “I should ask AI for the cleanest architecture before coding.”</p>
+            <p><strong>Prediction:</strong> “If I start without AI, I’ll build it wrong.”</p>
+            <p><strong>Practice:</strong> Write the dumbest working function or failing test in 20 minutes.</p>
+            <p><strong>Blocked behaviors:</strong> no architecture prompt, no library comparison, no setup refactor.</p>
+            <p><strong>After:</strong> Ask AI only: “Given this function and this error, what is the smallest fix?”</p>
+          </div>
+
+          <h3>Concrete example: personal admin</h3>
+          <div class="example">
+            <p><strong>Compulsive urge:</strong> “I should ask AI to draft the perfect message / compare all options / plan the process.”</p>
+            <p><strong>Prediction:</strong> “If I write it myself, it will sound wrong.”</p>
+            <p><strong>Practice:</strong> Draft the message in plain language in five minutes.</p>
+            <p><strong>Blocked behaviors:</strong> no AI tone rewrite, no searching examples, no overexplaining.</p>
+            <p><strong>After:</strong> Send if clear enough, or ask AI one narrow question: “Is anything unclear or missing?”</p>
+          </div>
+
+          <h3>AI stopping rules</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Rule</th>
+                <th>Practical application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>One prompt per problem</td>
+                <td>Ask once. Do not rephrase the same anxiety in new wording.</td>
+              </tr>
+              <tr>
+                <td>No cross-model reassurance</td>
+                <td>No asking ChatGPT, then Claude, then another tool to compare.</td>
+              </tr>
+              <tr>
+                <td>No “10 alternatives” prompts</td>
+                <td>Ask for one critique of your existing output, not more possibilities.</td>
+              </tr>
+              <tr>
+                <td>AI window after output</td>
+                <td>AI opens only after 20–30 minutes of direct output.</td>
+              </tr>
+              <tr>
+                <td>Use AI for defects, not identity</td>
+                <td>Ask “what is unclear?” not “is this good / am I doing this right?”</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="optimization">
+          <h2>3. Optimization spiral</h2>
+          <p class="lead">Optimization becomes compulsive when the standard keeps moving and improvement replaces completion.</p>
+
+          <h3>The optimization trap</h3>
+          <p>Optimization often starts legitimately. You improve the outline, rename the theme, adjust the folder structure, refine the workflow, choose a better note format, or ask AI for a cleaner version. The trap begins when each improvement creates another possible improvement.</p>
+
+          <div class="box warn">
+            <div class="label">Trap signature</div>
+            <p>If the task keeps becoming “almost ready,” you are probably optimizing the conditions for output instead of producing output.</p>
+          </div>
+
+          <h3>Optimization stopping rules</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Situation</th>
+                <th>Stopping rule</th>
+                <th>What to do instead</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Renaming sections/themes/projects</td>
+                <td>Name is locked for 48 hours</td>
+                <td>Write under the current name</td>
+              </tr>
+              <tr>
+                <td>Changing outline/architecture</td>
+                <td>No structure changes during output block</td>
+                <td>Add bracket: [structure idea later]</td>
+              </tr>
+              <tr>
+                <td>Improving workflow/system</td>
+                <td>No workflow changes before one output unit</td>
+                <td>Use the current flawed setup</td>
+              </tr>
+              <tr>
+                <td>Editing same text repeatedly</td>
+                <td>Two-pass edit maximum</td>
+                <td>Move to next section/task</td>
+              </tr>
+              <tr>
+                <td>Tool comparison</td>
+                <td>Use current tool for 7 days</td>
+                <td>Record friction, do not switch</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Behavioral experiment: write under the imperfect setup</h3>
+          <pre>Prediction:
+“If I use the current imperfect setup, the output will be poor / confused / inefficient.”
+
+Experiment:
+Use the current setup for one 25-minute output block.
+No renaming, restructuring, redesigning, tool changes, or AI alternatives.
+
+Measure:
+- Did output exist at the end?
+- Was the output unusable or just imperfect?
+- Did the missing optimization truly block the task?
+- Did the urge decrease after starting?</pre>
+
+          <h3>Practical example: knowledge management</h3>
+          <div class="example">
+            <p><strong>Scenario:</strong> You want to improve your note system before working.</p>
+            <p><strong>Old loop:</strong> Open notes → notice inconsistent tags → redesign tags → create summary template → test AI integration → no real task output.</p>
+            <p><strong>CBT practice:</strong> Choose one existing note. Use it as-is. Produce one paragraph, one decision, or one concrete next action from it.</p>
+            <p><strong>Blocked behavior:</strong> no tag cleanup, no template changes, no summary conversion.</p>
+            <p><strong>After 25 minutes:</strong> write down whether the messy note actually prevented output.</p>
+          </div>
+        </section>
+
+        <section id="productivity">
+          <h2>4. Productivity trap</h2>
+          <p class="lead">Productivity becomes compulsive when planning, tracking, organizing, and system maintenance produce relief instead of output.</p>
+
+          <h3>Common forms</h3>
+          <ul>
+            <li>Making a better plan instead of doing the first step.</li>
+            <li>Opening a task manager instead of opening the actual work file.</li>
+            <li>Organizing notes, labels, folders, highlights, tabs, or boards.</li>
+            <li>Creating routines, dashboards, trackers, and review systems.</li>
+            <li>Watching productivity content or reading about methods.</li>
+            <li>Turning CBT itself into a tracker-building project.</li>
+          </ul>
+
+          <h3>The 7-minute planning cap</h3>
+          <div class="box ok">
+            <div class="label">Rule</div>
+            <p><strong>Planning is allowed only until it produces the next physical action. Then planning stops.</strong></p>
+          </div>
+
+          <pre>7-minute planning template:
+1. Output I will produce:
+2. First physical action:
+3. What I am not allowed to do during the block:
+4. Timer length:
+
+Then start.</pre>
+
+          <h3>Examples of acceptable outputs</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Context</th>
+                <th>Bad target</th>
+                <th>Good target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Thesis</td>
+                <td>Clarify Theme 2</td>
+                <td>Write 200 words explaining Theme 2’s central claim</td>
+              </tr>
+              <tr>
+                <td>Work project</td>
+                <td>Make progress on strategy</td>
+                <td>Draft the first three bullets of the client update</td>
+              </tr>
+              <tr>
+                <td>Coding</td>
+                <td>Plan the architecture</td>
+                <td>Write one failing test for the login function</td>
+              </tr>
+              <tr>
+                <td>Life admin</td>
+                <td>Organize finances</td>
+                <td>Open the bill and pay it or schedule payment</td>
+              </tr>
+              <tr>
+                <td>Learning</td>
+                <td>Build a study system</td>
+                <td>Complete 10 practice problems</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Behavioral experiment: unplanned production</h3>
+          <pre>Prediction:
+“If I do not plan properly, I will waste the session.”
+
+Experiment:
+Plan for 7 minutes. Produce for 25 minutes.
+No task manager, no organizing, no tracker, no dashboard.
+
+Measure:
+- What output exists?
+- Was the session actually wasted?
+- What planning was genuinely necessary?
+- What planning was relief-seeking?</pre>
+
+          <h3>Anti-productivity practice: the plain document rule</h3>
+          <p>When you are tempted to create a system, open the plainest possible tool instead: blank document, notebook page, basic text editor, simple email draft, plain spreadsheet, or paper.</p>
+          <div class="example">
+            <p><strong>Scenario:</strong> You want to make a tracker for your CBT practice.</p>
+            <p><strong>Old loop:</strong> Compare apps → create fields → automate logs → design dashboard → no exposure practice.</p>
+            <p><strong>CBT practice:</strong> Use a single paper line: “Today I delayed AI for 20 minutes and produced X.”</p>
+            <p><strong>Rule:</strong> No system is allowed until seven plain-paper repetitions exist.</p>
+          </div>
+        </section>
+
+        <section id="tool-building">
+          <h2>5. Compulsive tool-building</h2>
+          <p class="lead">Tool-building is one of the most seductive loops because it can be genuinely useful, technically interesting, and easy to defend.</p>
+
+          <h3>How it fuses with AI + optimization + productivity</h3>
+          <p>The tool-building loop often looks like this:</p>
+          <pre>Discomfort with direct task
+↓
+“I need a better system/tool/context/workflow.”
+↓
+Build or improve infrastructure
+↓
+Short-term relief, stimulation, control
+↓
+More possibilities appear
+↓
+The direct task remains undone or expands</pre>
+
+          <h3>The tool quarantine</h3>
+          <div class="box ok">
+            <div class="label">Rule</div>
+            <p><strong>Tool ideas are captured, not executed, during output time.</strong></p>
+          </div>
+
+          <pre>Tool quarantine entry:
+Tool idea:
+Trigger/discomfort:
+What direct task was I avoiding?
+Which exact output would this help today?
+Can I do 25 minutes without it? Yes/No
+Review date:</pre>
+
+          <h3>Three tests before building anything</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Test</th>
+                <th>Question</th>
+                <th>If answer is no</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Immediate-output test</td>
+                <td>Will this help produce a named output today?</td>
+                <td>Do not build</td>
+              </tr>
+              <tr>
+                <td>Current-tool test</td>
+                <td>Have I tried doing it with the current setup for 25 minutes?</td>
+                <td>Do that first</td>
+              </tr>
+              <tr>
+                <td>Cost test</td>
+                <td>Will this take less than 20 minutes?</td>
+                <td>Defer to scheduled tool window</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Behavioral experiment: current toolchain exposure</h3>
+          <pre>Prediction:
+“If I do not build/improve this tool, I will be unable to work effectively.”
+
+Experiment:
+Use the current imperfect toolchain for 25 minutes.
+Produce one direct-output unit.
+No integrations, automations, templates, summaries, tagging, prompt libraries, or workflow redesigns.
+
+Measure:
+- Was the task impossible?
+- What exact friction appeared?
+- Could the friction be tolerated for one block?
+- Is the tool still needed after the output exists?</pre>
+
+          <h3>Concrete examples</h3>
+          <div class="grid2">
+            <div class="card">
+              <h4>Writing / thesis</h4>
+              <p><strong>Urge:</strong> Build a quote extraction workflow.</p>
+              <p><strong>Practice:</strong> Manually paste two quotes into the draft and write interpretation.</p>
+              <p><strong>Blocked:</strong> automation, highlighting redesign, AI extraction pipeline.</p>
+            </div>
+            <div class="card">
+              <h4>Coding</h4>
+              <p><strong>Urge:</strong> Create a better dev environment before implementing.</p>
+              <p><strong>Practice:</strong> Implement the smallest ugly version in current environment.</p>
+              <p><strong>Blocked:</strong> config cleanup, tooling comparison, framework switch.</p>
+            </div>
+            <div class="card">
+              <h4>Knowledge management</h4>
+              <p><strong>Urge:</strong> Build a better summary template.</p>
+              <p><strong>Practice:</strong> Write a 5-bullet summary in the existing note.</p>
+              <p><strong>Blocked:</strong> template design, tag redesign, AI summary workflow.</p>
+            </div>
+            <div class="card">
+              <h4>Life admin</h4>
+              <p><strong>Urge:</strong> Build a finance dashboard before handling bills.</p>
+              <p><strong>Practice:</strong> Pay one bill or list three due dates on paper.</p>
+              <p><strong>Blocked:</strong> spreadsheet redesign, app comparison, categorization.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="checking-research">
+          <h2>6. Checking + researching as AI-adjacent loops</h2>
+          <p class="lead">Checking and researching become more powerful when AI and search make them instant, endless, and socially frictionless.</p>
+
+          <h3>Checking through AI</h3>
+          <p>Sometimes AI use is just checking in a new form.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Surface question</th>
+                <th>Actual function</th>
+                <th>Replacement practice</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>“Is this paragraph okay?”</td>
+                <td>Reassurance</td>
+                <td>Send to one bounded checklist: claim, evidence, transition</td>
+              </tr>
+              <tr>
+                <td>“Did I miss anything?”</td>
+                <td>Certainty seeking</td>
+                <td>Name one specific risk; check once later</td>
+              </tr>
+              <tr>
+                <td>“Can you verify this again?”</td>
+                <td>Recursive checking</td>
+                <td>Stop after one verification pass</td>
+              </tr>
+              <tr>
+                <td>“Compare my answer to best practice.”</td>
+                <td>Perfectionistic benchmarking</td>
+                <td>Use minimum viable standard</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Research through AI/search</h3>
+          <p>Research is legitimate only when tied to a specific output gap.</p>
+          <div class="badgood">
+            <div class="bad">
+              <h4>Open-ended research</h4>
+              <p>“I need to understand this better.”</p>
+              <p>“What are all the approaches?”</p>
+              <p>“What am I missing?”</p>
+              <p>“Find the best sources.”</p>
+            </div>
+            <div class="good">
+              <h4>Bounded research</h4>
+              <p>“I need one source for this claim.”</p>
+              <p>“I need the definition of this term.”</p>
+              <p>“I need to check whether this API supports X.”</p>
+              <p>“I need the deadline for this form.”</p>
+            </div>
+          </div>
+
+          <h3>Research stopping rule</h3>
+          <pre>Before research:
+Write the output gap in one sentence.
+
+During research:
+Maximum 25 minutes.
+Maximum 3 sources or 3 pages.
+
+After research:
+Return immediately to the output.
+No new branches unless they block the current output.</pre>
+
+          <h3>Behavioral experiment: one-source repair</h3>
+          <pre>Prediction:
+“If I do not research broadly, I will miss something important.”
+
+Experiment:
+Use only one targeted source to repair one existing gap.
+Then return to output.
+
+Measure:
+- Was broad research actually needed?
+- Did one targeted repair move the task forward?
+- Did broad curiosity try to take over?</pre>
+        </section>
+
+        <section id="availability">
+          <h2>7. Compulsive availability</h2>
+          <p class="lead">The AI/tool loop is not only about what you do during work. It also keeps you mentally attached after work should be over.</p>
+
+          <h3>What always-on looks like</h3>
+          <ul>
+            <li>Reopening AI or notes at night because an idea appeared.</li>
+            <li>Checking messages, comments, dashboards, or task boards “just in case.”</li>
+            <li>Mentally redesigning systems while walking, showering, eating, or lying in bed.</li>
+            <li>Keeping the work problem alive because stopping feels unsafe.</li>
+            <li>Using AI after hours because it feels like a low-friction way to keep working.</li>
+          </ul>
+
+          <h3>Shutdown protocol</h3>
+          <pre>1. Write what exists now.
+2. Write the next exact action.
+3. Write what remains unresolved.
+4. Park one sentence for tomorrow.
+5. Close the work surface.
+6. No AI, search, notes, dashboards, or work tools after shutdown.</pre>
+
+          <h3>Example shutdown note</h3>
+          <div class="example">
+            <p><strong>What exists:</strong> Rough paragraph on Theme 2 / basic function implemented / email draft started.</p>
+            <p><strong>Where I stopped:</strong> Need transition after paragraph 2 / bug appears in validation / need one date for the email.</p>
+            <p><strong>Next exact action:</strong> Open the file and write the transition beginning “This matters because...” / run test X / check the date.</p>
+            <p><strong>Allowed unresolved:</strong> final wording, optimal structure, better tool, source completeness, emotional certainty.</p>
+          </div>
+
+          <h3>Evening urge practice</h3>
+          <pre>Trigger:
+“I should just ask AI / check notes / fix the system now.”
+
+Practice:
+Write one paper line:
+“Tomorrow: ________.”
+
+Then:
+No screen.
+No AI.
+No tool.
+Return to non-work activity for 10 minutes.
+
+Measure tomorrow:
+Was the idea still important?
+Could I resume from the note?</pre>
+        </section>
+
+        <section id="combined">
+          <h2>8. Combined protocols for mixed loops</h2>
+          <p class="lead">In reality, the compulsions combine. You do not experience “pure AI dependence” or “pure productivity.” You experience chains. These protocols target the chains.</p>
+
+          <h3>Chain A: AI → optimization → productivity</h3>
+          <div class="example">
+            <p><strong>Pattern:</strong> Ask AI for framing → get several options → redesign plan → create tracker → no output.</p>
+            <p><strong>Intervention:</strong> Choose one option arbitrarily enough, write for 20 minutes, then evaluate from output.</p>
+          </div>
+          <pre>Protocol A:
+1. Ask no AI before output.
+2. Pick current best version.
+3. Lock it for 20 minutes.
+4. Produce rough output.
+5. Only after output: one critique question allowed.
+6. No tracker/system creation.</pre>
+
+          <h3>Chain B: tool-building → research → AI</h3>
+          <div class="example">
+            <p><strong>Pattern:</strong> Build better note system → realize you need better sources → ask AI to summarize them → start building summary workflow.</p>
+            <p><strong>Intervention:</strong> Use current note, write the target output, park all tool/research ideas.</p>
+          </div>
+          <pre>Protocol B:
+1. Write the tool idea in quarantine.
+2. Open current imperfect material.
+3. Produce one output unit for 25 minutes.
+4. Mark gaps in brackets.
+5. After output, choose at most one support action.</pre>
+
+          <h3>Chain C: checking → AI reassurance → editing loop</h3>
+          <div class="example">
+            <p><strong>Pattern:</strong> Recheck draft → ask AI if it works → rewrite → ask again → compare versions.</p>
+            <p><strong>Intervention:</strong> One checklist pass, one edit pass, stop.</p>
+          </div>
+          <pre>Protocol C:
+1. Define checklist before reading:
+   - Is the claim clear?
+   - Is there evidence?
+   - Is the next action obvious?
+
+2. Read once.
+3. Make one edit pass.
+4. Do not ask AI for reassurance.
+5. Move to next output or stop.</pre>
+
+          <h3>Chain D: always-on → late-night AI/tooling</h3>
+          <div class="example">
+            <p><strong>Pattern:</strong> Idea appears at night → open AI → generate plan → tweak workflow → sleep delayed.</p>
+            <p><strong>Intervention:</strong> one-line capture on paper, no screen, tomorrow-only rule.</p>
+          </div>
+          <pre>Protocol D:
+1. Write one paper line.
+2. Add “review tomorrow at ___.”
+3. No AI/tool/search after shutdown.
+4. If still relevant tomorrow, handle in support block.
+5. Log whether late-night action was actually necessary.</pre>
+        </section>
+
+        <section id="examples">
+          <h2>9. Real-world examples</h2>
+          <p class="lead">These examples show how to apply the same principles outside thesis work.</p>
+
+          <h3>Example 1: writing an important email</h3>
+          <div class="card">
+            <p><strong>Old loop:</strong> Draft email → ask AI to improve tone → compare versions → worry it sounds too formal → ask again → reread → delay sending.</p>
+            <p><strong>New practice:</strong></p>
+            <pre>1. Draft email in plain language in 5 minutes.
+2. Check only: recipient, main ask, attachment.
+3. Optional AI question: “Is anything unclear or missing?”
+4. Make one edit pass.
+5. Send.
+6. Do not reread sent email.</pre>
+            <p><strong>Exposure:</strong> send a clear but imperfect email without optimizing tone.</p>
+          </div>
+
+          <h3>Example 2: starting a coding task</h3>
+          <div class="card">
+            <p><strong>Old loop:</strong> Ask AI for architecture → compare libraries → refactor setup → watch examples → no working code.</p>
+            <p><strong>New practice:</strong></p>
+            <pre>1. Write one failing test or crude function.
+2. Use current tools only.
+3. No architecture discussion for 25 minutes.
+4. If stuck after trying, ask AI for the smallest next fix.
+5. Stop after the fix or after one test passes.</pre>
+            <p><strong>Exposure:</strong> tolerate ugly first implementation.</p>
+          </div>
+
+          <h3>Example 3: organizing personal finances</h3>
+          <div class="card">
+            <p><strong>Old loop:</strong> Build spreadsheet → compare budgeting apps → categorize transactions → feel productive → avoid paying one bill or making one call.</p>
+            <p><strong>New practice:</strong></p>
+            <pre>1. Identify one concrete financial action.
+2. Do it before any spreadsheet or app work.
+3. Example: pay bill, call provider, list due dates.
+4. After action, decide if system work is still necessary.
+5. If yes, cap system work at 20 minutes.</pre>
+            <p><strong>Exposure:</strong> do a real financial action while the system is imperfect.</p>
+          </div>
+
+          <h3>Example 4: learning a new topic</h3>
+          <div class="card">
+            <p><strong>Old loop:</strong> Ask AI for learning roadmap → compare courses → build notes template → collect resources → do no practice.</p>
+            <p><strong>New practice:</strong></p>
+            <pre>1. Do 20 minutes of direct practice.
+2. Solve problems, write explanation, attempt exercise.
+3. No roadmap, no resource comparison, no note system.
+4. After practice, ask one specific question about what you got wrong.</pre>
+            <p><strong>Exposure:</strong> be a beginner without preparing perfectly.</p>
+          </div>
+
+          <h3>Example 5: creative project</h3>
+          <div class="card">
+            <p><strong>Old loop:</strong> Ask AI for ideas → generate variations → collect references → create moodboard → adjust tools → no draft.</p>
+            <p><strong>New practice:</strong></p>
+            <pre>1. Make one ugly first version in 20 minutes.
+2. No reference search.
+3. No tool changes.
+4. No alternate concepts.
+5. After the ugly version exists, choose one improvement.</pre>
+            <p><strong>Exposure:</strong> create before curating possibilities.</p>
+          </div>
+        </section>
+
+        <section id="logs">
+          <h2>10. Logs and templates</h2>
+          <p class="lead">Logs should be plain and short. If logging becomes a system, it has joined the compulsion.</p>
+
+          <h3>One-line daily log</h3>
+          <pre>Date:
+Output produced before AI/tools/research:
+Main urge:
+Peak intensity 0–10:
+Safety behavior delayed:
+Actual outcome:</pre>
+
+          <h3>Behavioral experiment card</h3>
+          <pre>Situation:
+Urge:
+Compulsion I want to do:
+Prediction if I do not do it:
+Exposure action:
+Blocked behaviors:
+Outcome:
+What I learned:</pre>
+
+          <h3>Tool quarantine card</h3>
+          <pre>Tool/system idea:
+What triggered it:
+Direct task I was avoiding:
+Can I do 25 minutes without this? Yes/No
+If still useful in 48 hours, review:</pre>
+
+          <h3>AI use card</h3>
+          <pre>Have I produced my own version first? Yes/No
+What exact output am I asking about?
+Is this one bounded question? Yes/No
+Am I seeking information or reassurance?
+What will I do after the answer?</pre>
+        </section>
+
+        <section id="week-plan">
+          <h2>11. First week: simple practice plan</h2>
+          <p class="lead">Do not attempt to fix every behavior at once. The first week is about building evidence that output can happen before AI, optimization, productivity systems, or tools.</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Practice</th>
+                <th>Blocked behavior</th>
+                <th>Success criterion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Day 1</td>
+                <td>20 minutes output before AI</td>
+                <td>AI prompting, option generation</td>
+                <td>Rough output exists</td>
+              </tr>
+              <tr>
+                <td>Day 2</td>
+                <td>25 minutes under current structure</td>
+                <td>Optimizing, renaming, restructuring</td>
+                <td>Output under imperfect structure</td>
+              </tr>
+              <tr>
+                <td>Day 3</td>
+                <td>7 minutes planning + 25 minutes output</td>
+                <td>Productivity systems, task organizing</td>
+                <td>Planning stayed capped</td>
+              </tr>
+              <tr>
+                <td>Day 4</td>
+                <td>Use current toolchain for 25 minutes</td>
+                <td>Tool-building, integrations, templates</td>
+                <td>Output without tool change</td>
+              </tr>
+              <tr>
+                <td>Day 5</td>
+                <td>Draft first, research one gap later</td>
+                <td>Open-ended research</td>
+                <td>One paragraph before source search</td>
+              </tr>
+              <tr>
+                <td>Day 6</td>
+                <td>One-pass edit/check</td>
+                <td>Recursive checking, AI reassurance</td>
+                <td>One check/edit pass only</td>
+              </tr>
+              <tr>
+                <td>Day 7</td>
+                <td>Shutdown exposure</td>
+                <td>Always-on availability</td>
+                <td>Stopped with restart note</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Minimum version for bad days</h3>
+          <div class="box ok">
+            <div class="label">Minimum viable practice</div>
+            <p>Produce <strong>one direct-output sentence</strong> before AI, search, tool-building, optimizing, or organizing. Then log the urge. That counts.</p>
+          </div>
+
+          <h3>What not to do</h3>
+          <ul>
+            <li>Do not build a CBT dashboard.</li>
+            <li>Do not create a sophisticated AI prompt protocol.</li>
+            <li>Do not compare productivity methods.</li>
+            <li>Do not make a complex exposure hierarchy before doing one exposure.</li>
+            <li>Do not use this guide as reading material instead of practice.</li>
+          </ul>
+
+          <div class="box danger">
+            <div class="label">Final warning</div>
+            <p>The loop will try to absorb the treatment. It will say: “Let me optimize this plan, make a tracker, ask AI to personalize it, create a better system, and then start.” That is the same behavior. Start with one ugly output block.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

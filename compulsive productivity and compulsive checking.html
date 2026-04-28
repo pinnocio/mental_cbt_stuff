@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CBT Practical Protocols: Compulsive Productivity and Compulsive Checking</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 24px 80px;
+      color: #1f2933;
+      background: #fafafa;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.25;
+      color: #111827;
+    }
+
+    h1 {
+      font-size: 2rem;
+      border-bottom: 3px solid #111827;
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      margin-top: 48px;
+      border-bottom: 1px solid #d1d5db;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 32px;
+    }
+
+    h4 {
+      font-size: 1rem;
+      margin-top: 24px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .note {
+      background: #eef2ff;
+      border-left: 5px solid #4f46e5;
+      padding: 14px 18px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 5px solid #ea580c;
+      padding: 14px 18px;
+      margin: 20px 0;
+    }
+
+    .practice {
+      background: #ecfdf5;
+      border-left: 5px solid #059669;
+      padding: 14px 18px;
+      margin: 20px 0;
+    }
+
+    .example {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      padding: 14px 18px;
+      margin: 18px 0;
+    }
+
+    .bad {
+      background: #fef2f2;
+      border-left: 5px solid #dc2626;
+      padding: 12px 16px;
+      margin: 14px 0;
+    }
+
+    .good {
+      background: #f0fdf4;
+      border-left: 5px solid #16a34a;
+      padding: 12px 16px;
+      margin: 14px 0;
+    }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    pre {
+      background: #111827;
+      color: #f9fafb;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
+
+    ul, ol {
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      color: #4b5563;
+    }
+
+    .checklist li {
+      list-style-type: "☐ ";
+    }
+
+    .do li {
+      list-style-type: "→ ";
+    }
+
+    .dont li {
+      list-style-type: "✕ ";
+    }
+
+    .section-card {
+      border: 1px solid #d1d5db;
+      background: white;
+      padding: 22px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .worksheet {
+      border: 2px dashed #9ca3af;
+      background: white;
+      padding: 18px;
+      margin: 24px 0;
+    }
+
+    .line {
+      border-bottom: 1px solid #9ca3af;
+      min-height: 28px;
+      margin: 8px 0 14px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 700px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>CBT Practical Protocols for Thesis Work</h1>
+
+<div class="note">
+  <strong>Scope:</strong> This document covers two patterns only:
+  <ol>
+    <li><strong>Compulsive productivity</strong> — planning, tracking, organizing, formatting, and system-maintenance instead of producing thesis prose.</li>
+    <li><strong>Compulsive checking</strong> — rechecking notes, comments, transcripts, drafts, rubrics, or previous decisions before or during writing.</li>
+  </ol>
+  The focus is practical behavioral training, not insight, motivation, or self-talk alone.
+</div>
+
+<div class="warning">
+  <strong>Core principle:</strong> The treatment target is not “feel ready.” The target is:
+  <br /><br />
+  <strong>Produce a small, visible piece of thesis prose while the urge to prepare, organize, or check is still present.</strong>
+</div>
+
+<h2>Global CBT Structure Used Here</h2>
+
+<p>Each practice follows the same behavioral sequence:</p>
+
+<pre>
+1. Identify the trigger.
+2. Name the old behavior precisely.
+3. Predict what will happen if you do not perform it.
+4. Block or delay the old behavior.
+5. Perform a small thesis-output action instead.
+6. Measure what actually happened.
+7. Repeat until the feared prediction weakens.
+</pre>
+
+<p>This is important because the brain does not learn much from advice. It learns from repeated, concrete experiences.</p>
+
+<div class="example">
+  <strong>Example of useful CBT data:</strong>
+  <br />
+  “I predicted that if I wrote without reorganizing my notes first, the paragraph would be incoherent. I wrote for 25 minutes anyway. The paragraph was rough but usable. I did not need the reorganization before writing.”
+</div>
+
+<hr />
+
+<h2>1. Compulsive Productivity</h2>
+
+<div class="section-card">
+  <h3>Definition in Your Thesis Context</h3>
+
+  <p>
+    Compulsive productivity is when you do thesis-related activity that feels useful, but does not directly produce thesis prose.
+  </p>
+
+  <p>Examples:</p>
+
+  <ul>
+    <li>Making a better writing plan.</li>
+    <li>Reorganizing your task list.</li>
+    <li>Cleaning your notes.</li>
+    <li>Adjusting your Notion, Obsidian, Zotero, folder, or tracking system.</li>
+    <li>Making a new “thesis dashboard.”</li>
+    <li>Writing meta-notes about what needs to be written.</li>
+    <li>Formatting headings, files, labels, colors, or tags.</li>
+    <li>Breaking the work into more detailed subtasks instead of writing one paragraph.</li>
+    <li>Creating a better schedule instead of using the current hour to draft.</li>
+  </ul>
+
+  <p>
+    The behavior is not bad by itself. It becomes compulsive when it repeatedly appears right before writing, reduces discomfort, and delays contact with the actual draft.
+  </p>
+</div>
+
+<h3>The CBT Formulation</h3>
+
+<table>
+  <tr>
+    <th>Component</th>
+    <th>What it looks like</th>
+  </tr>
+  <tr>
+    <td>Trigger</td>
+    <td>You open the thesis document and feel uncertainty, dread, messiness, or resistance.</td>
+  </tr>
+  <tr>
+    <td>Urge</td>
+    <td>You feel pulled to plan, organize, track, clean, format, or systematize.</td>
+  </tr>
+  <tr>
+    <td>Compulsive behavior</td>
+    <td>You do a lower-threat productivity task instead of drafting prose.</td>
+  </tr>
+  <tr>
+    <td>Short-term reward</td>
+    <td>Relief, control, clarity, visible order, feeling of progress.</td>
+  </tr>
+  <tr>
+    <td>Long-term cost</td>
+    <td>Less prose, more dependence on preparation, more fear of starting imperfectly.</td>
+  </tr>
+</table>
+
+<div class="bad">
+  <strong>Old rule:</strong>
+  <br />
+  “I need to organize the work before I can write.”
+</div>
+
+<div class="good">
+  <strong>New behavioral rule:</strong>
+  <br />
+  “I can organize only after I have produced a small piece of prose.”
+</div>
+
+<h3>Practice 1: The 7-Minute Planning Cap</h3>
+
+<p>
+  This is the first practical intervention. It does not ban planning. It limits planning so it cannot become avoidance.
+</p>
+
+<div class="practice">
+  <strong>Protocol:</strong>
+  <ol>
+    <li>Set a timer for <strong>7 minutes</strong>.</li>
+    <li>Write only one sentence: <strong>“In this block, I will produce…”</strong></li>
+    <li>Choose one tiny output.</li>
+    <li>When the timer ends, planning stops even if the plan feels incomplete.</li>
+    <li>Start a 25-minute writing block immediately.</li>
+  </ol>
+</div>
+
+<h4>Good writing targets</h4>
+
+<ul class="do">
+  <li>Write one rough paragraph defining Theme 1.</li>
+  <li>Write 200 words explaining why Theme 2 matters.</li>
+  <li>Write one evidence paragraph using one participant quote.</li>
+  <li>Write a rough transition between Theme 1 and Theme 2.</li>
+  <li>Write an ugly paragraph beginning: “This theme shows that…”</li>
+</ul>
+
+<h4>Bad writing targets</h4>
+
+<ul class="dont">
+  <li>Clarify the whole findings chapter.</li>
+  <li>Understand my themes better.</li>
+  <li>Organize the structure before writing.</li>
+  <li>Develop a complete plan.</li>
+  <li>Figure out what I really want to say.</li>
+</ul>
+
+<div class="example">
+  <strong>Concrete example:</strong>
+  <pre>
+7-minute plan:
+“In this block, I will produce a rough 250-word paragraph explaining Theme 2.”
+
+Not allowed:
+- Rebuilding the outline
+- Opening task manager
+- Reorganizing notes
+- Checking all subthemes
+- Creating a new plan
+
+25-minute writing starts immediately.
+  </pre>
+</div>
+
+<h3>Practice 2: The Production-Before-Preparation Rule</h3>
+
+<p>
+  This rule changes the order of operations. You still get to organize, but only after the draft has received something.
+</p>
+
+<div class="practice">
+  <strong>Rule:</strong>
+  <pre>
+Before any productivity behavior:
+Produce one visible thesis object.
+  </pre>
+</div>
+
+<p>A “visible thesis object” can be:</p>
+
+<ul>
+  <li>one paragraph</li>
+  <li>one rough claim</li>
+  <li>one theme definition</li>
+  <li>one evidence paragraph</li>
+  <li>one written interpretation of a quote</li>
+  <li>one subsection stub</li>
+</ul>
+
+<p>A visible thesis object is not:</p>
+
+<ul>
+  <li>a cleaner task list</li>
+  <li>a better table of contents</li>
+  <li>a reorganized folder</li>
+  <li>a refined plan</li>
+  <li>a better dashboard</li>
+  <li>a list of what you need to write later</li>
+</ul>
+
+<div class="example">
+  <strong>Example:</strong>
+  <pre>
+Urge:
+“I should organize the notes for Theme 3.”
+
+New rule:
+“First I produce one rough paragraph for Theme 3.”
+
+After paragraph exists:
+I may spend 10 minutes organizing only the notes directly needed for that paragraph.
+  </pre>
+</div>
+
+<h3>Practice 3: TRAP → TRAC for Productive Procrastination</h3>
+
+<p>
+  Use this when you catch yourself doing “productive” work instead of writing.
+</p>
+
+<table>
+  <tr>
+    <th>Step</th>
+    <th>Meaning</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>Trigger</td>
+    <td>What set off the avoidance?</td>
+    <td>I opened the findings chapter and felt overwhelmed.</td>
+  </tr>
+  <tr>
+    <td>Response</td>
+    <td>What did I do?</td>
+    <td>I opened my task manager and began reorganizing subtasks.</td>
+  </tr>
+  <tr>
+    <td>Avoidance Pattern</td>
+    <td>What did this help me avoid?</td>
+    <td>Writing an imperfect paragraph.</td>
+  </tr>
+  <tr>
+    <td>Alternative Coping</td>
+    <td>What output action will I take instead?</td>
+    <td>Write one rough paragraph for 15 minutes.</td>
+  </tr>
+</table>
+
+<div class="worksheet">
+  <h4>TRAP → TRAC Worksheet</h4>
+
+  <p><strong>Trigger:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Productive behavior I started doing:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What discomfort did it help me avoid?</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What concrete thesis output will I produce instead?</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Timer length:</strong></p>
+  <div class="line"></div>
+</div>
+
+<h3>Practice 4: The “No Meta-Work Before Drafting” Block</h3>
+
+<p>
+  Meta-work means work about the work. For this pattern, meta-work is the danger zone.
+</p>
+
+<div class="practice">
+  <strong>25-minute block rules:</strong>
+  <ul class="checklist">
+    <li>No task manager.</li>
+    <li>No calendar adjustment.</li>
+    <li>No dashboard.</li>
+    <li>No notes cleanup.</li>
+    <li>No file organization.</li>
+    <li>No title/heading formatting.</li>
+    <li>No chapter map editing.</li>
+    <li>No color-coding.</li>
+    <li>No “I’ll just make the plan clearer.”</li>
+  </ul>
+</div>
+
+<p>Allowed:</p>
+
+<ul class="do">
+  <li>Bad sentences.</li>
+  <li>Fragments.</li>
+  <li>Bracketed gaps.</li>
+  <li>Awkward claims.</li>
+  <li>Ugly headings.</li>
+  <li>Provisional interpretations.</li>
+</ul>
+
+<div class="example">
+  <strong>Practical drafting format:</strong>
+  <pre>
+Theme 2 rough paragraph:
+
+This theme shows that [rough claim]. Participants did not simply describe X as [simple description], but as [interpretation]. For example, [QUOTE PLACEHOLDER]. This matters because [interpretation]. At this stage, the paragraph is still missing [CITE] and [better transition], but the central claim is visible.
+  </pre>
+</div>
+
+<h3>Practice 5: “Productivity Urge Delay”</h3>
+
+<p>
+  This is for the exact moment you feel pulled to organize, track, or plan.
+</p>
+
+<div class="practice">
+  <strong>Protocol:</strong>
+  <ol>
+    <li>Write the productivity urge on paper.</li>
+    <li>Do not perform it immediately.</li>
+    <li>Write for 10 minutes.</li>
+    <li>After 10 minutes, decide whether the productivity action is still truly needed.</li>
+  </ol>
+</div>
+
+<pre>
+Productivity urge:
+“Reorganize Theme 2 notes.”
+
+Delay:
+10 minutes.
+
+Output action:
+Write the first rough paragraph of Theme 2.
+
+After 10 minutes:
+Is the organization still needed?
+If yes, define exactly what needs organizing.
+If no, continue writing.
+</pre>
+
+<h3>Practice 6: The “Preparation Budget”</h3>
+
+<p>
+  Some preparation is legitimate. The solution is not zero preparation. The solution is a fixed budget.
+</p>
+
+<table>
+  <tr>
+    <th>Task type</th>
+    <th>Allowed budget</th>
+    <th>Condition</th>
+  </tr>
+  <tr>
+    <td>Planning the block</td>
+    <td>5–7 minutes</td>
+    <td>Must end in one concrete writing target.</td>
+  </tr>
+  <tr>
+    <td>Organizing notes</td>
+    <td>10 minutes</td>
+    <td>Only after one paragraph exists.</td>
+  </tr>
+  <tr>
+    <td>Task-list updates</td>
+    <td>5 minutes at end of day</td>
+    <td>Not before writing.</td>
+  </tr>
+  <tr>
+    <td>Formatting</td>
+    <td>End of writing session only</td>
+    <td>Never as a way to start.</td>
+  </tr>
+  <tr>
+    <td>Weekly planning</td>
+    <td>30 minutes once weekly</td>
+    <td>Not daily; not when anxious.</td>
+  </tr>
+</table>
+
+<h3>Compulsive Productivity Exposure Ladder</h3>
+
+<p>
+  Do not start with the hardest version. Work through levels.
+</p>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Exposure</th>
+    <th>Blocked behavior</th>
+    <th>Goal</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Write for 10 minutes before opening task manager.</td>
+    <td>Planning/tracking.</td>
+    <td>Prove that writing can begin without the system.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Write 150 words before organizing notes.</td>
+    <td>Note cleanup.</td>
+    <td>Produce text before preparation.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Write 25 minutes with no dashboard, tracker, or task list.</td>
+    <td>Productivity tools.</td>
+    <td>Complete a block without meta-work.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Write under an incomplete plan.</td>
+    <td>Detailed planning.</td>
+    <td>Tolerate partial clarity.</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Do an entire first writing block before any planning or organizing.</td>
+    <td>All pre-writing productivity behavior.</td>
+    <td>Make prose the first event of the day.</td>
+  </tr>
+</table>
+
+<h3>Compulsive Productivity Daily Log</h3>
+
+<div class="worksheet">
+  <p><strong>Date:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Writing target:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Productivity urge that appeared:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I wanted to do instead of writing:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What discomfort did that help me avoid?</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I produced before doing productivity work:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Was the preparation truly necessary before writing?</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I learned:</strong></p>
+  <div class="line"></div>
+</div>
+
+<hr />
+
+<h2>2. Compulsive Checking</h2>
+
+<div class="section-card">
+  <h3>Definition in Your Thesis Context</h3>
+
+  <p>
+    Compulsive checking is repeatedly verifying notes, comments, transcripts, rubrics, drafts, previous versions, or decisions in order to reduce doubt before continuing.
+  </p>
+
+  <p>Examples:</p>
+
+  <ul>
+    <li>Rereading supervisor comments before every writing session.</li>
+    <li>Checking the rubric repeatedly before drafting.</li>
+    <li>Reopening transcripts to make sure you remembered something correctly.</li>
+    <li>Rereading your own previous paragraph many times before writing the next one.</li>
+    <li>Checking whether the theme name matches the data before writing a rough paragraph.</li>
+    <li>Rechecking whether a quote really supports the claim before drafting the surrounding interpretation.</li>
+    <li>Looking again at old notes because the current sentence feels “unsafe.”</li>
+  </ul>
+
+  <p>
+    Checking is legitimate when it answers a specific factual question once. It becomes compulsive when it is repeated, anxiety-driven, and required before you feel allowed to proceed.
+  </p>
+</div>
+
+<h3>The CBT Formulation</h3>
+
+<table>
+  <tr>
+    <th>Component</th>
+    <th>What it looks like</th>
+  </tr>
+  <tr>
+    <td>Trigger</td>
+    <td>You begin writing and feel doubt: “What if this is wrong?”</td>
+  </tr>
+  <tr>
+    <td>Urge</td>
+    <td>You want to check notes, comments, rubric, or transcripts.</td>
+  </tr>
+  <tr>
+    <td>Compulsive behavior</td>
+    <td>You check, then often check again, then feel temporary relief.</td>
+  </tr>
+  <tr>
+    <td>Short-term reward</td>
+    <td>Relief, certainty, permission to continue.</td>
+  </tr>
+  <tr>
+    <td>Long-term cost</td>
+    <td>Less trust in memory/judgment, more dependence on checking, slower writing.</td>
+  </tr>
+</table>
+
+<div class="bad">
+  <strong>Old rule:</strong>
+  <br />
+  “I need to check before I write, otherwise I might write something wrong.”
+</div>
+
+<div class="good">
+  <strong>New behavioral rule:</strong>
+  <br />
+  “I can draft first, mark uncertainty, and check once later.”
+</div>
+
+<h3>Practice 1: The One-Pass Rule</h3>
+
+<p>
+  This is the central anti-checking rule. It allows verification but blocks recursive reassurance.
+</p>
+
+<div class="practice">
+  <strong>Protocol:</strong>
+  <pre>
+Before writing:
+One brief orientation check is allowed.
+Maximum: 5 minutes.
+
+During writing:
+No checking.
+Use brackets instead:
+[CHECK LATER]
+[VERIFY QUOTE]
+[CHECK RUBRIC]
+[TRANSCRIPT?]
+
+After writing:
+One verification pass.
+Maximum: 15 minutes.
+
+After the verification pass:
+Stop checking.
+  </pre>
+</div>
+
+<div class="example">
+  <strong>Example:</strong>
+  <pre>
+Draft sentence:
+Participants described the institution as both a source of constraint and legitimacy [CHECK LATER: confirm with P3/P5 excerpts].
+
+What you do:
+Keep writing.
+
+What you do not do:
+Open transcript immediately.
+Search all excerpts.
+Recheck comments.
+Reopen rubric.
+  </pre>
+</div>
+
+<h3>Practice 2: The Delayed Check</h3>
+
+<p>
+  This is a direct response-prevention practice. You do not promise never to check. You delay the check long enough to learn that writing can continue without immediate reassurance.
+</p>
+
+<div class="practice">
+  <strong>Protocol:</strong>
+  <ol>
+    <li>Notice the checking urge.</li>
+    <li>Write exactly what you want to check.</li>
+    <li>Set a 10-minute delay.</li>
+    <li>Write during the delay.</li>
+    <li>After 10 minutes, reassess whether the check is still necessary.</li>
+  </ol>
+</div>
+
+<pre>
+Checking urge:
+“Check whether participant 4 actually said this.”
+
+Delay:
+10 minutes.
+
+During delay:
+Write the interpretation around the claim.
+
+Bracket:
+[VERIFY P4 QUOTE LATER]
+
+After 10 minutes:
+Is immediate checking required to continue?
+Usually no.
+</pre>
+
+<h3>Practice 3: Check Later Brackets</h3>
+
+<p>
+  Brackets are essential. They protect accuracy without letting checking interrupt drafting.
+</p>
+
+<table>
+  <tr>
+    <th>Instead of checking immediately</th>
+    <th>Write this in the draft</th>
+  </tr>
+  <tr>
+    <td>Checking a quote</td>
+    <td>[VERIFY QUOTE]</td>
+  </tr>
+  <tr>
+    <td>Checking source/citation</td>
+    <td>[CITE / CHECK AUTHOR]</td>
+  </tr>
+  <tr>
+    <td>Checking supervisor comment</td>
+    <td>[CHECK SUPERVISOR COMMENT LATER]</td>
+  </tr>
+  <tr>
+    <td>Checking rubric</td>
+    <td>[RUBRIC CHECK AFTER SECTION]</td>
+  </tr>
+  <tr>
+    <td>Checking transcript</td>
+    <td>[TRANSCRIPT CHECK: P2/P5]</td>
+  </tr>
+  <tr>
+    <td>Checking terminology</td>
+    <td>[TERM?]</td>
+  </tr>
+</table>
+
+<div class="example">
+  <strong>Practical paragraph with brackets:</strong>
+  <pre>
+The second theme suggests that participants experienced institutional requirements not simply as external limitations, but as interpretive frames through which they evaluated their own professional competence [CHECK TERM]. This appeared most clearly in the way participants described moments of administrative friction [VERIFY QUOTE P2/P5]. Rather than treating these moments as isolated obstacles, participants often connected them to broader questions of legitimacy and belonging [CITE].
+  </pre>
+</div>
+
+<p>
+  This paragraph is not submission-ready. That is fine. It is now a draft object that can be checked later.
+</p>
+
+<h3>Practice 4: Factual Check vs Reassurance Check</h3>
+
+<p>
+  Before checking, classify the check.
+</p>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Factual check</th>
+    <th>Reassurance check</th>
+  </tr>
+  <tr>
+    <td>Is there a specific answer?</td>
+    <td>Yes.</td>
+    <td>Often no, or not enough to satisfy anxiety.</td>
+  </tr>
+  <tr>
+    <td>Can it be checked once?</td>
+    <td>Yes.</td>
+    <td>No; it invites repeated checking.</td>
+  </tr>
+  <tr>
+    <td>Does it serve a current sentence?</td>
+    <td>Yes.</td>
+    <td>Often serves general anxiety.</td>
+  </tr>
+  <tr>
+    <td>Example</td>
+    <td>“What exact term did participant 3 use?”</td>
+    <td>“Am I sure this theme is valid?”</td>
+  </tr>
+  <tr>
+    <td>Action</td>
+    <td>Check once during scheduled verification.</td>
+    <td>Delay; continue drafting.</td>
+  </tr>
+</table>
+
+<div class="practice">
+  <strong>Before checking, ask behaviorally:</strong>
+  <pre>
+What exact item am I checking?
+Can this be answered in one look?
+Will I accept the answer after one look?
+Does this serve the current paragraph?
+  </pre>
+</div>
+
+<p>
+  If the answer is vague, broad, or emotional, it is probably reassurance checking.
+</p>
+
+<h3>Practice 5: The Closed-Document Exposure</h3>
+
+<p>
+  This is a stronger exposure for checking. Use it once the delayed check is manageable.
+</p>
+
+<div class="practice">
+  <strong>Protocol:</strong>
+  <ol>
+    <li>Choose a paragraph topic.</li>
+    <li>Close notes, transcripts, comments, and rubric.</li>
+    <li>Write from memory/current understanding for 15–25 minutes.</li>
+    <li>Mark uncertainty in brackets.</li>
+    <li>After the block, check once and count actual serious errors.</li>
+  </ol>
+</div>
+
+<div class="example">
+  <strong>Example:</strong>
+  <pre>
+Topic:
+Theme 1 — how participants describe institutional friction.
+
+Closed:
+- transcripts
+- notes
+- supervisor comments
+- rubric
+- previous versions
+
+Write for:
+20 minutes.
+
+Allowed:
+[CHECK LATER] brackets.
+
+After:
+One 15-minute check.
+Count serious errors.
+  </pre>
+</div>
+
+<h3>Practice 6: Serious Error Count</h3>
+
+<p>
+  Checking urges often predict disaster vaguely. Make the outcome measurable.
+</p>
+
+<div class="worksheet">
+  <h4>Serious Error Count</h4>
+
+  <p><strong>Prediction before writing:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I feared would happen if I did not check:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Words written before checking:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Number of serious factual errors found:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Number of minor wording/precision issues found:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Was immediate checking necessary?</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What did I learn?</strong></p>
+  <div class="line"></div>
+</div>
+
+<p>
+  The point is not to prove there are no errors. The point is to learn whether immediate checking was necessary before drafting.
+</p>
+
+<h3>Compulsive Checking Exposure Ladder</h3>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Exposure</th>
+    <th>Blocked behavior</th>
+    <th>Goal</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Delay checking by 5 minutes.</td>
+    <td>Immediate note/rubric/comment check.</td>
+    <td>Learn the urge can be delayed.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Write one paragraph with [CHECK LATER] brackets.</td>
+    <td>Mid-paragraph checking.</td>
+    <td>Keep drafting despite uncertainty.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Write 20 minutes from current understanding.</td>
+    <td>Opening notes/transcripts.</td>
+    <td>Build trust in provisional drafting.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Check once only after writing.</td>
+    <td>Recursive checking.</td>
+    <td>Accept one verification pass.</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Do not check rubric/comments until the section draft exists.</td>
+    <td>Pre-writing reassurance.</td>
+    <td>Write before external validation.</td>
+  </tr>
+</table>
+
+<h3>Specific Checking Traps and What to Do</h3>
+
+<table>
+  <tr>
+    <th>Trap</th>
+    <th>Old behavior</th>
+    <th>Replacement practice</th>
+  </tr>
+  <tr>
+    <td>Supervisor comment anxiety</td>
+    <td>Reread comments before writing each paragraph.</td>
+    <td>Write paragraph first. Then one scheduled comment check.</td>
+  </tr>
+  <tr>
+    <td>Rubric anxiety</td>
+    <td>Check rubric repeatedly before drafting.</td>
+    <td>Rubric check only after section has claim + evidence + interpretation.</td>
+  </tr>
+  <tr>
+    <td>Transcript doubt</td>
+    <td>Search transcript immediately when unsure.</td>
+    <td>Use [VERIFY TRANSCRIPT] and continue for 10 minutes.</td>
+  </tr>
+  <tr>
+    <td>Theme validity doubt</td>
+    <td>Recheck all notes to see if theme is “real.”</td>
+    <td>Write provisional theme paragraph; evaluate later using evidence count.</td>
+  </tr>
+  <tr>
+    <td>Draft quality doubt</td>
+    <td>Reread previous paragraph repeatedly.</td>
+    <td>Read last sentence only; write next sentence.</td>
+  </tr>
+</table>
+
+<h3>Compulsive Checking Daily Log</h3>
+
+<div class="worksheet">
+  <p><strong>Date:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Writing target:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Checking urge:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I wanted to check:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Predicted consequence of not checking:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Delay length:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I wrote before checking:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Actual outcome:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>Serious errors found:</strong></p>
+  <div class="line"></div>
+
+  <p><strong>What I learned:</strong></p>
+  <div class="line"></div>
+</div>
+
+<hr />
+
+<h2>Combined Practice: Productivity + Checking</h2>
+
+<p>
+  These two patterns often combine. Productivity delays starting; checking interrupts after starting.
+</p>
+
+<div class="section-card">
+  <h3>The Most Useful Combined Block</h3>
+
+  <pre>
+Total: 35 minutes
+
+0–7 minutes:
+Choose one tiny writing target.
+No planning beyond one sentence.
+
+7–32 minutes:
+Write rough prose.
+No checking.
+No organizing.
+No tracking.
+No notes cleanup.
+Use brackets.
+
+32–35 minutes:
+Log what happened.
+Do not check yet unless the paragraph cannot continue tomorrow without one specific factual answer.
+  </pre>
+</div>
+
+<h3>Example Full Session</h3>
+
+<div class="example">
+  <pre>
+Writing target:
+Write one rough paragraph explaining Theme 2.
+
+Prediction:
+If I do not organize my notes and recheck the transcript first, the paragraph will be confused and inaccurate.
+
+Blocked behaviors:
+- no task manager
+- no notes cleanup
+- no transcript
+- no rubric
+- no supervisor comments
+
+During block:
+I wrote 310 words.
+Used 4 brackets:
+[VERIFY QUOTE]
+[CITE]
+[CHECK TERM]
+[SUPERVISOR COMMENT?]
+
+Actual outcome:
+The paragraph was rough but had a clear claim.
+I did not need the notes before writing.
+One transcript check is needed later, but not immediately.
+
+Learning:
+The urge said “I cannot write without checking.”
+Actual data: I could write a rough paragraph and check later.
+  </pre>
+</div>
+
+<h3>Rules for the Next 7 Days</h3>
+
+<ul class="checklist">
+  <li>Before writing, planning is capped at 7 minutes.</li>
+  <li>No task manager, tracking, organizing, or note cleanup before the first writing block.</li>
+  <li>During writing, no checking notes, comments, transcripts, drafts, or rubrics.</li>
+  <li>Use brackets instead of checking.</li>
+  <li>After writing, one verification pass is allowed if needed.</li>
+  <li>Every block must produce visible prose, even if rough.</li>
+  <li>Every block ends with prediction vs. outcome data.</li>
+</ul>
+
+<h3>Minimum Viable Version</h3>
+
+<p>If the full protocol feels too large, use this:</p>
+
+<pre>
+1. Set 15 minutes.
+2. Write one paragraph.
+3. No organizing.
+4. No checking.
+5. Use brackets.
+6. Log one sentence:
+   “I predicted ____. What happened was ____.”
+</pre>
+
+<div class="warning">
+  <strong>Important:</strong> Success is not feeling calm, confident, or organized. Success is producing thesis prose before obeying the productivity or checking compulsion.
+</div>
+
+</body>
+</html>

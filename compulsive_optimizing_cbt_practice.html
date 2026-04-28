@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compulsive Optimizing — Practical CBT Guide</title>
+  <style>
+    :root {
+      --bg: #f6f3ed;
+      --paper: #fffdf8;
+      --ink: #1f2428;
+      --muted: #5d6670;
+      --line: #d8d0c3;
+      --soft: #eee7dc;
+      --soft2: #f8efe2;
+      --accent: #8a3f2d;
+      --accent2: #2e5e54;
+      --warn: #9a5a00;
+      --danger: #8a2f2f;
+      --code: #f3eee6;
+      --shadow: 0 10px 30px rgba(31, 36, 40, 0.08);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.62;
+      font-size: 16px;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 96px;
+    }
+
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 42px;
+      border-radius: 22px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.18;
+      margin: 0 0 14px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-top: 4px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-top: 26px;
+    }
+
+    h4 {
+      font-size: 17px;
+      margin-top: 18px;
+      color: var(--accent2);
+    }
+
+    p { margin: 0 0 14px; }
+
+    .subtitle {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 780px;
+      margin-bottom: 0;
+    }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin: 24px 0;
+    }
+
+    .callout {
+      border-left: 5px solid var(--accent);
+      background: var(--soft2);
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .callout.green { border-left-color: var(--accent2); background: #eaf2ee; }
+    .callout.warn { border-left-color: var(--warn); background: #fff5df; }
+    .callout.danger { border-left-color: var(--danger); background: #f7e8e8; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      background: #fffaf1;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .card h4 { margin-top: 0; }
+
+    ul, ol { margin: 10px 0 16px 22px; padding: 0; }
+    li { margin: 7px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      overflow: hidden;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px 13px;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      text-align: left;
+      font-weight: 800;
+    }
+
+    tr:nth-child(even) td { background: #fffaf2; }
+
+    pre {
+      background: var(--code);
+      border: 1px solid var(--line);
+      padding: 16px;
+      border-radius: 12px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent);
+      margin-right: 6px;
+      margin-bottom: 8px;
+    }
+
+    .rule {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+    }
+
+    .rule:first-child { border-top: none; }
+    .rule strong { color: var(--accent); }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .print-note {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .checkbox-list li {
+      list-style: none;
+      margin-left: -18px;
+    }
+
+    .checkbox-list li::before {
+      content: "☐";
+      margin-right: 9px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .ladder-step {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ladder-step:last-child { border-bottom: none; }
+    .level {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    @media (max-width: 760px) {
+      .grid, .grid.three { grid-template-columns: 1fr; }
+      .rule { grid-template-columns: 1fr; gap: 4px; }
+      header, section { padding: 24px; }
+      .ladder-step { grid-template-columns: 1fr; gap: 2px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { max-width: none; padding: 0; }
+      header, section { box-shadow: none; break-inside: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">Practical CBT Guide · One Pattern Only</div>
+      <h1>Compulsive Optimizing</h1>
+      <p class="subtitle">Concrete practices for the loop of endlessly improving structures, systems, tools, workflows, plans, designs, arguments, notes, prompts, routines, or environments instead of moving the actual work forward.</p>
+    </header>
+
+    <section>
+      <h2>1. What compulsive optimizing is</h2>
+      <p><strong>Compulsive optimizing</strong> is the repeated urge to improve the conditions, structure, wording, system, tool, process, or plan before acting. The behavior often looks intelligent and responsible. That is why it is sticky.</p>
+
+      <div class="callout">
+        <p><strong>Core definition:</strong> compulsive optimizing is not “liking things to be good.” It is the pattern where improving the setup repeatedly delays, displaces, or dilutes the actual output.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Healthy optimization</h4>
+          <ul>
+            <li>Solves a specific bottleneck.</li>
+            <li>Has a clear stopping point.</li>
+            <li>Leads directly to an output.</li>
+            <li>Is proportionate to the task.</li>
+            <li>Can be postponed without panic.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Compulsive optimization</h4>
+          <ul>
+            <li>Expands as you work on it.</li>
+            <li>Feels urgent even when not necessary.</li>
+            <li>Delays the real task.</li>
+            <li>Creates temporary relief.</li>
+            <li>Returns quickly: “just one more improvement.”</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Common forms beyond academia</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Compulsive optimizing may look like</th>
+            <th>Actual output being avoided</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Thesis / academic writing</td>
+            <td>Reworking theme names, chapter structure, note categories, literature maps.</td>
+            <td>Writing rough prose and making provisional claims.</td>
+          </tr>
+          <tr>
+            <td>Work project</td>
+            <td>Rebuilding the plan, slide structure, project board, documentation format.</td>
+            <td>Sending the draft, making the decision, shipping the deliverable.</td>
+          </tr>
+          <tr>
+            <td>Software / coding</td>
+            <td>Refactoring architecture, improving naming, changing frameworks, adding abstractions.</td>
+            <td>Implementing the feature, testing the bug fix, releasing the version.</td>
+          </tr>
+          <tr>
+            <td>Personal productivity</td>
+            <td>Switching apps, redesigning tags, building dashboards, changing routines.</td>
+            <td>Doing the unpleasant task already on the list.</td>
+          </tr>
+          <tr>
+            <td>Health / habits</td>
+            <td>Creating the perfect workout, diet plan, tracker, supplement stack.</td>
+            <td>Doing today’s workout or cooking the next meal.</td>
+          </tr>
+          <tr>
+            <td>Creative work</td>
+            <td>Choosing tools, templates, palettes, structure, references, aesthetic direction.</td>
+            <td>Making the draft, sketch, scene, page, prototype, or recording.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>2. The CBT formulation</h2>
+      <p>In CBT terms, compulsive optimizing usually functions as a combination of <strong>perfectionistic safety behavior</strong>, <strong>avoidance</strong>, and <strong>short-term anxiety regulation</strong>. It is maintained because it gives relief now while preventing you from learning that imperfect action is survivable.</p>
+
+      <pre>Trigger:
+“This is not good enough / not clear enough / not ready.”
+
+Threat prediction:
+“If I act now, the result will be bad, judged, inefficient, wrong, embarrassing, or wasteful.”
+
+Safety behavior:
+Optimize the structure, tool, wording, plan, system, workflow, or setup.
+
+Short-term effect:
+Relief, control, stimulation, feeling of progress.
+
+Long-term effect:
+Less tolerance for imperfect action, more dependence on optimizing, less output.</pre>
+
+      <div class="callout green">
+        <p><strong>CBT target:</strong> not to stop improving things forever. The target is to stop using optimization as the gatekeeper before action.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. The practical rule set</h2>
+      <p>These are not slogans. They are operational rules. Choose one or two to start; do not implement all at once.</p>
+
+      <div class="rule">
+        <strong>Rule 1<br />Output before optimization</strong>
+        <div>Produce a rough output before improving the system around it. Example: write the paragraph before renaming the theme; ship the draft before redesigning the template; complete the workout before optimizing the training plan.</div>
+      </div>
+
+      <div class="rule">
+        <strong>Rule 2<br />Optimization must have a ticket</strong>
+        <div>You may optimize only if you can write a specific problem ticket: “This exact bottleneck prevented this exact output.” Vague tickets like “make the system better” are not allowed.</div>
+      </div>
+
+      <div class="rule">
+        <strong>Rule 3<br />Time-box, then act</strong>
+        <div>Give optimization a short box: 5, 10, or 15 minutes. When the timer ends, act with the current version. No emotional readiness required.</div>
+      </div>
+
+      <div class="rule">
+        <strong>Rule 4<br />No mid-flight redesign</strong>
+        <div>Once a production block starts, no changing the structure, tool, framework, theme name, template, or plan. Capture ideas in brackets or on paper. Keep producing.</div>
+      </div>
+
+      <div class="rule">
+        <strong>Rule 5<br />Revise from output</strong>
+        <div>You are allowed to improve the structure after a draft exists. The draft becomes evidence. Before the draft, most optimization is speculation.</div>
+      </div>
+
+      <div class="rule">
+        <strong>Rule 6<br />Use “good enough” criteria</strong>
+        <div>Define “good enough” behaviorally before starting. Do not use feelings as the finish line.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Good-enough criteria: concrete examples</h2>
+      <p>Compulsive optimizing survives because “done” is emotional and movable. Use behavioral criteria instead.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Bad completion criterion</th>
+            <th>Better behavioral criterion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Thesis paragraph</td>
+            <td>“It feels clear and theoretically right.”</td>
+            <td>One claim, one explanation, one piece of evidence or placeholder, one next-step note.</td>
+          </tr>
+          <tr>
+            <td>Project plan</td>
+            <td>“The whole system feels organized.”</td>
+            <td>Owner, next action, deadline, and first deliverable are specified.</td>
+          </tr>
+          <tr>
+            <td>Code feature</td>
+            <td>“The architecture feels clean.”</td>
+            <td>Feature works for the main case, has one test, and known cleanup is listed.</td>
+          </tr>
+          <tr>
+            <td>Email / message</td>
+            <td>“It sounds exactly right.”</td>
+            <td>Recipient, request, context, deadline, and one clear next step are included.</td>
+          </tr>
+          <tr>
+            <td>Workout plan</td>
+            <td>“This is the optimal program.”</td>
+            <td>Today’s workout is chosen and completed at 70% adequacy.</td>
+          </tr>
+          <tr>
+            <td>Note system</td>
+            <td>“Everything is categorized elegantly.”</td>
+            <td>The note helps complete one current output today.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <p><strong>Important:</strong> good-enough criteria should feel slightly uncomfortable. If they feel fully satisfying, they may still be perfectionistic criteria in disguise.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. In-the-moment protocol</h2>
+      <p>Use this when you are already inside the urge to optimize. The protocol does not ask you to convince yourself. It gives your body something specific to do.</p>
+
+      <h3>The 10-minute anti-optimization sequence</h3>
+      <ol>
+        <li><strong>Freeze the optimization.</strong> Hands off the outline, template, tool, theme name, plan, code structure, or system.</li>
+        <li><strong>Write the urge as a ticket.</strong> One sentence only: “I want to optimize ___ because I fear ___.”</li>
+        <li><strong>Defer it visibly.</strong> Put it in a “Later / Optimization Parking Lot.”</li>
+        <li><strong>Choose the smallest output action.</strong> One sentence, one line of code, one paragraph stub, one email draft, one messy slide.</li>
+        <li><strong>Work for 10 minutes with optimization blocked.</strong> Timer on. No structural changes.</li>
+        <li><strong>Re-rate the urge.</strong> 0–10 before and after.</li>
+        <li><strong>Decide from evidence.</strong> After output exists, ask whether the optimization is still necessary.</li>
+      </ol>
+
+      <pre>Optimization Parking Lot
+
+Urge:
+I want to rename/restructure/rebuild/improve __________.
+
+Fear:
+If I do not optimize it now, __________ will happen.
+
+Deferred until:
+After 25 minutes of output / Friday review / after draft exists.
+
+Still necessary after output exists?   Yes / No / Smaller version</pre>
+    </section>
+
+    <section>
+      <h2>6. Exposure exercises</h2>
+      <p>These are deliberate practice exercises. They work by letting you experience the discomfort of not optimizing and discovering that action remains possible.</p>
+
+      <div class="ladder-step">
+        <div class="level">Level 1</div>
+        <div>
+          <h4>Write under the imperfect label</h4>
+          <p><strong>Use when:</strong> you want to rename a theme, heading, folder, project, section, or file before working.</p>
+          <pre>Exposure:
+Keep the current name for 25 minutes.
+Produce output under that name.
+
+Example:
+Keep “Theme 2: Institutional Friction” even if you dislike it.
+Write 250 words below it.
+
+Response prevention:
+No renaming, no reordering, no taxonomy redesign.</pre>
+        </div>
+      </div>
+
+      <div class="ladder-step">
+        <div class="level">Level 2</div>
+        <div>
+          <h4>Use the current tool badly</h4>
+          <p><strong>Use when:</strong> you want to improve a tool, template, note system, automation, or integration before starting.</p>
+          <pre>Exposure:
+Use the current imperfect tool for one output block.
+
+Example:
+Use the existing note document, even if messy.
+Write the paragraph anyway.
+
+Response prevention:
+No new template, no integration, no cleanup, no automation.</pre>
+        </div>
+      </div>
+
+      <div class="ladder-step">
+        <div class="level">Level 3</div>
+        <div>
+          <h4>Ship the 70% version</h4>
+          <p><strong>Use when:</strong> you want to keep polishing something that is already functional.</p>
+          <pre>Exposure:
+Send/share/save/submit the 70% version to a low-risk audience or checkpoint.
+
+Example:
+Send supervisor a rough theme memo labeled “rough analytic direction.”
+Send colleague a draft plan with known gaps.
+
+Response prevention:
+No final polish pass beyond one timed 10-minute cleanup.</pre>
+        </div>
+      </div>
+
+      <div class="ladder-step">
+        <div class="level">Level 4</div>
+        <div>
+          <h4>Leave the visible imperfection</h4>
+          <p><strong>Use when:</strong> the urge is to fix cosmetic or structural discomfort immediately.</p>
+          <pre>Exposure:
+Leave one non-dangerous imperfection visible until the next scheduled review.
+
+Examples:
+A clunky heading.
+An awkward paragraph.
+A rough file name.
+A nonideal slide order.
+A code TODO.
+
+Response prevention:
+No immediate cleanup unless it blocks the actual output.</pre>
+        </div>
+      </div>
+
+      <div class="ladder-step">
+        <div class="level">Level 5</div>
+        <div>
+          <h4>Decide without comparing all options</h4>
+          <p><strong>Use when:</strong> you keep comparing frameworks, tools, outlines, headings, apps, or approaches.</p>
+          <pre>Exposure:
+Compare only two options.
+Choose one.
+Use it for 48 hours.
+
+Response prevention:
+No third option search.
+No “just checking alternatives.”
+No asking AI for more possibilities.</pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Worked examples</h2>
+
+      <h3>Example A: thesis theme names</h3>
+      <div class="card">
+        <p><strong>Situation:</strong> You want to rename the theme because the current name feels clumsy.</p>
+        <p><strong>Old behavior:</strong> spend 45 minutes generating alternatives, asking AI, reorganizing subthemes, then feel too drained to write.</p>
+        <p><strong>New behavior:</strong></p>
+        <pre>1. Write: “I want to rename this theme because I fear the current name misrepresents the finding.”
+2. Add bracket: [Possible rename later]
+3. Lock current name for 25 minutes.
+4. Write 250 words under the current name.
+5. After writing, ask: did the name actually block the paragraph?
+6. If still needed, schedule a 10-minute naming review after prose exists.</pre>
+      </div>
+
+      <h3>Example B: productivity system redesign</h3>
+      <div class="card">
+        <p><strong>Situation:</strong> You feel your notes are messy and want to build a better dashboard.</p>
+        <p><strong>Old behavior:</strong> open Notion/Obsidian/Sheets, restructure databases, add tags, create views, then call it progress.</p>
+        <p><strong>New behavior:</strong></p>
+        <pre>1. Write a tool ticket:
+   “I want to redesign the dashboard because I fear I cannot see what to do next.”
+
+2. Test the belief:
+   Can I define the next action without redesigning?
+
+3. Choose next output:
+   “Write 200 words explaining finding X.”
+
+4. Work 25 minutes using current notes.
+
+5. Only if the messy notes directly prevented output, define a tiny fix:
+   “Create one quote list for Theme 2.”
+   Not: “rebuild the whole system.”</pre>
+      </div>
+
+      <h3>Example C: code/project architecture</h3>
+      <div class="card">
+        <p><strong>Situation:</strong> You are building something and want to refactor before completing the feature.</p>
+        <p><strong>Old behavior:</strong> reorganize architecture, rename modules, improve abstractions, then never test the actual feature.</p>
+        <p><strong>New behavior:</strong></p>
+        <pre>1. Define output:
+   “Main user path works once.”
+
+2. Lock architecture for 45 minutes.
+
+3. Add TODOs instead of refactoring:
+   // TODO: rename this after feature works
+   // TODO: extract helper later
+
+4. Complete the feature path.
+
+5. Refactor only after:
+   - feature runs
+   - one test exists
+   - specific pain point is demonstrated</pre>
+      </div>
+
+      <h3>Example D: email/message wording</h3>
+      <div class="card">
+        <p><strong>Situation:</strong> You repeatedly rewrite a message because the tone is not perfect.</p>
+        <p><strong>Old behavior:</strong> edit for 30 minutes, ask AI for alternate versions, compare phrasing, delay sending.</p>
+        <p><strong>New behavior:</strong></p>
+        <pre>Good-enough criteria:
+- clear recipient
+- clear ask
+- necessary context
+- deadline or next step
+- polite enough
+
+Rule:
+One draft.
+One 3-minute edit.
+Send.
+
+Exposure:
+Send a polite but imperfect message and record whether the feared outcome happened.</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>8. Behavioral experiment templates</h2>
+      <p>Use these to create actual learning, not just intention. The important part is writing the prediction before you block optimization.</p>
+
+      <h3>Template 1: The “without optimizing” experiment</h3>
+      <pre>Date:
+Task:
+
+Optimization urge:
+I want to improve/change/restructure __________.
+
+Feared outcome:
+If I do not optimize this first, __________ will happen.
+
+Prediction rating:
+How likely is this, 0–100%? ____
+How bad would it be, 0–10? ____
+
+Experiment:
+I will work for ____ minutes without optimizing.
+
+Response prevention:
+I will not __________.
+
+Output produced:
+
+Actual outcome:
+
+What did I learn?
+
+Was the optimization still necessary afterward?
+No / Yes, but smaller / Yes, same size</pre>
+
+      <h3>Template 2: The “70% version” experiment</h3>
+      <pre>Task:
+
+What would a 100% version require?
+
+What is the 70% version?
+
+What is the minimum acceptable output?
+
+Exposure:
+Produce or share the 70% version.
+
+Feared consequence:
+
+Actual consequence after 24–48 hours:
+
+What did I learn about my standards?</pre>
+
+      <h3>Template 3: The “defer optimization” experiment</h3>
+      <pre>Optimization idea:
+
+Why it feels urgent:
+
+Deferred until:
+
+Output I will produce first:
+
+After producing output:
+Is the optimization still needed?
+- No
+- Yes, but only this small part:
+- Yes, schedule it for:</pre>
+    </section>
+
+    <section>
+      <h2>9. Stopping rules</h2>
+      <p>Stopping rules are essential because compulsive optimizing has no natural endpoint.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>Stopping rule</th>
+            <th>What to do next</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Renaming / headings / labels</td>
+            <td>Pick one name in 5 minutes. Lock for 48 hours.</td>
+            <td>Write under it.</td>
+          </tr>
+          <tr>
+            <td>Outline / structure</td>
+            <td>Maximum 10 minutes before drafting.</td>
+            <td>Draft one subsection before any further changes.</td>
+          </tr>
+          <tr>
+            <td>Tool or app choice</td>
+            <td>Use current tool for 7 days unless it truly blocks output.</td>
+            <td>Produce with current setup.</td>
+          </tr>
+          <tr>
+            <td>Prompt engineering / AI workflow</td>
+            <td>One prompt only after your own draft exists.</td>
+            <td>Apply one useful suggestion or close AI.</td>
+          </tr>
+          <tr>
+            <td>Design / format / aesthetics</td>
+            <td>One 10-minute formatting pass after content exists.</td>
+            <td>Return to substance or stop.</td>
+          </tr>
+          <tr>
+            <td>Refactoring / cleanup</td>
+            <td>Only after the core function works.</td>
+            <td>Make a TODO and complete the feature.</td>
+          </tr>
+          <tr>
+            <td>Planning</td>
+            <td>Planning must end with one next action.</td>
+            <td>Do that action immediately.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>10. Handling the physical-emotional urge</h2>
+      <p>The urge to optimize often arrives as bodily discomfort: tension, pressure, agitation, dread, heat, restlessness, or a sharp feeling that something is “wrong.” The intervention is behavioral: carry the discomfort while doing the next output action.</p>
+
+      <div class="callout danger">
+        <p><strong>Do not wait for the urge to disappear.</strong> If you wait to feel settled before acting, the urge has already become the gatekeeper.</p>
+      </div>
+
+      <h3>The body-based sequence</h3>
+      <ol>
+        <li><strong>Pause hands.</strong> Stop touching the thing you want to optimize.</li>
+        <li><strong>Name the body sensation.</strong> “Tight chest,” “buzzing,” “heat,” “pressure,” “restlessness.”</li>
+        <li><strong>Rate intensity.</strong> 0–10.</li>
+        <li><strong>Make room physically.</strong> Unclench jaw, lower shoulders, exhale longer than inhale for three breaths.</li>
+        <li><strong>Do not negotiate with the urge.</strong> No debating whether optimization is justified for the next 10 minutes.</li>
+        <li><strong>Perform one output action.</strong> Type the next sentence, line, claim, paragraph stub, test, email sentence, or sketch.</li>
+        <li><strong>Re-rate after 10 minutes.</strong> The goal is not zero. The goal is movement without compulsion.</li>
+      </ol>
+
+      <pre>When urge intensity is 7/10 or lower:
+Continue the exposure.
+
+When urge intensity is 8–9/10:
+Shrink the task, not the rule.
+Example: one sentence instead of one paragraph.
+
+When distress feels unsafe or overwhelming:
+Stop the exposure, use grounding, and discuss pacing with a therapist.
+Do not use this guide as a substitute for clinical care.</pre>
+    </section>
+
+    <section>
+      <h2>11. Permissions that produce behavior</h2>
+      <p>These are not affirmations. Each permission is paired with an action.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Immediate action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>I am allowed to use an imperfect structure.</td>
+            <td>Write 150 words under the current heading.</td>
+          </tr>
+          <tr>
+            <td>I am allowed to leave a clunky label unchanged.</td>
+            <td>Add [rename later] and continue the paragraph.</td>
+          </tr>
+          <tr>
+            <td>I am allowed to work with a messy tool.</td>
+            <td>Use the current note system for one 25-minute block.</td>
+          </tr>
+          <tr>
+            <td>I am allowed to decide with incomplete comparison.</td>
+            <td>Compare two options only, choose one, use for 48 hours.</td>
+          </tr>
+          <tr>
+            <td>I am allowed to make a reversible mistake.</td>
+            <td>Publish/send/share/save the low-risk 70% version.</td>
+          </tr>
+          <tr>
+            <td>I am allowed to optimize later.</td>
+            <td>Put the idea in the parking lot and produce first.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>12. A seven-day practice plan</h2>
+      <p>This plan is intentionally narrow. The objective is not to fix all optimization. The objective is to gather evidence that you can act before optimizing.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Day 1 — Label lock</h4>
+          <p>Pick one imperfect label, heading, folder, or section name. Keep it for 25 minutes and produce under it.</p>
+        </div>
+        <div class="card">
+          <h4>Day 2 — Tool freeze</h4>
+          <p>Use the current tool or setup for one output block. No fixes, tags, templates, integrations, or cleanup.</p>
+        </div>
+        <div class="card">
+          <h4>Day 3 — 70% output</h4>
+          <p>Produce a low-risk 70% version. Send, save, share, or mark complete with one known imperfection.</p>
+        </div>
+        <div class="card">
+          <h4>Day 4 — Two-option decision</h4>
+          <p>Choose between only two structures/tools/wordings. Use the chosen one for 48 hours.</p>
+        </div>
+        <div class="card">
+          <h4>Day 5 — No mid-flight redesign</h4>
+          <p>Start a 25-minute block. Capture every optimization idea in brackets. Implement none.</p>
+        </div>
+        <div class="card">
+          <h4>Day 6 — Deferred optimization</h4>
+          <p>Delay one optimization urge for 24 hours. Check whether it still matters tomorrow.</p>
+        </div>
+        <div class="card">
+          <h4>Day 7 — Review evidence</h4>
+          <p>Review predictions vs outcomes. Do not redesign the practice plan. Choose one rule to repeat next week.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>13. What to track</h2>
+      <p>Track only what helps learning. Do not build a large tracker.</p>
+
+      <pre>Date:
+Task:
+
+Optimization urge:
+
+What I feared would happen if I did not optimize:
+
+Urge intensity before, 0–10:
+
+Response-prevention rule used:
+
+Output produced before optimizing:
+
+Urge intensity after, 0–10:
+
+Did the feared outcome happen?
+
+Was the optimization still necessary after output existed?
+
+One sentence of learning:</pre>
+
+      <div class="callout green">
+        <p><strong>Progress marker:</strong> not “I no longer get optimization urges.” Progress is “I get the urge, defer it, produce something, and then decide from evidence.”</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>14. Red flags: when optimization may be justified</h2>
+      <p>The goal is not reckless action. Some optimization is legitimate. Use this checklist.</p>
+
+      <ul class="checkbox-list">
+        <li>The current setup creates a real safety, legal, ethical, or privacy risk.</li>
+        <li>The output cannot proceed at all without the fix.</li>
+        <li>The same specific bottleneck has blocked output more than once.</li>
+        <li>The fix can be done in under 15 minutes and leads immediately back to output.</li>
+        <li>The optimization is scheduled, bounded, and not performed during an urge spike.</li>
+      </ul>
+
+      <div class="callout warn">
+        <p><strong>If only one item is true, be cautious.</strong> If the main reason is “I’ll feel better once this is cleaner,” it is probably the compulsion, not the task.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>15. The shortest usable version</h2>
+      <p>Use this when you are in the middle of the loop and cannot think clearly.</p>
+
+      <pre>1. Stop optimizing.
+2. Write the fear:
+   “If I do not optimize ___, then ___.”
+3. Put the optimization idea in the parking lot.
+4. Set 10 minutes.
+5. Produce one imperfect piece of output.
+6. Re-check whether optimization is still necessary after output exists.</pre>
+
+      <p class="print-note">This guide is educational and practical, not a diagnosis or substitute for therapy. It is designed to be adapted with a therapist, especially if distress is severe, impairment is high, or compulsive patterns feel uncontrollable.</p>
+    </section>
+  </main>
+</body>
+</html>
